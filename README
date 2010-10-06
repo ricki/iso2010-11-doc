@@ -1,0 +1,10 @@
+=== iso2010-11-doc ===
+
+Este repositorio contendrá toda la documentación de la práctica de ISO
+desarrollada en el curso 2010-11 en la ESI de Ciudad Real.
+
+El repositorio la siguiente estructura de directorios:
+ distrib/  - Documentos finales listos para ser distribuidos.
+ latex/    - Fuentes de los documentos.
+ template/ - Plantillas para crear los diferentes documentos.
+ uml/      - Diagramas de la aplicación.
