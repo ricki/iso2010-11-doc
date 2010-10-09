@@ -3,6 +3,7 @@
 \usepackage[utf8x]{inputenc}
 \usepackage[spanish]{babel}
 \usepackage{fancyhdr}
+\usepackage[Bjornstrup]{fncychap}
 \usepackage{tabularx}
 \usepackage{hyperref}
 \usepackage{eurosym}
@@ -33,6 +34,33 @@ filecolor=black,
 linkcolor=black,
 urlcolor=black
 }
+
+ % La que hay que liar para que las cabeceras de los capitulos
+ % no tiren media pagina a la basura...
+
+\makeatletter
+\def\@makechapterhead#1{{
+\parindent \z@ \raggedright \normalfont
+\ifnum \c@secnumdepth >\m@ne
+	\if@mainmatter
+		\DOCH
+	\fi
+\fi
+\interlinepenalty\@M
+\if@mainmatter
+	\DOTI{#1}
+\else
+	\DOTIS{#1}
+\fi
+}}
+
+\def\@makeschapterhead#1{{
+\parindent \z@ \raggedright
+\normalfont
+\interlinepenalty\@M
+\DOTIS{#1}
+}}
+\makeatother
 
 \begin{document}
 
@@ -75,10 +103,11 @@ Ricardo Ruedas García\\
 %%%% end Title Page %%%%%
 
 \clearpage
-\pagenumbering{roman}
-\setcounter{page}{1}
+\pagenumbering{arabic}
 
 \chapter*{Historial de cambios}
+\addcontentsline{toc}{chapter}{Historial de cambios}
+\setcounter{page}{2}
 
 \begin{center}
 \begin{tabularx}{\textwidth}{p{0.1\textwidth}p{0.2\textwidth}X}
@@ -90,13 +119,12 @@ Ricardo Ruedas García\\
 \clearpage
 
 \tableofcontents
+\addcontentsline{toc}{chapter}{\contentsname}
 % \listoffigures
 % \listoftables
 
 \clearpage
 
-\pagenumbering{arabic}
-\setcounter{page}{1}
 \pagestyle{fancy}
 
 \chapter{Introducción}
