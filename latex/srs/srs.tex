@@ -3,9 +3,7 @@
 \usepackage[utf8x]{inputenc}
 \usepackage[spanish]{babel}
 \usepackage{fancyhdr}
-\usepackage[Bjornstrup]{fncychap}
 \usepackage{tabularx}
-\usepackage{hyperref}
 \usepackage{eurosym}
 % \usepackage[usenames,dvipsnames]{color}
 % \usepackage{colortbl}
@@ -17,9 +15,9 @@
 \setlength{\parskip}{6pt}
 
 % Margenes 1cm mas pequennos
-% \addtolength{\oddsidemargin}{-1cm}
-% \addtolength{\evensidemargin}{-1cm}
-% \addtolength{\textwidth}{2cm}
+\addtolength{\oddsidemargin}{-1cm}
+\addtolength{\evensidemargin}{-1cm}
+\addtolength{\textwidth}{2cm}
 % \addtolength{\voffset}{-1cm}
 % \addtolength{\textheight}{2cm}
 
@@ -27,16 +25,9 @@
 \chead{}
 \rhead{\nouppercase{\leftmark}}
 
-\hypersetup{
-colorlinks,
-citecolor=black,
-filecolor=black,
-linkcolor=black,
-urlcolor=black
-}
-
  % La que hay que liar para que las cabeceras de los capitulos
  % no tiren media pagina a la basura...
+\usepackage[Bjornstrup]{fncychap}
 
 \makeatletter
 \def\@makechapterhead#1{{
@@ -61,6 +52,16 @@ urlcolor=black
 \DOTIS{#1}
 }}
 \makeatother
+
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks,
+citecolor=black,
+filecolor=black,
+linkcolor=black,
+urlcolor=black
+}
 
 \begin{document}
 
