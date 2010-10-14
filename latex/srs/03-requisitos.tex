@@ -4,6 +4,33 @@
 
 \subsection{Registrarse}
 
+{\footnotesize
+\begin{tabularx}{0.95\textwidth}{r|X}
+
+\textbf{Caso de uso} & Registrarse \\
+
+\textbf{Precondición} & Ninguna \\
+
+\textbf{Escenario general} & \begin{enumerate}
+\item El usuario selecciona registrarse en la ventana de inicio.
+\item La ventana principal muestra la ventana de registro.
+\item El usuario introduce sus datos en la ventana de registro.
+\item La ventana de registro verifica que los datos sean válidos y no habilita
+el botón de confirmación hasta que lo sean.
+\item El usuario pulsa el botón de confirmación.
+\item La ventana de registro pide al gestor de usuarios que cree un nuevo
+jugador con los datos indicados.
+\item El gestor de usuarios pide al servidor que cree un nuevo jugador mediante
+el proxy.
+\item El servidor confirma al gestor de usuarios la creación del jugador.
+\item La ventana de inicio informa al usuario del éxito de la operación.
+\end{enumerate} \\
+
+\textbf{Poscondición} & Un nuevo usuario existe en el sistema.
+
+\end{tabularx}
+}
+
 \subsection{Iniciar sesión}
 
 \subsection{Cerrar sesión}
@@ -41,3 +68,13 @@
 \subsection{Estructura lógica de los datos}
 
 \subsubsection{Entidad Datos de registro}
+\begin{tabularx}{0.9\textwidth}{llX}
+\hline
+\textbf{Elemento} & \textbf{Tipo} & \textbf{Descripción} \\
+\hline
+Nombre & Texto & Nombre del usuario \\
+eMail & Texto & Dirección de correo electrónico \\
+Contraseña & Texto & Contraseña en el sistema \\
+Conf. Contraseña & Texto & Confirmación de contraseña \\
+\hline
+\end{tabularx}
