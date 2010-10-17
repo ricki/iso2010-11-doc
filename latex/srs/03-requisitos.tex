@@ -40,10 +40,77 @@ el proxy.
 \subsection{Unirse a una partida}
 
 \subsection{Conectarse a una partida}
+{\footnotesize
+\begin{tabularx}{0.95\textwidth}{r|X}
+
+\textbf{Caso de uso} & Conectarse a una partida \\
+
+\textbf{Precondición} &  Iniciar sesión\\
+
+\textbf{Escenario general} & \begin{enumerate}
+\item El usuario selecciona una partida dentro de la lista de partidas que está 
+jugando ese usuario.
+\item La ventana principal pide al gestor de partidas que inicie la partida 
+seleccionada.
+\item El gestor de partidas pide al servidor la información de la partida 
+solicitada.
+\item El servidor envia la información correspondiente del usuario al gestor de 
+partidas.
+\item El gestor de partidas abre la nueva ventana de juego. 
+
+\end{enumerate} \\
+
+\textbf{Poscondición} & Mostrar la partida de juego.
+
+\end{tabularx}
+}
 
 \subsection{Desconectarse de una partida}
+{\footnotesize
+\begin{tabularx}{0.95\textwidth}{r|X}
+
+\textbf{Caso de uso} & Desconectarse de una partida \\
+
+\textbf{Precondición} &  Estar conectado a una partida.\\
+
+\textbf{Escenario general} & \begin{enumerate}
+\item El usuario pulsa el botón cerrar partida en la ventana de juego.
+\item La ventana de juego le indica al gestor de partidas que cierre la partida
+en juego.
+\item El gestor de partidas comunica al servidor el estado de la partida.
+\item Se cierra la ventana de juego y se muestra la ventana principal.
+
+\end{enumerate} \\
+
+\textbf{Poscondición} & Se sale de la partida y aparece la ventana principal.
+
+\end{tabularx}
+}
 
 \subsection{Ver la lista de partidas}
+
+{\footnotesize
+\begin{tabularx}{0.95\textwidth}{r|X}
+
+\textbf{Caso de uso} & Ver la lista de partidas \\
+
+\textbf{Precondición} & Iniciar sesión \\
+
+\textbf{Escenario general} & \begin{enumerate}
+\item La ventana principal pide al gestor de partidas, una lista con las 
+partidas libres disponibles y una lista con las partidas que el usuario esta 
+jungando.
+\item El gestor de partidas pide al servidor ambas listas.
+\item El servidor envía ambas listas de partidas al gestor de partidas.
+\item La ventana principal muestra la lista de partidas disponibles y la lista 
+de partidas comenzadas.
+
+\end{enumerate} \\
+
+\textbf{Poscondición} & La lista de partidas esta disponible para el usuario.
+
+\end{tabularx}
+}
 
 \subsection{Recibir información de una partida}
 
