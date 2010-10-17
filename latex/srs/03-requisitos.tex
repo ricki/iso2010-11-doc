@@ -49,12 +49,21 @@ el proxy.
 \item El usuario selecciona de la lista de partidas disponibles de la ventana de juego.
 \item La ventana notifica al gestor de usuario que el usuario desea unirse a la partida seleccionada.
 \item El gestor de usuarios se comunica con el servidor para indicarle que un usuario quiere unirse a una partida mediante el proxy.
-\item El proxy notifica al gestor que el usuario se a unido a la partida.
+\item El proxy notifica al gestor que el usuario se ha unido a la partida.
 \item El gestor de usuarios actualiza la lista de partidas del jugador.
 \item El gestor modifica la ventana con el nuevo estado de las partidas. 
 \end{enumerate} \\
 
-\textbf{Poscondición} & En la partida seleccionada hay un nuevo jugador.
+\textbf{Poscondición} & En la partida seleccionada hay un nuevo jugador.\\ \\
+
+\textbf{Escenario alternativo} & \begin{enumerate}
+\item El usuario selecciona de la lista de partidas disponibles de la ventana de juego.
+\item La ventana notifica al gestor de usuario que el usuario desea unirse a la partida seleccionada.
+\item El gestor de usuarios se comunica con el servidor para indicarle que un usuario quiere unirse a una partida mediante el proxy.
+\item El proxy notifica al gestor que el usuario no se ha podido unir a la partida ya que no hay sitio disponible.
+\item El gestor de usuarios actualiza la lista de partidas disponibles.
+\item El gestor modifica la ventana con el nuevo estado de las partidas. 
+\end{enumerate}
 
 \end{tabularx}
 }
