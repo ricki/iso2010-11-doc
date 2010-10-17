@@ -57,7 +57,20 @@ el proxy.
 \item La ventana principal comunica al jugador que se ha creado una nueva partida.
 \end{enumerate} \\
 
-\textbf{Poscondición} & En el sistema hay una nueva partida.
+\textbf{Poscondición} & En el sistema hay una nueva partida.\\ \\
+
+\textbf{Escenario alternativo} & \begin{enumerate}
+\item El usuario selecciona de la ventana de juego crear una nueva partida.
+\item La ventana de juego muestra la ventana de crear partida.
+\item El usuario selecciona las características de la partida.
+\item La ventana crear partida habilita el botón \emph{crear} cuando los datos son correctos.
+\item El usuario pulsa el botón crear.
+\item La ventana crear partida notifica al gestor de partidas que un usuario desea crear una partida. 
+\item El gestor de partidas pide al servidor mediante el proxy que cree una partida.
+\item El proxy le indica al gestor de partidas que no se ha podido crear la partida.
+\item La ventana de juego oculta la ventana de crear partidas.
+\item La ventana principal comunica al jugador que no se ha podido crear la partida.
+\end{enumerate} \\
 
 \end{tabularx}
 }
