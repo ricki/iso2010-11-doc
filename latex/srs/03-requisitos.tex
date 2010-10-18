@@ -33,6 +33,31 @@ el proxy.
 
 \subsection{Iniciar sesión}
 
+{\footnotesize
+\begin{tabularx}{0.95\textwidth}{r|X}
+
+\textbf{Caso de uso} & Iniciar sesión \\
+
+\textbf{Precondición} & Usuario registrado \\
+
+\textbf{Escenario general} & \begin{enumerate}
+\item El usuario introduce su nombre y contraseña en la ventana de inicio.
+\item La ventana de inicio verfica la validez de los datos.
+\item El usuario pulsa el botón ``Iniciar sesión''.
+\item El gestor de usuarios pide al servidor que valide al usuario.
+\item El servidor confirma al gestor de usuarios que el usuario es válido.
+\item El gestor de usuarios crea una sesión.
+\item Se cierra la ventana de inicio y se abre la ventana principal.
+\end{enumerate} \\
+
+\textbf{Poscondición} & Ninguna \\
+
+\textbf{Escenario alternativo} & Puede ocurrir que los datos de acceso no sean
+correctos, en cuyo caso se aborta la operación y se vuelve al estado inicial.
+
+\end{tabularx}
+}
+
 \subsection{Cerrar sesión}
 
 \subsection{Crear una nueva partida}
