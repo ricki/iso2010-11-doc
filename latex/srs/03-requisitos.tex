@@ -60,6 +60,26 @@ correctos, en cuyo caso se aborta la operación y se vuelve al estado inicial.
 
 \subsection{Cerrar sesión}
 
+{\footnotesize
+\begin{tabularx}{0.95\textwidth}{r|X}
+
+\textbf{Caso de uso} & Cerrar sesión \\
+
+\textbf{Precondición} & Sesión iniciada \\
+
+\textbf{Escenario general} & \begin{enumerate}
+\item El usuario pulsa el botón ``Cerrar sesión'' en la ventana principal.
+\item La ventana principal pide al gestor de usuarios que cierre la sesión.
+\item El gestor de usuarios pide al servidor que cierre la sesión.
+\item El servidor comunica al gestor de usuarios que ha cerrado la sesión.
+\item Se cierra la ventana principal y se abre la ventana de inicio.
+\end{enumerate} \\
+
+\textbf{Poscondición} & El usuario deja de estar activo en el servidor.
+
+\end{tabularx}
+}
+
 \subsection{Crear una nueva partida}
 {\footnotesize
 \begin{tabularx}{0.95\textwidth}{r|X}
