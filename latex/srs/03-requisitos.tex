@@ -47,14 +47,20 @@ el proxy.
 \item El usuario selecciona de la ventana de juego crear una nueva partida.
 \item La ventana de juego muestra la ventana de crear partida.
 \item El usuario selecciona las características de la partida.
-\item La ventana crear partida habilita el botón \emph{crear} cuando los datos son correctos.
+\item La ventana crear partida habilita el botón \emph{crear} cuando los datos
+son correctos.
 \item El usuario pulsa el botón crear.
-\item La ventana crear partida notifica al gestor de partidas que un usuario desea crear una partida. 
-\item El gestor de partidas pide al servidor mediante el proxy que cree una partida.
-\item El proxy le indica al gestor de partidas que se ha creado una nueva partida.
-\item El gestor modifica la ventana de juego con el nuevo estado de las partidas.  
+\item La ventana crear partida notifica al gestor de partidas que un usuario
+desea crear una partida.
+\item El gestor de partidas pide al servidor mediante el proxy que cree una
+partida.
+\item El proxy le indica al gestor de partidas que se ha creado una nueva
+partida.
+\item El gestor modifica la ventana de juego con el nuevo estado de las
+partidas.
 \item La ventana de juego oculta la ventana de crear partidas.
-\item La ventana principal comunica al jugador que se ha creado una nueva partida.
+\item La ventana principal comunica al jugador que se ha creado una nueva
+partida.
 \end{enumerate} \\
 
 \textbf{Poscondición} & En el sistema hay una nueva partida.\\ \\
@@ -63,13 +69,18 @@ el proxy.
 \item El usuario selecciona de la ventana de juego crear una nueva partida.
 \item La ventana de juego muestra la ventana de crear partida.
 \item El usuario selecciona las características de la partida.
-\item La ventana crear partida habilita el botón \emph{crear} cuando los datos son correctos.
+\item La ventana crear partida habilita el botón \emph{crear} cuando los datos
+son correctos.
 \item El usuario pulsa el botón crear.
-\item La ventana crear partida notifica al gestor de partidas que un usuario desea crear una partida. 
-\item El gestor de partidas pide al servidor mediante el proxy que cree una partida.
-\item El proxy le indica al gestor de partidas que no se ha podido crear la partida.
+\item La ventana crear partida notifica al gestor de partidas que un usuario
+desea crear una partida.
+\item El gestor de partidas pide al servidor mediante el proxy que cree una
+partida.
+\item El proxy le indica al gestor de partidas que no se ha podido crear la
+partida.
 \item La ventana de juego oculta la ventana de crear partidas.
-\item La ventana principal comunica al jugador que no se ha podido crear la partida.
+\item La ventana principal comunica al jugador que no se ha podido crear la
+partida.
 \end{enumerate} \\
 
 \end{tabularx}
@@ -85,23 +96,31 @@ el proxy.
 \textbf{Precondición} & El usuario debe estar logeado \\
 
 \textbf{Escenario general} & \begin{enumerate}
-\item El usuario selecciona de la lista de partidas disponibles de la ventana de juego.
-\item La ventana notifica al gestor de usuario que el usuario desea unirse a la partida seleccionada.
-\item El gestor de usuarios se comunica con el servidor para indicarle que un usuario quiere unirse a una partida mediante el proxy.
+\item El usuario selecciona de la lista de partidas disponibles de la ventana de
+juego.
+\item La ventana notifica al gestor de usuario que el usuario desea unirse a la
+partida seleccionada.
+\item El gestor de usuarios se comunica con el servidor para indicarle que un
+usuario quiere unirse a una partida mediante el proxy.
 \item El proxy notifica al gestor que el usuario se ha unido a la partida.
 \item El gestor de usuarios actualiza la lista de partidas del jugador.
-\item El gestor modifica la ventana de juego con el nuevo estado de las partidas. 
+\item El gestor modifica la ventana de juego con el nuevo estado de las
+partidas.
 \end{enumerate} \\
 
 \textbf{Poscondición} & En la partida seleccionada hay un nuevo jugador.\\ \\
 
 \textbf{Escenario alternativo} & \begin{enumerate}
-\item El usuario selecciona de la lista de partidas disponibles de la ventana de juego.
-\item La ventana notifica al gestor de usuario que el usuario desea unirse a la partida seleccionada.
-\item El gestor de usuarios se comunica con el servidor para indicarle que un usuario quiere unirse a una partida mediante el proxy.
-\item El proxy notifica al gestor que el usuario no se ha podido unir a la partida ya que no hay sitio disponible.
+\item El usuario selecciona de la lista de partidas disponibles de la ventana de
+juego.
+\item La ventana notifica al gestor de usuario que el usuario desea unirse a la
+partida seleccionada.
+\item El gestor de usuarios se comunica con el servidor para indicarle que un
+usuario quiere unirse a una partida mediante el proxy.
+\item El proxy notifica al gestor que el usuario no se ha podido unir a la
+partida ya que no hay sitio disponible.
 \item El gestor de usuarios actualiza la lista de partidas disponibles.
-\item El gestor modifica la ventana con el nuevo estado de las partidas. 
+\item El gestor modifica la ventana con el nuevo estado de las partidas.
 \end{enumerate}
 
 \end{tabularx}
@@ -116,15 +135,15 @@ el proxy.
 \textbf{Precondición} &  Iniciar sesión\\
 
 \textbf{Escenario general} & \begin{enumerate}
-\item El usuario selecciona una partida dentro de la lista de partidas que está 
+\item El usuario selecciona una partida dentro de la lista de partidas que está
 jugando ese usuario.
-\item La ventana principal pide al gestor de partidas que inicie la partida 
+\item La ventana principal pide al gestor de partidas que inicie la partida
 seleccionada.
-\item El gestor de partidas pide al servidor la información de la partida 
+\item El gestor de partidas pide al servidor la información de la partida
 solicitada.
-\item El servidor envia la información correspondiente del usuario al gestor de 
+\item El servidor envia la información correspondiente del usuario al gestor de
 partidas.
-\item El gestor de partidas abre la nueva ventana de juego. 
+\item El gestor de partidas abre la nueva ventana de juego.
 
 \end{enumerate} \\
 
@@ -165,12 +184,12 @@ en juego.
 \textbf{Precondición} & Iniciar sesión \\
 
 \textbf{Escenario general} & \begin{enumerate}
-\item La ventana principal pide al gestor de partidas, una lista con las 
-partidas libres disponibles y una lista con las partidas que el usuario esta 
+\item La ventana principal pide al gestor de partidas, una lista con las
+partidas libres disponibles y una lista con las partidas que el usuario esta
 jungando.
 \item El gestor de partidas pide al servidor ambas listas.
 \item El servidor envía ambas listas de partidas al gestor de partidas.
-\item La ventana principal muestra la lista de partidas disponibles y la lista 
+\item La ventana principal muestra la lista de partidas disponibles y la lista
 de partidas comenzadas.
 
 \end{enumerate} \\
