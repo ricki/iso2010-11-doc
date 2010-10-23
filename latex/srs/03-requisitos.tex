@@ -50,7 +50,7 @@ el proxy.
 \item Se cierra la ventana de inicio y se abre la ventana principal.
 \end{enumerate} \\
 
-\textbf{Poscondición} & Ninguna \\
+\textbf{Poscondición} & Ninguna \\ \\
 
 \textbf{Escenario alternativo} & Puede ocurrir que los datos de acceso no sean
 correctos, en cuyo caso se aborta la operación y se vuelve al estado inicial.
@@ -108,7 +108,8 @@ partidas.
 partida.
 \end{enumerate} \\
 
-\textbf{Poscondición} & En el sistema hay una nueva partida.\\ \\
+\textbf{Poscondición} & En el sistema hay una nueva partida y se ejecuta el caso
+ de uso ``Unirse a partida''.\\ \\
 
 \textbf{Escenario alternativo} & \begin{enumerate}
 \item El usuario selecciona de la ventana de juego crear una nueva partida.
@@ -153,7 +154,8 @@ usuario quiere unirse a una partida mediante el proxy.
 partidas.
 \end{enumerate} \\
 
-\textbf{Poscondición} & En la partida seleccionada hay un nuevo jugador.\\ \\
+\textbf{Poscondición} & En la partida seleccionada hay un nuevo jugador y se
+ejecuta el caso de uso ``Conectarse a una partida''.\\ \\
 
 \textbf{Escenario alternativo} & \begin{enumerate}
 \item El usuario selecciona de la lista de partidas disponibles de la ventana de
@@ -177,22 +179,24 @@ partida ya que no hay sitio disponible.
 
 \textbf{Caso de uso} & Conectarse a una partida \\
 
-\textbf{Precondición} &  Iniciar sesión\\
+\textbf{Precondición} & El jugador debe haber iniciado sesión y haberse unido a
+la partida.\\
 
 \textbf{Escenario general} & \begin{enumerate}
-\item El usuario selecciona una partida dentro de la lista de partidas que está
-jugando ese usuario.
+\item El usuario selecciona una partida dentro de la lista de partidas a las que
+se ha unido ese usuario.
 \item La ventana principal pide al gestor de partidas que inicie la partida
 seleccionada.
 \item El gestor de partidas pide al servidor la información de la partida
-solicitada.
-\item El servidor envia la información correspondiente del usuario al gestor de
-partidas.
-\item El gestor de partidas abre la nueva ventana de juego.
+solicitada mediante el proxy.
+\item El servidor envia la información correspondiente de la partida indicada al
+gestor de partidas.
+\item El gestor de partidas abre la nueva ventana de juego con la información
+recibida de la partida.
 
 \end{enumerate} \\
 
-\textbf{Poscondición} & Mostrar la partida de juego.
+\textbf{Poscondición}
 
 \end{tabularx}
 }
@@ -203,7 +207,7 @@ partidas.
 
 \textbf{Caso de uso} & Desconectarse de una partida \\
 
-\textbf{Precondición} &  Estar conectado a una partida.\\
+\textbf{Precondición} & Estar conectado a una partida.\\
 
 \textbf{Escenario general} & \begin{enumerate}
 \item El usuario pulsa el botón cerrar partida en la ventana de juego.
@@ -229,9 +233,9 @@ en juego.
 \textbf{Precondición} & Iniciar sesión \\
 
 \textbf{Escenario general} & \begin{enumerate}
-\item La ventana principal pide al gestor de partidas, una lista con las
+\item La ventana principal pide al gestor de partidas una lista con las
 partidas libres disponibles y una lista con las partidas que el usuario esta
-jungando.
+jugando.
 \item El gestor de partidas pide al servidor ambas listas.
 \item El servidor envía ambas listas de partidas al gestor de partidas.
 \item La ventana principal muestra la lista de partidas disponibles y la lista
@@ -244,9 +248,51 @@ de partidas comenzadas.
 \end{tabularx}
 }
 
-\subsection{Recibir información de una partida}
-
 \subsection{Recibir notificación de un nuevo jugador}
+
+{\footnotesize
+\begin{tabularx}{0.95\textwidth}{p{0.2\textwidth}|X}
+
+\textbf{Caso de uso} & Recibir notificación de un nuevo jugador \\
+
+\textbf{Precondición} & Para recibir notificaciones cuando un jugador se une a
+una partida, es necesario que el jugador que quiere recibirlas esté unido a la
+partida y logueado. \\
+
+\textbf{Escenario general} & El jugador está conectado en el sistema jugando a 
+esta partida.\begin{enumerate}
+
+\item El servidor envia al gestor de partidas el nombre del nuevo jugador y la 
+partida a la que se quiere conectar.
+\item El gestor de usuarios pasa esta información a la ventana de la partida.
+\item La ventana de la partida muestra un mensaje indicando: "El jugador ... se 
+ha conectado a la partida ...".
+\item Si se está jugando esta partida, el servidor enviará una actualización de 
+la partida al gestor de partidas del usuario con la localización y los recursos 
+del nuevo jugador.
+\item El gestor de partidas envia la información de la partida a la ventana de 
+la partida.
+\item La ventana de la partida se actualiza la posición que ocupa el nuevo 
+jugador, los soldados que tiene y sus gallifantes.
+\end{enumerate} \\
+
+\textbf{Poscondición} & \\ \\
+
+\textbf{Escenario alternativo} & El jugador está conectado en el sistema jugando 
+a otra partida.\begin{enumerate}
+\item El servidor envia al gestor de partidas el nombre del nuevo jugador y la 
+partida a la que se quiere conectar.
+\item El gestor de usuarios pasa esta información a la ventana de la partida.
+\item La ventana de la partida muestra un mensaje indicando: "El jugador ... se 
+ha conectado a la partida ...".
+\end{enumerate} \\
+
+% En el caso de que el usuario no esté conectado, la aplicación cliente no tiene
+% que hacer nada, es el servidor el que tiene que enviar un correo electrónico 
+% al usuario.
+
+\end{tabularx}
+}
 
 \subsection{Realizar un movimiento}
 
@@ -279,3 +325,5 @@ Contraseña & Texto & Contraseña en el sistema \\
 Conf. Contraseña & Texto & Confirmación de contraseña \\
 \hline
 \end{tabularx}
+
+
