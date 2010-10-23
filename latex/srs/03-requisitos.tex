@@ -315,7 +315,7 @@ adyacente).
 % acción enemiga
 \item El servidor manda la actualización del mapa con el movimiento o ataque 
 realizado al gestor de partidas.
-\item El gestor de partidas pasa la infromación a la ventana de la partida.
+\item El gestor de partidas pasa la información a la ventana de la partida.
 \item La ventana de la partida actualiza el mapa de la partida.
 \end{enumerate} \\
 
@@ -330,7 +330,7 @@ juntos la aplicación no permitirá realizar la acción.\\
 \item El usuario selecciona el origen, el destino del movimiento (el destino 
 lo controla otro jugador) y el número de tropas con las que va a atacar en la 
 ventana de la partida.
-\item La ventana de la partida comprueba que el movimiento es legal.
+\item La ventana de la partidas comprueba que el movimiento es legal.
 \item La ventana de la partida envía la información al gestor de partidas.
 \item El gestor de partidas envía la información al servidor através del proxy.
 \item El servidor devuelve la oferta para que no ataque al gestor de partidas.
@@ -350,6 +350,36 @@ movimiento.
 }
 
 \subsection{Responder a acción enemiga}
+
+{\footnotesize
+\begin{tabularx}{0.95\textwidth}{p{0.2\textwidth}|X}
+
+\textbf{Caso de uso} & Responder a acción enemiga \\
+
+\textbf{Precondición} & Iniciar sesión, Unirse a una partida y Conectarse a una 
+partida \\
+
+\textbf{Escenario general} & \begin{enumerate}
+\item El servidor envía al gestor de partida la información del ataque del 
+oponente.
+\item El gestor de partidas pasa la información a la ventana de la partida.
+\item La ventana de la partida preguna al jugador que acción realizar (aceptar 
+ataque, dar soldados o dar gallifantes).
+\item El usuario elige la acción en la ventana de la partida.
+\item La ventana de la partida envía la información al gestor de partidas.
+\item El gestor de partidas envía la respuesta al servidor por medio del proxy.
+\item El servidor devuelve la actualización del mapa con el resultado de la 
+acción al gestor de partidas.
+\item El gestor de partidas pasa la información a la ventana de la partida.
+\item La ventana de la partida actualiza el mapa de la partida con el resultado 
+la acción.
+
+\end{enumerate} \\
+
+\textbf{Poscondición} & \\
+
+\end{tabularx}
+}
 
 \subsection{Comprar refuerzos}
 
