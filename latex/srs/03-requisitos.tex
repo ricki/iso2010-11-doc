@@ -296,6 +296,59 @@ ha conectado a la partida ...".
 
 \subsection{Realizar un movimiento}
 
+{\footnotesize
+\begin{tabularx}{0.95\textwidth}{p{0.2\textwidth}|X}
+
+\textbf{Caso de uso} & Realizar un movimiento \\
+
+\textbf{Precondición} & Iniciar sesión, Unirse a una partida y Conectarse a una 
+partida \\
+% Destino: mismo jugador, sin asignar y aceptar ataque.
+\textbf{Escenario general} & \begin{enumerate}
+\item El usuario selecciona el origen, el destino del movimiento y el número de
+tropas a mover o atacar al territorio destino en la ventana de la partida.
+\item La ventana de la partida comprueba que el movimiento es legal (casilla 
+adyacente).
+\item La ventana de la partida envía la información al gestor de partidas. 
+\item El gestor de partidas envía la información al servidor através del proxy.
+% En aceptar ataque se preguna al otro jugador con el caso de uso Responder a 
+% acción enemiga
+\item El servidor manda la actualización del mapa con el movimiento o ataque 
+realizado al gestor de partidas.
+\item El gestor de partidas pasa la infromación a la ventana de la partida.
+\item La ventana de la partida actualiza el mapa de la partida.
+\end{enumerate} \\
+
+\textbf{Poscondición} & \\
+\textbf{Escenario alternativo} & Si los territorios seleccionados no están 
+juntos la aplicación no permitirá realizar la acción.\\
+
+% Se ofrecen soldados o gallifantes, da igual que se acepten o no:
+% si recibes actualización de la oferta.
+% no recibes actualización del resultado del ataque.
+& Se realiza una oferta para no atacar.\begin{enumerate}
+\item El usuario selecciona el origen, el destino del movimiento (el destino 
+lo controla otro jugador) y el número de tropas con las que va a atacar en la 
+ventana de la partida.
+\item La ventana de la partida comprueba que el movimiento es legal.
+\item La ventana de la partida envía la información al gestor de partidas.
+\item El gestor de partidas envía la información al servidor através del proxy.
+\item El servidor devuelve la oferta para que no ataque al gestor de partidas.
+\item El gestor de partidas pasa a la ventana de partidas la oferta.
+\item La ventana de la partida pregunta si se acepta la oferta.
+\item La ventana envía la respuesta a la oferta al gestor de partidas.
+\item El gestor de partidas envía la respuesta a la oferta al servidor através 
+del proxy.
+\item El servidor devuelve la actualización con la resolución del movimiento 
+realizado al gestor de partidas.
+\item El gestor de partidas pasa la información a la ventana de la partida.
+\item La ventana de la partida actualiza la partida con el resultado del 
+movimiento. 
+\end{enumerate} \\
+
+\end{tabularx}
+}
+
 \subsection{Responder a acción enemiga}
 
 \subsection{Comprar refuerzos}
