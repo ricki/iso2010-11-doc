@@ -280,7 +280,7 @@ a otra partida. En este caso no se realia la poscondición.
 % que hacer nada, es el servidor el que tiene que enviar un correo electrónico
 % al usuario.
 
-% LAURA ???
+% LAURA aqui se ha liado el merge...
 %\textbf{Escenario general} & \begin{enumerate}
 %\item
 %TODO {``Bifurcación" del caso de uso}
@@ -326,7 +326,7 @@ partida.
 partida''.\\
 
 \textbf{Escenario alternativo} & Si los territorios seleccionados no están
-juntos la aplicación no permitirá realizar la acción.\\
+juntos la aplicación no permitirá realizar la acción.
 
 \end{tabularx}
 }
@@ -354,22 +354,166 @@ ataque, dar soldados o dar gallifantes).
 \end{enumerate} \\
 
 \textbf{Poscondición} & Se realiza el caso de uso: ''Recibir actualización de la
-partida''. \\
+partida''.
 
 \end{tabularx}
 }
 
 \subsection{Comprar refuerzos}
 
+{\footnotesize
+\begin{tabularx}{0.95\textwidth}{p{0.2\textwidth}|X}
+
+\textbf{Caso de uso} & Comprar refuerzos \\
+
+\textbf{Precondición} & El usuario debe haberse unido a una partida \\
+
+\textbf{Escenario general} & \begin{enumerate}
+\item El usuario pulsa sobre el botón comprar.
+\item Se muestra al usuario una ventana con diferentes opciones.
+\item El usuario introduce los datos necesarios y confirma la operación.
+\item El gestor del juego recibe los datos y env\'ia la información al proxy.
+\item El proxy notifica al gestor de juego que la compra se ha realizado con
+\'exito.
+\item El gestor de juego actualiza los datos del juego.
+\end{enumerate} \\
+\textbf{Postcondición} & Mostrar correctamente los datos de juego una vez
+actualizado.\\ \\
+\textbf{Escenario alternativo} & \begin{enumerate}
+\item El usuario pulsa sobre el botón comprar.
+\item Se muestra al usuario una ventana con diferentes opciones.
+\item El usuario introduce los datos necesarios y confirma la operación.
+\item El gestor del juego recibe los datos, comprueba que se cumple la condición
+de que el jugador tenga dinero suficiente, el jugador no tiene dinero
+suficiente.
+\item El gestor de juego pide a la ventana que muestre un mensaje con
+información sobre el error producido al realizar la acción de compra.
+\end{enumerate}\\
+\end{tabularx}
+}
+
 \subsection{Enviar petición de alianza}
+
+{\footnotesize
+\begin{tabularx}{0.95\textwidth}{p{0.2\textwidth}|X}
+
+\textbf{Caso de uso} & Enviar petición de alianza \\
+
+\textbf{Precondición} & El usuario debe haberse unido a una partida \\
+
+\textbf{Escenario general} & \begin{enumerate}
+\item El usuario pulsa sobre el botón alianza.
+\item Se muestra al usuario una ventana con diferentes jugadores.
+\item El usuario selecciona uno de ellos y confirma la operación.
+\item El gestor del juego recibe los datos y envía la información al proxy.
+\item El proxy notifica al gestor de juego que la alianza se ha realizado con
+éxito.
+\item El gestor de juego actualiza los datos del juego.
+\end{enumerate} \\
+\textbf{Postcondición} & Mostrar correctamente los datos de juego una vez
+actualizado.\\ \\
+\textbf{Escenario alternativo} & \begin{enumerate}
+\item El usuario pulsa sobre el botón alianza.
+\item Se muestra al usuario una ventana con diferentes jugadores.
+\item El usuario selecciona uno de ellos y confirma la operación.
+\item El gestor del juego recibe los datos, comprueba que se cumple la condición
+que permite la alianza, pero el jugador seleccionado no es válido para una
+alianza.
+\item El gestor de juego pide a la ventana que muestre un mensaje con
+información sobre el error producido al realizar la alianza.
+\end{enumerate}\\
+\end{tabularx}
+}
 
 \subsection{Responder a petición de alianza}
 
+{\footnotesize
+\begin{tabularx}{0.95\textwidth}{p{0.2\textwidth}|X}
+\textbf{Caso de uso} & Responder a petición de alianza \\
+
+\textbf{Precondición} & El usuario debe haberse unido a una partida \\
+
+\textbf{Escenario general} & \begin{enumerate}
+\item El proxy comunica al gestor de juego que existe una petición de alianza.
+\item El gestor de juego pide a la ventana que muestre al jugador el mensaje
+pertinente.
+\item El usuario selecciona la acción oportuna.
+\item El gestor del juego recibe los datos y envía la información al proxy.
+\item El proxy notifica al gestor de juego que la alianza se ha realizado con
+éxito.
+\item El gestor de juego actualiza los datos del juego.
+\end{enumerate} \\
+\textbf{Postcondición} & Mostrar correctamente los datos de juego una vez
+actualizado.
+\end{tabularx}
+}
+
 \subsection{Romper alianza}
+
+{\footnotesize
+\begin{tabularx}{0.95\textwidth}{p{0.2\textwidth}|X}
+
+\textbf{Caso de uso} & Romper alianza \\
+
+\textbf{Precondición} & El usuario debe haberse unido a una partida y tener, al
+menos, una alianza \\
+
+\textbf{Escenario general} & \begin{enumerate}
+\item El usuario pulsa sobre el botón alianza.
+\item Se muestra al usuario una ventana con diferentes alianzas.
+\item El usuario selecciona una de ellas y confirma la operación.
+\item El gestor del juego recibe los datos y envía la información al proxy.
+\item El proxy notifica al gestor de juego que la alianza se ha roto con éxito.
+\item El gestor de juego actualiza los datos del juego.
+\end{enumerate} \\
+
+\textbf{Postcondición} & Mostrar correctamente los datos de juego una vez
+actualizado.
+
+\end{tabularx}
+}
 
 \subsection{Enviar actualización de la partida}
 
+{\footnotesize
+\begin{tabularx}{0.95\textwidth}{p{0.2\textwidth}|X}
+
+\textbf{Caso de uso} & Enviar actualización de la partida \\
+
+\textbf{Precondición} & El usuario debe haberse unido a una partida \\
+
+\textbf{Escenario general} & \begin{enumerate}
+\item El usuario realiza una operación que modifica la partida.
+\item El gestor de juego recopila todos los datos modificados y envía la
+información al proxy.
+\item El proxy notifica al gestor de juego que la actualización se ha realizado
+con éxito.
+\end{enumerate} \\
+\textbf{Postcondición} & Los datos del cliente y del servidor están
+sincronizados.
+
+\end{tabularx}
+}
+
 \subsection{Recibir actualización de la partida}
+
+{\footnotesize
+\begin{tabularx}{0.95\textwidth}{p{0.2\textwidth}|X}
+
+\textbf{Caso de uso} & Recibir actualización de la partida \\
+
+\textbf{Precondición} & El usuario debe haberse unido a una partida \\
+
+\textbf{Escenario general} & \begin{enumerate}
+\item El proxy comunica al gestor de juego que la partida ha cambiado.
+\item El gestor de juego recibe todos los datos modificados y pide a la ventana
+que se actualice.
+\end{enumerate} \\
+\textbf{Postcondición} & Los datos del cliente y del servidor están
+sincronizados.
+
+\end{tabularx}
+}
 
 \section{Requisitos no funcionales}
 
