@@ -1,0 +1,51 @@
+\section{Perspectiva del producto}
+
+\textit{La conquista del mundo} pretende ser un juego multijugador similar al
+juego de mesa \textit{Risk} en el que varios jugadores compiten por dominar el
+mundo.
+
+Este proyecto se centra en realizar un cliente para este juego.
+
+\subsection{Interfaces con otros sistemas}
+
+La aplicación estará conectada directamente con el servidor del juego, quien a
+su vez servirá de pasarela hacia los otros clientes. Esta comunicación será
+bidireccional, de manera que el cliente notificará al servidor sus acciones, y
+el servidor notificará al cliente las acciones de los demás clientes.
+
+\subsection{Interfaces de usuario}
+
+La aplicación proporcionará una interfaz gráfica de usuario el jugador. Antes
+de poder realizar ninguna acción, el jugador deberá estar validado con el
+servidor. Acto seguido se mostrará una lista de partidas en las que el jugador
+pueda participar. Las partidas se jugarán sobre un mapa del mundo interactivo
+sobre.
+
+\subsection{Interfaces hardware}
+
+La aplicación no se comunica con ningún dispositivo hardware.
+
+\subsection{Interfaces software}
+
+La aplicación estará escrita en el lenguaje de programación Java y por tanto
+necesitará ejecutarse sobre una máquina virtual de Java. Sin embargo, la
+aplicación no necesita ningún otro servicio del sistema operativo.
+
+\subsection{Interfaces de comunicaciones}
+
+La aplicación se comunica con el servidor a través del \textit{middleware} RMI,
+que usa TCP/IP como capa de transporte.
+
+\subsection{Restricciones de memoria}
+
+La aplicación está pensada para ejecutarse sobre ordenadores personales de uso
+común. La cantidad de memoria que tienen los ordenadores personales hoy en día
+debería ser ampliamente suficiente para ejecutar sin problemas de rendimiento
+la aplicación.
+
+\subsection{Modos de operación}
+
+En el momento en el que el usuario se valida con el servidor, la aplicación
+tiene dos modos de ejecución: 1) uno en el que el jugador puede ver una lista
+con las partidas disponibles, y 2) otro en el que el jugador se encuentra
+conectado a una partida específica.
