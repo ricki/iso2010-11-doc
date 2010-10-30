@@ -49,3 +49,33 @@ En el momento en el que el usuario se valida con el servidor, la aplicación
 tiene dos modos de ejecución: 1) uno en el que el jugador puede ver una lista
 con las partidas disponibles, y 2) otro en el que el jugador se encuentra
 conectado a una partida específica.
+
+\section{Funciones del producto}
+
+En primer lugar, la aplicación presentará al usuario una ventana desde la cual
+podrá acceder al sistema. Para ello deberá tener una cuenta en el sistema, por
+lo que deberá permitir al usuario crear una nueva cuenta si no tuviera.
+
+Una vez haya accedido el usuario, la aplicación deberá mostrarle una lista de
+partidas. Estas partidas podrán ser, bien partidas en las que haya al menos un
+territorio libre y puede unirse a ellas, o partidas a las que ya se haya unido
+previamente. Desde esta lista, el usuario podrá conectarse a una de sus partidas
+para jugar.
+
+Cuando el usuario se una a una partida, el cliente descargará los datos desde
+el servidor y le mostrará el tablero de juego. El tablero consiste en un mapa
+del mundo dividido en varias regiones por cada continente.
+
+Desde el tablero de juego, el usuario podrá realizar varias acciones:
+movimientos militares, misiones de espionaje, adquisición de refuerzos, y
+acciones diplomáticas.
+
+Los movimientos militares sólo se podrán realizar entre dos regiones
+adyacentes. Se considerarán como adyacentes aquellas regiones que compartan
+parte de su frontera, o estando separadas por mar, aparezcan unidas por una
+línea discontinua. Un usuario podrá mover tropas entre regiones propias,
+invadir regiones que aún estén vacías, o atacar regiones de otros usuarios.
+
+Mediante las misiones de espioanaje, el usuario podrá ser capaz de desvelar
+datos sobre otros jugadores que desconoce, como la cantidad de tropas en una
+determinada región, o los recursos de que dispone.
