@@ -18,8 +18,7 @@ el servidor notificará al cliente las acciones de los demás clientes.
 La aplicación proporcionará una interfaz gráfica de usuario el jugador. Antes
 de poder realizar ninguna acción, el jugador deberá estar validado con el
 servidor. Acto seguido se mostrará una lista de partidas en las que el jugador
-pueda participar. Las partidas se jugarán sobre un mapa del mundo interactivo
-sobre.
+pueda participar. Las partidas se jugarán sobre un mapa del mundo interactivo.
 
 \subsection{Interfaces hardware}
 
@@ -91,3 +90,13 @@ Puesto que la aplicación se trata de un sencillo juego de estrategia, cualquier
 persona estaría cualificada para usar correctamente la aplicación, suponiendo
 que tenga los conocimientos elementales sobre el uso de un ordenador a nivel de
 usuario.
+
+\section{Restricciones}
+
+La aplicación debe trabajar en sintonía con el resto de clientes y el servidor
+del juego. Para ello deberá definirse una interfaz común para todos, lo que
+condicionará el diseño de algunos componentes de la aplicación.
+
+La tecnología de comunicaciones debe ser RMI, y ésta sólo se encuentra como
+parte de la máquina virtual de Java, lo que hace que el lenguaje de programación
+deba ser \textit{de facto} Java.
