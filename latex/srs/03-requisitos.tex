@@ -50,7 +50,8 @@ el proxy.
 \item Se cierra la ventana de inicio y se abre la ventana principal.
 \end{enumerate} \\
 
-\textbf{Poscondición} & Ninguna \\ \\
+\textbf{Poscondición} & Se ejecuta el caso de uso ``Ver lista de partidas''
+\\ \\
 
 \textbf{Escenario alternativo} & Puede ocurrir que los datos de acceso no sean
 correctos, en cuyo caso se aborta la operación y se vuelve al estado inicial.
@@ -89,8 +90,8 @@ correctos, en cuyo caso se aborta la operación y se vuelve al estado inicial.
 \textbf{Precondición} & El usuario debe estar logeado \\
 
 \textbf{Escenario general} & \begin{enumerate}
-\item El usuario selecciona de la ventana de juego crear una nueva partida.
-\item La ventana de juego muestra la ventana de crear partida.
+\item El usuario selecciona de la ventana principal crear una nueva partida.
+\item La ventana principal muestra la ventana de crear partida.
 \item El usuario selecciona las características de la partida.
 \item La ventana crear partida habilita el botón \emph{crear} cuando los datos
 son correctos.
@@ -101,9 +102,9 @@ desea crear una partida.
 partida.
 \item El proxy le indica al gestor de partidas que se ha creado una nueva
 partida.
-\item El gestor modifica la ventana de juego con el nuevo estado de las
+\item El gestor modifica la ventana principal con el nuevo estado de las
 partidas.
-\item La ventana de juego oculta la ventana de crear partidas.
+\item La ventana principal oculta la ventana de crear partidas.
 \item La ventana principal comunica al jugador que se ha creado una nueva
 partida.
 \end{enumerate} \\
@@ -112,8 +113,8 @@ partida.
  de uso ``Unirse a partida''.\\ \\
 
 \textbf{Escenario alternativo} & \begin{enumerate}
-\item El usuario selecciona de la ventana de juego crear una nueva partida.
-\item La ventana de juego muestra la ventana de crear partida.
+\item El usuario selecciona de la ventana principal crear una nueva partida.
+\item La ventana principal muestra la ventana de crear partida.
 \item El usuario selecciona las características de la partida.
 \item La ventana crear partida habilita el botón \emph{crear} cuando los datos
 son correctos.
@@ -124,7 +125,7 @@ desea crear una partida.
 partida.
 \item El proxy le indica al gestor de partidas que no se ha podido crear la
 partida.
-\item La ventana de juego oculta la ventana de crear partidas.
+\item La ventana principal oculta la ventana de crear partidas.
 \item La ventana principal comunica al jugador que no se ha podido crear la
 partida.
 \end{enumerate} \\
@@ -142,15 +143,15 @@ partida.
 \textbf{Precondición} & El usuario debe estar logeado \\
 
 \textbf{Escenario general} & \begin{enumerate}
-\item El usuario selecciona de la lista de partidas disponibles de la ventana de
-juego.
+\item El usuario selecciona de la lista de partidas disponibles de la ventana
+principal.
 \item La ventana notifica al gestor de usuario que el usuario desea unirse a la
 partida seleccionada.
 \item El gestor de usuarios se comunica con el servidor para indicarle que un
 usuario quiere unirse a una partida mediante el proxy.
 \item El proxy notifica al gestor que el usuario se ha unido a la partida.
 \item El gestor de usuarios actualiza la lista de partidas del jugador.
-\item El gestor modifica la ventana de juego con el nuevo estado de las
+\item El gestor modifica la ventana principal con el nuevo estado de las
 partidas.
 \end{enumerate} \\
 
@@ -158,8 +159,8 @@ partidas.
 ejecuta el caso de uso ``Conectarse a una partida''.\\
 
 \textbf{Escenario alternativo} & \begin{enumerate}
-\item El usuario selecciona de la lista de partidas disponibles de la ventana de
-juego.
+\item El usuario selecciona de la lista de partidas disponibles de la ventana
+principal.
 \item La ventana notifica al gestor de usuario que el usuario desea unirse a la
 partida seleccionada.
 \item El gestor de usuarios se comunica con el servidor para indicarle que un
@@ -264,8 +265,8 @@ esta partida.\begin{enumerate}
 
 \item El servidor envia al gestor de partidas el nombre del nuevo jugador y la
 partida a la que se quiere conectar.
-\item El gestor de partidas pasa esta información a la ventana de la partida.
-\item La ventana de la partida muestra un mensaje indicando: ``El jugador X se
+\item El gestor de partidas pasa esta información a la ventana de juego.
+\item La ventana de juego muestra un mensaje indicando: ``El jugador X se
 ha conectado a la partida Y''.
 
 \end{enumerate} \\
@@ -306,20 +307,20 @@ partida \\
 \textbf{Escenario general} & \begin{enumerate}
 \item El usuario selecciona el origen, el destino del movimiento (el destino
 lo controla otro jugador) y el número de tropas con las que va a atacar en la
-ventana de la partida.
-\item La ventana de la partidas comprueba que el movimiento es legal.
-\item La ventana de la partida envía la información al gestor de partidas.
+ventana de juego.
+\item La ventana de juego comprueba que el movimiento es legal.
+\item La ventana de juego envía la información al gestor de partidas.
 \item El gestor de partidas envía la información al servidor através del proxy.
 \item El servidor devuelve la respuesta a la acción de ataque al gestor de
 partidas.
-\item El gestor de partidas pasa a la ventana de partidas la respuesta.
-\item La ventana de la partida pregunta si se acepta la oferta (si no se acepta
+\item El gestor de partidas pasa a la ventana de juego la respuesta.
+\item La ventana de juego pregunta si se acepta la oferta (si no se acepta
 el ataque).
 \item El usuario elige la acción a realizar.
-\item La ventana de la partida envia la acción al gestor de partidas.
+\item La ventana de juego envia la acción al gestor de partidas.
 \item El gestor de partidas realiza los cálculos de la actualización de la
 partida.
-\item El gestor de partidas actualiza la ventana de la partida.
+\item El gestor de partidas actualiza la ventana de juego.
 \end{enumerate} \\
 
 \textbf{Poscondición} & Se realiza el caso de uso: ''Enviar actualización de la
@@ -342,13 +343,13 @@ juntos la aplicación no permitirá realizar la acción.
 partida \\
 
 \textbf{Escenario general} & \begin{enumerate}
-\item El servidor envía al gestor de partida la información del ataque del
+\item El servidor envía al gestor de partidas la información del ataque del
 oponente.
-\item El gestor de partidas pasa la información a la ventana de la partida.
-\item La ventana de la partida preguna al jugador que acción realizar (aceptar
+\item El gestor de partidas pasa la información a la ventana de juego.
+\item La ventana de juego pregunta al jugador que acción realizar (aceptar
 ataque, dar soldados o dar gallifantes).
-\item El usuario elige la acción en la ventana de la partida.
-\item La ventana de la partida envía la información al gestor de partidas.
+\item El usuario elige la acción en la ventana de juego.
+\item La ventana de juego envía la información al gestor de partidas.
 \item El gestor de partidas envía la respuesta al servidor por medio del proxy.
 
 \end{enumerate} \\
@@ -366,7 +367,8 @@ partida''.
 
 \textbf{Caso de uso} & Comprar refuerzos \\
 
-\textbf{Precondición} & El usuario debe haberse unido a una partida \\
+\textbf{Precondición} & El usuario debe haberse unido a una partida y estar
+conectado a ella. \\
 
 \textbf{Escenario general} & \begin{enumerate}
 \item El usuario pulsa sobre el botón comprar.
@@ -377,8 +379,8 @@ partida''.
 \'exito.
 \item El gestor de juego actualiza los datos del juego.
 \end{enumerate} \\
-\textbf{Postcondición} & Mostrar correctamente los datos de juego una vez
-actualizado.\\ \\
+\textbf{Postcondición} & Se ejecuta el caso de uso  ``Enviar actualización de
+la partida''. \\
 \textbf{Escenario alternativo} & \begin{enumerate}
 \item El usuario pulsa sobre el botón comprar.
 \item Se muestra al usuario una ventana con diferentes opciones.
@@ -411,7 +413,8 @@ información sobre el error producido al realizar la acción de compra.
 \item El gestor de juego actualiza los datos del juego.
 \end{enumerate} \\
 \textbf{Postcondición} & Mostrar correctamente los datos de juego una vez
-actualizado.\\ \\
+actualizado y se ejecuta el caso de uso  ``Enviar actualización de
+la partida''. \\ \\
 \textbf{Escenario alternativo} & \begin{enumerate}
 \item El usuario pulsa sobre el botón alianza.
 \item Se muestra al usuario una ventana con diferentes jugadores.
@@ -444,7 +447,8 @@ pertinente.
 \item El gestor de juego actualiza los datos del juego.
 \end{enumerate} \\
 \textbf{Postcondición} & Mostrar correctamente los datos de juego una vez
-actualizado.
+actualizado Se ejecuta el caso de uso  ``Enviar actualización de
+la partida''. .
 \end{tabularx}
 }
 
@@ -468,7 +472,8 @@ menos, una alianza \\
 \end{enumerate} \\
 
 \textbf{Postcondición} & Mostrar correctamente los datos de juego una vez
-actualizado.
+actualizado. Se ejecuta el caso de uso  ``Enviar actualización de
+la partida''. .
 
 \end{tabularx}
 }
@@ -515,7 +520,11 @@ sincronizados.
 \end{tabularx}
 }
 
+\subsection{Actualizar lista de partidas}
+
+
 \section{Requisitos no funcionales}
+\subsection{Estructura lógica de los datos}
 
 \subsection{Estructura lógica de los datos}
 
@@ -532,3 +541,105 @@ Conf. Contraseña & Texto & Confirmación de contraseña \\
 \end{tabularx}
 
 
+
+\section{Otros requisitos}
+\subsection{Requisitos de la interfaz de usuario}
+\subsubsection{Ventana de inicio}
+{\footnotesize
+
+Descripción: Da la bienvenida al usuario.\\ Debe permitir al usuario ejecutar el
+caso de uso ``Iniciar sesión'' e introducir los siguientes datos: \\
+
+\begin{tabularx}{0.9\textwidth}{llX}
+\hline
+\textbf{Dato} & \textbf{Tipo} & \textbf{Descripción} \\
+\hline
+NombreUsuario & Texto & Nombre del usuario \\
+Contraseña & Texto & Contraseña en el sistema \\
+\hline
+\end{tabularx}
+
+\subsubsection{Ventana de registro}
+{\footnotesize
+
+
+
+Descripción: Permite registrarse al usuario.\\
+Es necesario que
+permita al usuario introducir los siguientes datos: \\
+
+\begin{tabularx}{0.9\textwidth}{llX}
+\hline
+\textbf{Dato} & \textbf{Tipo} & \textbf{Descripción} \\
+\hline
+Nombre & Texto & Nombre del usuario \\
+eMail & Texto & Dirección de correo electrónico \\
+Contraseña & Texto & Contraseña en el sistema \\
+Conf. Contraseña & Texto & Confirmación de contraseña \\
+\hline
+\end{tabularx}
+
+}
+
+\subsubsection{Ventana principal}
+{\footnotesize
+
+Descripción: Mostrará al usuario las partidas disponibles y las partidas en
+juego.\\
+Es necesario que
+permita al usuario ejecutar los siguientes casos de uso: \\
+\begin{enumerate}
+\item Crear una partida.
+\item Unirse a una partida.
+\item Conectarse a una partida.
+\item Ver lista de partidas.
+
+\end{enumerate} \\
+}
+
+\subsubsection{Ventana Crear partida}
+{\footnotesize
+
+Descripción: Permite al usuario crear una nueva partida.\\
+Es necesario que
+permita al usuario introducir los siguientes datos: \\
+
+\begin{tabularx}{0.9\textwidth}{llX}
+\hline
+\textbf{Dato} & \textbf{Tipo} & \textbf{Descripción} \\
+\hline
+Nombre & Texto & Nombre de la partida \\
+Días de juego & Fecha & Días en los que se jugará la partida\\
+Hora de Inicio de Juego & Hora & Hora en la que empieza o continua la partida
+los días indicados\\
+Hora de Fin de Juego & Hora & Hora en la que termina la partida los días
+indicados\\
+\hline
+\end{tabularx}
+}
+
+\subsubsection{Ventana de juego}
+{\footnotesize
+
+
+
+Descripción: Muestra al usuario todos los detalles de una partida y permite
+jugar en ella. Deberá mostrar el tablero de juego con la asignación de
+territorios.\\
+
+Es necesario que
+permita al usuario ejecutar los siguientes casos de uso: \\
+\begin{enumerate}
+\item Desconectarse de una partida. 
+\item Realizar un movimiento. 
+\item Responder acción enemiga.
+\item Comprar refuerzos.
+\item Enviar petición de alianza.
+\item Responder a petición de alianza.
+\item Romper alianza.
+
+
+\end{enumerate} \\
+
+
+}
