@@ -1,0 +1,90 @@
+\documentclass[a4paper,11pt,oneside]{article}
+\usepackage[pdftex]{graphicx}
+\usepackage[utf8x]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{eurosym}
+% \usepackage[usenames,dvipsnames]{color}
+% \usepackage{colortbl}
+% \usepackage[caption=false]{subfig}
+% \usepackage{float}
+% \usepackage{pdflscape}
+
+\setlength{\headheight}{25pt}
+\setlength{\parskip}{6pt}
+
+% Margenes 1cm mas pequennos
+\addtolength{\oddsidemargin}{-1cm}
+\addtolength{\evensidemargin}{-1cm}
+\addtolength{\textwidth}{2cm}
+\addtolength{\voffset}{-1cm}
+\addtolength{\textheight}{2cm}
+
+\hypersetup{
+colorlinks,
+citecolor=black,
+filecolor=black,
+linkcolor=black,
+urlcolor=black
+}
+
+\lhead{\includegraphics[height=20pt]{logo-umbrella.png}}
+\chead{}
+\rhead{Acta de reunión N° 2}
+
+\begin{document}
+
+\pagestyle{fancy}
+
+%%%% Header %%%%%
+
+\begin{center}
+{\Large
+Acta de reunión del grupo de desarrollo software \textit{Umbrella
+Corporation}.}
+\end{center}
+\textbf{Fecha:} 21 de septiembre\\
+\textbf{Lugar:} Aula de Libre Uso, Escuela de Informática\\
+\textbf{Asistentes:}\\
+\hspace*{1cm}Ángel Durán Izquierdo\\
+\hspace*{1cm}Antonio Gómez Poblete\\
+\hspace*{1cm}Antonio Martín Menor de Santos\\
+\hspace*{1cm}Daniel León Romero\\
+\hspace*{1cm}Jorge Colao Adán\\
+\hspace*{1cm}Laura Núñez Villa\\
+\hspace*{1cm}Ricardo Ruedas García
+
+%%%% end Header %%%%%
+
+\section*{Puntos del día}
+
+\begin{enumerate}
+\item Nombre de la empresa
+\item Herramientas de desarrollo
+\end{enumerate}
+
+
+\section*{Desarrollo de la reunión}
+
+\subsection*{1. Nombre de la empresa}
+
+Tras debatir algunos nombres, el grupo decidió con algunos votos en contra el
+nombre de \textit{Umbrella Corporation}, basado en un conocido videojuego.
+
+\subsection*{2. Herramientas de desarrollo}
+
+Se ha debatido el uso de Eclipse o NetBeans como entorno de desarrollo, y al
+final la mayoría de los desarrolladores se han decantado por Eclipse por la
+variedad de \textit{plug-ins} relacionados con el proyecto.
+
+Para el gestor de versiones, se quería elegir uno distribuido, y se eligió Git
+porque algunos miembros ya tenían experiencia previa. Para el servicio de
+\textit{hosting}, se ha elegido GitHub sobre Gitorious porque era más amigable
+y disponía de traducción a español.
+
+Para comunicarse, ya se había creado previamente un Wave, pero viendo que no
+era eficaz, se ha decidido usar una lista de correo de Google Groups.
+
+\end{document}
