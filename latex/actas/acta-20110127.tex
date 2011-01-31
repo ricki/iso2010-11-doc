@@ -1,0 +1,129 @@
+\documentclass[a4paper,11pt,oneside]{article}
+\usepackage[pdftex]{graphicx}
+\usepackage[utf8x]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{eurosym}
+% \usepackage[usenames,dvipsnames]{color}
+% \usepackage{colortbl}
+% \usepackage[caption=false]{subfig}
+% \usepackage{float}
+% \usepackage{pdflscape}
+
+\setlength{\headheight}{25pt}
+\setlength{\parskip}{6pt}
+
+% Margenes 1cm mas pequennos
+\addtolength{\oddsidemargin}{-1cm}
+\addtolength{\evensidemargin}{-1cm}
+\addtolength{\textwidth}{2cm}
+\addtolength{\voffset}{-1cm}
+\addtolength{\textheight}{2cm}
+
+\hypersetup{
+colorlinks,
+citecolor=black,
+filecolor=black,
+linkcolor=black,
+urlcolor=black
+}
+
+\lhead{\includegraphics[height=20pt]{logo-umbrella.png}}
+\chead{}
+\rhead{Acta de reunión N° 6}
+
+\begin{document}
+
+\pagestyle{fancy}
+
+%%%% Header %%%%%
+
+\begin{center}
+{\Large
+Acta de reunión del grupo de desarrollo software \textit{Umbrella
+Corporation}.}
+\end{center}
+\textbf{Fecha:} 27 de enero de 2011\\
+\textbf{Lugar:} Aula de Libre Uso, Escuela de Informática\\
+\textbf{Asistentes:}\\
+\hspace*{1cm}Ángel Durán Izquierdo\\
+\hspace*{1cm}Antonio Gómez Poblete\\
+\hspace*{1cm}Jorge Colao Adán\\
+\hspace*{1cm}Ricardo Ruedas García
+
+%%%% end Header %%%%%
+
+\section*{Puntos del día}
+
+\begin{enumerate}
+\item Plantilla para documentar las pruebas
+\item Comprobación de los datos de entrada
+\item Asignación de tareas
+\end{enumerate}
+
+
+\section*{Desarrollo de la reunión}
+
+\subsection*{Definir plantilla para documentar las pruebas}
+
+En la reunión se ha hablado sobre los elementos que los informes de pruebas
+deberían contener. Se realizará un informe por cada caso de uso. En la cabecera
+del informe se incluirán los siguientes elementos:
+
+\begin{itemize}
+\item Nombre del \textit{tester}
+\item Fecha de asignación
+\item Fecha de finalización
+\item Partes del código bajo prueba
+\end{itemize}
+
+A continuación se detallarán las pruebas de desrrollo. Por cada operación
+probada, se debe incluir la siguiente información:
+
+\begin{itemize}
+\item Lista de los valores de prueba para cada atributo, y criterio seguido.
+\item Estrategia para obtener los casos de prueba (\textit{pairwise},
+\textit{each choice}, casos interesantes, etc).
+\item Tabla completa de los casos de prueba y el resultado esperado.
+\end{itemize}
+
+Tras ello se incluirá un guión de pruebas exploratorias por cada escenario
+posible con los siguientes datos:
+
+\begin{itemize}
+\item Acciones previas
+\item Acciones de prueba
+\item Resultados esperados
+\end{itemize}
+
+Por último se incluirá una sección llamada ``\textit{feedback}'' en la que se
+relatarán las acciones llevadas a cabo por el \textit{tester} y el programador.
+
+\subsection*{Comprobación de los datos de entrada}
+
+En la reunión se habló de la necesidad (o ausencia de ella) de comprobar la
+corrección de los datos introducidos en las operaciones de las clases de
+dominio. Aunque la capa de presentación pueda filtrar determinados atributos,
+se decidió, para eliminar una dependecia innecesaria con la capa de
+presentación, que todas las operaciones de dominio filtrarían los datos para
+que cumplan con la lógica de dominio. A continuación se muestra una lista no
+exhaustiva de las comprobaciones a realizar:
+
+\begin{itemize}
+\item Objetos nulos
+\item Cadenas de texto vacías
+\item Números fuera de rango
+\end{itemize}
+
+\subsection*{Asignación de tareas}
+
+De manera inmediata, Antonio Gómez tiene asignada la tarea de probar el caso de
+uso ``Registrarse'', y Ángel Durán la de modificar la implementación del caso
+de uso ``Unirse a partida'', de acuerdo a las medidas adoptadas en esta reunión.
+
+Al resto de miembros se les asignará otras tareas a lo largo de la semana
+siguiente.
+
+\end{document}
