@@ -1,42 +1,54 @@
 \section{Caso de Uso: Registrarse}
 
-\subsection*{Análisis y diseño}
+\subsection{Análisis y diseño}
 
-\subsection*{Implementación}
+\subsection{Implementación}
 
-\subsection*{Informe de pruebas}
+\subsection{Informe de pruebas}
 
+{\small
+\begin{tabular}{r|l}
+Nombre del \textit{tester} & Antonio Gómez Poblete \\
+Fecha de asignación & 27 de enero de 2011 \\
+Fecha de finalización & 30 de enero de 2011 \\
+Código bajo prueba & \texttt{UserManager::registerUser}
+\end{tabular}
+}
 
-\begin{itemize}
-\item Nombre del \textit{tester} : Antonio Gómez Poblete
-\item Fecha de asignación :  27 de Enero de 2011 
-\item Fecha de finalización : 30 de Enero de 2011
-\item Partes del código bajo prueba : UserManager::registerUser
-\end{itemize}
+\subsubsection{Pruebas de desarrollo}
 
 A continuación se detallarán las pruebas de desarrollo (Pruebas unitarias con \textit{Junit}).
 
+Lista de los valores de prueba para cada atributo.
+El criterio elegido para todos los valores de prueba (test data) ha sido: Añadir valores interesantes propensos a error (Conjetura de error).
+
 \begin{itemize}
-\item Lista de los valores de prueba para cada atributo.
-El criterio elegido para todos los valores de prueba (test data) ha sido: Añadir valores interesantes propensos a error (Conjetura de error). 
-	\begin{enumerate}
-	\item {\bf login:}  Cadena vacía, null, usuario existente y usuario no existente. 
-	\item {\bf passwd:} Cadena vacía, null, cadena no vacía. 
-	\item {\bf email:} Cadena vacía, null, cadena no vacía pero erronea: ([A-Za-z0-9][A-Za-z0-9\_\%-·]*, [A-Za-z0-9][A-Za-z0-9\_\%-·]*@, [A-Za-z0-9][A-Za-z0-9\_\%-·]*@[A-Za-z0-9][A-Za-z0-9\_\%-.]*, [A-Za-z0-9][A-Za-z0-9\_\%-·]*@[A-Za-z0-9][A-Za-z0-9\_\%-.]*.), cadena correcta ([A-Za-z0-9][A-Za-z0-9\_\%-·]*@[A-Za-z0-9][A-Za-z0-9\_\%-.]*.[A-Za-z0-9\_\%-]\{2,4\}). 	
-\end{enumerate}
-\item La estrategia para obtener los casos de prueba elegida ha sido \textit{each choice} y añadir algunos casos interesantes.
+\item \textbf{\texttt{login}}
+\subitem \textit{null}
+\subitem Cadena vacía
+\subitem Usuario existente: \texttt{"JorgeCA"}
+\subitem Usuario no existente: \texttt{"LuisAn"}
+
+\item \textbf{\texttt{passwd}}
+\subitem \textit{null}
+\subitem Cadena vacía
+\subitem Cadenas no vacías: \texttt{"jorge"}, \texttt{"luis"}
+
+\item \textbf{\texttt{email}}
+\subitem \textit{null}
+\subitem Cadena vacía
+\subitem Valores incorrectos: \texttt{"jorge"}, \texttt{"jorge@"}, \texttt{"jorge@gmail"}, \texttt{"jorge@gmail."}
+\subitem Valores correctos: \texttt{"jorge.colao@gmail.com"}, \texttt{"luis@gmail.com"}
+\end{itemize}
+
+La estrategia para obtener los casos de prueba elegida ha sido \textit{each choice} y añadir algunos casos interesantes.
 
 Para elegir tanto los valores de prueba como los casos de pruebas se ha analizado el comportamiento de este caso de uso (caja blanca). Tras este análisis se ha llegado a la conclusión de que hay en dos lugares en los que se pueden encontrar errores: Si al método registerUser se le da un parámetro erróneo (throw InvalidArgumentException), o si el nombre del usuario ya existe en el servidor (throw UserAlreadyExistsException). La primera comprobación es local, por ello si se lanza la excepcion InvalidArgumentException no se hará nada en el servidor y no se analizará si el usuario ya existe o no.
 
 Además, si observamos las comprobaciones que se hacen en el cliente se ve que si login == null, independientemente del valor de los demás atributos se lanzará  InvalidArgumentException, por esa razón es independiente el valor de los demas atributos, lo que hace que muchos casos de prueba no sean necesarios de probar. Por otro lado, para probar qué pasa si el email es \textit{null} el resto de los parámetros deberán ser correctos, lo que añade algunos casos interesantes. Además de con \textit{null} lo comentado en este parrafo sucede con el resto de los parámetros. 
 
 
-\item Teniendo en cuenta las consideraciones anteriormente mencionadas, la tabla completa de los casos de prueba y los  resultados esperados son:
-\end{itemize}
-
-
-
-\clearpage
+Teniendo en cuenta las consideraciones anteriormente mencionadas, la tabla completa de los casos de prueba y los resultados esperados son:
 
 {\footnotesize
 \begin{longtable}[c]{l|c|c|c|c|c|}
@@ -72,6 +84,8 @@ testRegisterUser12& LuisAn & luis & luis@gmail.com & email = [A-Za-z0-9] & \\
 \hline
 \end{longtable}
 }
+
+\subsubsection{Pruebas exploratorias}
 
 A continuación se muestra un guión de pruebas exploratorias para cada uno de los escenarios posibles:
 \begin{enumerate} 
