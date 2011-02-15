@@ -44,6 +44,7 @@ El criterio elegido para todos los valores de prueba (test data) ha sido: Añadi
 La estrategia para obtener los casos de prueba elegida ha sido
 \textit{each choice} (Test 1 a 3 y 8 a 12 ) y añadir algunos casos
 interesantes (Test 4 a 7).
+El test 13 se ha elaborado para ver el comportamiento de registerUser cuando el servidor se ha desconectado.
 
 Para elegir tanto los valores de prueba como los casos de pruebas se ha analizado el comportamiento de este caso de uso (caja blanca). Tras este análisis se ha llegado a la conclusión de que hay en dos lugares en los que se pueden encontrar errores: Si al método registerUser se le da un parámetro erróneo (throw InvalidArgumentException), o si el nombre del usuario ya existe en el servidor (throw UserAlreadyExistsException). La primera comprobación es local, por ello si se lanza la excepcion InvalidArgumentException no se hará nada en el servidor y no se analizará si el usuario ya existe o no.
 
@@ -71,6 +72,7 @@ Test10 & (JorgeCA, jorge, jorge@gmail) & email & InvalidArgument\\
 Test11& (JorgeCA, jorge, jorge@gmail.) & email  & InvalidArgument\\
 Test12& (LuisAn, luis, luis@gmail.com) & email  &  El usuario \\
 & &  & queda registrado\\
+Test13& (Angel\&Duran, angel, a@d.com)  & Comportamiento registerUser & RemoteException \\
 \hline
 \end{longtable}
 }
