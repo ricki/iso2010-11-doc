@@ -32,7 +32,7 @@ urlcolor=black
 
 \lhead{\includegraphics[height=20pt]{logo-umbrella.png}}
 \chead{}
-\rhead{Acta de reunión N° \#}
+\rhead{Acta de reunión N° 7}
 
 \begin{document}
 
@@ -45,8 +45,8 @@ urlcolor=black
 Acta de reunión del grupo de desarrollo software \textit{Umbrella
 Corporation}.}
 \end{center}
-\textbf{Fecha:} \today\\
-\textbf{Lugar:} mi casa\\
+\textbf{Fecha:} 14 de febrero de 2011 \\
+\textbf{Lugar:} Aural de Libre Uso, Escuela Superior de Informática \\
 \textbf{Asistentes:}\\
 \hspace*{1cm}Ángel Durán Izquierdo\\
 \hspace*{1cm}Antonio Gómez Poblete\\
@@ -61,46 +61,59 @@ Corporation}.}
 \section*{Puntos del día}
 
 \begin{enumerate}
-\item punto 1
-\item punto 2
+\item Nueva organización de trabajo para la implementación
 \end{enumerate}
 
 
 \section*{Desarrollo de la reunión}
 
-\subsection*{punto 1}
+\subsection*{Nueva organización de trabajo para la implementación}
 
-El veloz murciélago hindú comía feliz cardillo y kiwi. La cigüeña tocaba el
-saxofón detrás del palenque de paja.
-El veloz murciélago hindú comía feliz cardillo y kiwi. La cigüeña tocaba el
-saxofón detrás del palenque de paja.
+Dado el escaso tiempo que queda, y teniendo en cuenta que hay varios casos de
+uso diseñados y esperando a ser implementados, se asignaron en paralelo a
+varios programadores, pero ésto provocó algunas dependencias en código que no
+habrían ocurrido de haber sido implementados de manera secuencial.
 
-\subsection*{punto 2}
-El veloz murciélago hindú comía feliz cardillo y kiwi. La cigüeña tocaba el
-saxofón detrás del palenque de paja.
-El veloz murciélago hindú comía feliz cardillo y kiwi. La cigüeña tocaba el
-saxofón detrás del palenque de paja.
-El veloz murciélago hindú comía feliz cardillo y kiwi. La cigüeña tocaba el
-saxofón detrás del palenque de paja.
-El veloz murciélago hindú comía feliz cardillo y kiwi. La cigüeña tocaba el
-saxofón detrás del palenque de paja.
-El veloz murciélago hindú comía feliz cardillo y kiwi. La cigüeña tocaba el
-saxofón detrás del palenque de paja.
-El veloz murciélago hindú comía feliz cardillo y kiwi. La cigüeña tocaba el
-saxofón detrás del palenque de paja.
+Debido a ésto, los programadores trabajarán sobre áreas del código
+independientes y aportarán a todos los casos de uso pendientes de implementar.
 
-El veloz murciélago hindú comía feliz cardillo y kiwi. La cigüeña tocaba el
-saxofón detrás del palenque de paja.
-El veloz murciélago hindú comía feliz cardillo y kiwi. La cigüeña tocaba el
-saxofón detrás del palenque de paja.
-El veloz murciélago hindú comía feliz cardillo y kiwi. La cigüeña tocaba el
-saxofón detrás del palenque de paja.
-El veloz murciélago hindú comía feliz cardillo y kiwi. La cigüeña tocaba el
-saxofón detrás del palenque de paja.
+La asignación de tareas queda como sigue:
 
-\section*{Conclusiones}
+\begin{itemize}
+\item Ángel Durán Izquierdo: Está encargado de finalizar la capa de
+comunicaciones. Además completará las operaciones que falten de implementar en
+el gestor de usuarios. Las clases sobre las que trabajará serán:
+\subitem \texttt{ServerAdapter}
+\subitem \texttt{ClientAdapter}
+\subitem \texttt{ClientCallback}
+\subitem \texttt{UserManager}
 
-El veloz murciélago hindú comía feliz cardillo y kiwi. La cigüeña tocaba el
-saxofón detrás del palenque de paja.
+\item Antonio Gómez Poblete: Declarará todas las operaciones de las clases de
+gestión de partidas y motor de juego y adaptará las operaciones existentes a
+la nueva clase \texttt{TerritoryDecorator}. También creará la nueva clase
+para los ataques. Las clases sobre las que trabajará serán:
+\subitem \texttt{GameManager}
+\subitem \texttt{GameEngine}
+\subitem \texttt{ClientCallback}
+\subitem \texttt{Attack}
+
+\item Antonio Martín Menor de Santos: Realizará los diálogos de referentes a los
+casos de uso actuales. Las clases sobre las que trabajará serán:
+\subitem \texttt{LaunchAttackDialog}
+\subitem \texttt{ReplyAttackDialog}
+\subitem \texttt{MoveUnitsDialog}
+\subitem \texttt{BuyUnitsDialog}
+
+\item Daniel León Romero y Jorge Colao Adán: Trabajarán juntos en corregir el
+funcionamiento de la clase \texttt{MapView} y revisar los modelos de datos. Las
+clases sobre las que trabajará serán:
+\subitem \texttt{MapView}
+\subitem \texttt{PlayerListModel}
+\subitem \texttt{MapModel}
+
+\item Laura Núñez Villa: Creará la nueva clase \texttt{TerritoryDecorator} y
+seguirá trabajando en el análisis y diseño de los siguientes casos de uso.
+\end{itemize}
+
 
 \end{document}
