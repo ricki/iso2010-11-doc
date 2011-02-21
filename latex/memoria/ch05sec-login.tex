@@ -1,0 +1,25 @@
+ \subsubsection{Iniciar sesión}
+
+A continuación se muestra un guión de pruebas exploratorias para cada uno de los escenarios posibles:
+\begin{enumerate}
+\item El usuario esta registrado en el servidor
+	\begin{itemize}
+	\item Acciones previas: El servidor debe estar funcionando y el usuario debe estar registrado en el mismo.
+	\item Acciones de prueba : En la ventana de inicio introducimos en el campo de Login la cadena Aduran y en el campo de Contraseña la cadena angel.
+	\item Resultados esperados : Tras pulsar en aceptar la ventana de login desaparecerá y se abrirá la ventana de juego.
+	\end{itemize}
+\item El usuario no esta registrado en el servidor.
+	\begin{itemize}
+	\item Acciones previas: El servidor debe estar funcionando y no tener un usuario con el nombre ADuran.
+	\item Acciones de prueba : En la ventana de login introducimos el usuario ADuran y la Contraseña angel.
+	\item Resultados esperados : Tras pulsar en Aceptar aparece un mensaje de error en la parte superior de la ventana, este mensaje es: \emph {Contraseña o login Erroneos}.
+	\end{itemize}
+
+\item Falta algun dato por introducir.
+	\begin{itemize}
+	\item Acciones previas: El servidor debe estar funcionando.
+	\item Acciones de prueba : En la ventana de login introducimos el nombre de usuario Aduran en el campo Login y dejamos el campo Contraseña vacío.
+	\item Resultados esperados : Tras pulsar en Aceptar aparece un mensaje de error en la parte superior de la ventana, este mensaje es: \emph {Contraseña o login Erroneos}.
+	\end{itemize}
+\end{enumerate}
+

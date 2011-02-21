@@ -1,0 +1,20 @@
+\section{Unirse a una partida}
+
+Guión de pruebas exploratorias para el método unirse a una partida:
+
+\begin{enumerate}
+\item Pulsamos el botón ''Unirse a la partida'', habiendo seleccionado una partida.
+	\begin{itemize}
+	\item Acciones previas: El servidor debe estar funcionando, habernos logeado con éxito y haber una partida libre disponible.
+	\item Acciones de prueba: Seleccionamos una partida a la que queremos unirnos y luego pulsamos el botón de ''Unirse a la partida''.
+	\item Resultados esperados: Si la partida a la que nos vamos a unir está en hora, nos saldra un mensaje para si queremos jugar. En cambio si no está en hora actualizará las dos listas.
+	\end{itemize}
+\item Pulsamos el botón ''Unirse a la partida'', sin haber seleccionado una partida.
+	\begin{itemize}
+	\item Acciones previas: El servidor debe estar funcionando, habernos logeado con éxito y haber una partida libre disponible.
+	\item Acciones de prueba: Pulsamos el botón de ''Unirse a la partida''.
+	\item Resultados esperados: La interfaz muestra un diálogo en el que indica que falta seleccionar una partida.
+	\end{itemize}
+\end{enumerate}
+
+En realidad el fallo comprobado en la parte de Pruebas de desarrollo, no se puede dar porque la interfaz no lo permite.

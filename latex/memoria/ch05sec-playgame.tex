@@ -1,0 +1,20 @@
+\section{Conectarse a una partida}
+
+Guión de pruebas exploratorias para el método conectarse a una partida:
+
+\begin{enumerate}
+\item Pulsamos el botón ''Conectarse a partida'', habiendo seleccionado una partida.
+	\begin{itemize}
+	\item Acciones previas: El servidor debe estar funcionando, habernos logeado con éxito y haber una partida disponible.
+	\item Acciones de prueba: Seleccionamos la partida a la que queremos conectarnos para jugar y luego pulsamos el botón de ''Conectarse a partida''.
+	\item Resultados esperados: Se cambia la interfaz mostrando la ventana de juego.
+	\end{itemize}
+\item Pulsamos el botón ''Conectarse a partida'', sin haber seleccionado una partida.
+	\begin{itemize}
+	\item Acciones previas: El servidor debe estar funcionando, habernos logeado con éxito y haber una partida disponible.
+	\item Acciones de prueba: Pulsamos el botón de ''Conectarse a partida''.
+	\item Resultados esperados: La interfaz muestra un diálogo en el que indica que falta seleccionar una partida.
+	\end{itemize}
+\end{enumerate}
+
+En realidad el fallo comprobado en la parte de Pruebas de desarrollo, no se puede dar porque la interfaz no lo permite.

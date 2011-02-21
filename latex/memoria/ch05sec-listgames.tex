@@ -1,0 +1,18 @@
+\section{Actualizar la lista de partida}
+
+Guión de pruebas exploratorias para el método actualizar lista de partidas:
+
+\begin{enumerate}
+\item Pulsamos el botón ''Actualizar lista'', estando en hora para jugar una partida.
+	\begin{itemize}
+	\item Acciones previas: El servidor debe estar funcionando y habernos logeado con éxito.
+	\item Acciones de prueba: Pulsamos el botón de ''Actualizar lista''.
+	\item Resultados esperados: Tras pulsar el botón, aparecerán las dos litas de partidas, tanto las actuales (si estamos en hora) como las disponible para unirse (si no se han pasado la horas de juego y tiene territorios libres).
+	\end{itemize}
+\item Pulsamos el botón ''Actualizar lista'', no estando en hora para jugar una partida
+	\begin{itemize}
+	\item Acciones previas: El servidor debe estar funcionando y habernos logeado con éxito.
+	\item Acciones de prueba: Pulsamos el botón de ''Actualizar lista''.
+	\item Resultados esperados: Tras pulsar el botón, aparecen las partidas libres pero no las partidas actuales, ya que ho hay ninguna en hora.
+	\end{itemize}
+\end{enumerate}
