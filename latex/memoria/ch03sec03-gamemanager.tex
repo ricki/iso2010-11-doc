@@ -1,36 +1,33 @@
 \section{Clase GameManager}
 
-\subsection{Análisis y diseño}
-
-\subsection{Implementación}
-
-\subsection{Informe de pruebas}
 
 {\small
 \begin{tabular}{r|l}
 Nombre del \textit{tester} & Jorge Colao Adán \\
 & Daniel León Romero\\
 Fecha de asignación & 18 de febrero de 2011 \\
-Fecha de finalización & 20 de febrero de 2011 \\
+Fecha de finalización & 21 de febrero de 2011 \\
 Código bajo prueba & \texttt{GameManager}
 \end{tabular}
 }
 
-\subsubsection{Pruebas de desarrollo}
+\subsection{Pruebas de desarrollo}
 
 En este apartado se hablará sobre las pruebas realizadas con la herramienta \textit{JUnit} sobre esta clase.
 
-La estrategia a seguir para las pruebas de estos apartados será \textit{Pair Wise}. La elección de los valores de los parámetos, se realizarán con valores limite para los atributos númericos y valores propensos a error para el resto.
+La estrategia a seguir para las pruebas de estos apartados será \textit{Each Choice}. La elección de los valores de los parámetos, se realizarán con valores límite para los atributos númericos y valores propensos a error para el resto.
 
-\begin{enumerate}
-\item \textbf{\texttt{GameManager::updateGame}}
+\subsubsection{GameManager::updateGameList}
 
-En este primer método como no tiene ningún parámetro lo que tenemos que comprobar es que al hacer el test con \textit{JUnit} no salte ninguna excepción. Además, comprobamos que inicialmente el número de partidas a las que se está unido y disponibles para unirse es igual a cero, y después de la ejecución de este caso de uso es distinto de cero.
+En este primer método como no tiene ningún parámetro lo que tenemos que comprobar es que al hacer el test con \textit{JUnit} no salte ninguna excepción. Además, comprobamos que inicialmente el número de partidas a las que se está unido y las partidas disponibles para unirse es igual a cero, y que después de la ejecución de este caso de uso es distinto de cero.
+
 Debido a que con la herramienta JUnit no podemos alcanzar una covertura alta, lo que haremos será hacer pruebas exploratorias.
 
-\item \textbf{\texttt{GameManager::createGame}}
+\subsubsection{GameManager::createGame}
 
 Este método tiene seis parámetros de entrada, por lo que tenemos que utilizar alguna estrategia de generación de casos de prueba. Hemos utilizado \textit{Each Choice} con la herramienta de la página \url{http://161.67.140.42/CombTestWeb/}. Pero comprobando las combinaciones que hemos obtenido nos hemos dado cuenta de que eran poco exahustivas (Test 1 a 4). Debido a este motivo, hemos añadido otros casos de prueba interesantes (Test 5 a 14), como son; probar para que falle cada parámetro independientemente.
+
+Para elegir tanto los valores de prueba como los casos de pruebas de los casos interesantes se ha analizado el comportamiento de este método (mediante caja blanca). Después de analizar el método nos hemos dado cuenta de que solamente puede haber un tipo de error, que es "throw InvalidArgumentException". Esta comprobación es local, por ello si se lanza la excepcion InvalidArgumentException no se creará la partida en el servidor.
 
 \begin{itemize}
 \item \textbf{\texttt{name}}
@@ -61,7 +58,9 @@ Este método tiene seis parámetros de entrada, por lo que tenemos que utilizar 
 \subitem Número correcto. \texttt{"0"} y \texttt{"33"}
 \end{itemize}
 
-La única comprobación especial que podemos haces que mirar si salta alguna excepción, si salta ninguna excepción el método estará correcto.
+La única comprobación especial que podemos hacer es mirar si salta alguna excepción, si no salta ninguna excepción el método estará correcto, lo que creará una partida en el servidor.
+
+Esta es la tabla de casos de prueba y resultados esperados.
 
 {\footnotesize
 \begin{longtable}[c]{lccc}
@@ -103,9 +102,9 @@ Test14 & ("partida", vacío,   & crear partida & Funcinamiento Correcto \\
 \end{longtable}
 }
 
-\item \textbf{\texttt{GameManager::joinGame}}
+\subsubsection{GameManager::joinGame}
 
-Para este caso de uso tan sólo tenemos un parámetro que es el número del juego al que queremos unirnos. Por este motivo tenemos que comprobar los valores límite de la lista de partidas a unirse. Para representar los valores límite, hemos usado de límite inferior los números ''--1'' y "0", ya que la comparación es que sea menor de "0". Y para el límite superior usaremos el tope de partidas disponibles en el servidor y el tope más uno, en nuestro servidor tenemos dos partidas a las que nos podemos unir por lo tanto, el tope sería "1". Aunque esto en la prueba del JUnit se implementa conectandose dos veces a la partida "0".
+Para este caso de uso tan sólo tenemos un parámetro que es el número del juego al que queremos unirnos. Por este motivo tenemos que comprobar los valores límite de la lista de partidas a unirse. Para representar los valores límite, hemos usado de límite inferior los números ''--1'' y "0", ya que la comparación es que sea menor de "0". Y para el límite superior usaremos el tope de partidas disponibles en el servidor y el tope más uno. En nuestro servidor tenemos dos partidas a las que nos podemos unir, por lo tanto, el tope sería "1" y el tope más uno sería "2". 
 
 \begin{itemize}
 \item \textbf{\texttt{gameSelected}}
@@ -113,7 +112,7 @@ Para este caso de uso tan sólo tenemos un parámetro que es el número del jueg
 \subitem Límite superior: \texttt{"tope = 1"} y \texttt{"tope + 1 = 2"}
 \end{itemize}
 
-También tenemos que comprobar que antes de unirnos a la partida tiene que haber al menos una partida a la que podamos unirnos. Y comprobar que el número de filas en la lista de partidas actuales tiene que ser mayor que antes y la lista de partidas para unirme es menor.
+También tenemos que comprobar que antes de unirnos a la partida tiene que haber al menos una partida a la que podamos unirnos. Y después de unirnos comprobar que el número de filas en la lista de partidas actuales es mayor que antes y la lista de partidas para unirme es menor.
 
 Esta es la tabla de casos de prueba y resultados esperados.
 
@@ -132,9 +131,9 @@ Test4 & (2) & límite superior & InvalidArgument\\
 \end{longtable}
 }
 
-\item \textbf{\texttt{GameManager::connectGame}}
+\subsubsection{GameManager::connectGame}
 
-En este caso de uso tenemos dos parámetros, uno es el número de la partida seleccionada para jugar y el otro un evento que para poder realizar la pruebas lo vamos a considerar "null". De esta forma, nos centramos en el primer parámetro que es el interesante. Como sólo tenemos un parámetro al igual que antes tenemos que sacar los valores límite. En esta ocasión en el servidor tenemos una única partida actual por lo que el tope es "0" y el tope más uno es "1".
+En este método tenemos dos parámetros, uno es el número de la partida seleccionada para jugar y el otro un evento, que para poder realizar la pruebas lo vamos a considerar "null". De esta forma, nos centramos en el primer parámetro que es el interesante. Como sólo tenemos un parámetro al igual que antes tenemos que sacar los valores límite. En esta ocasión en el servidor tenemos una única partida actual, por lo que el tope es "0" y el tope más uno es "1".
 
 \begin{itemize}
 \item \textbf{\texttt{gameSelected}}
@@ -142,7 +141,9 @@ En este caso de uso tenemos dos parámetros, uno es el número de la partida sel
 \subitem Límite superior: \texttt{"tope = 0"} y \texttt{"tope + 1 = 1"}
 \end{itemize}
 
-Además, antes conectar tenemos que comprobar que almenos tengamos una partida a la cual podamos conectarnos para jugar y que el objeto GameEngine esté a null y que después de ejecutar el conectar no sea null.
+Además, antes de conectar tenemos que comprobar que almenos tengamos una partida a la cual podamos conectarnos para jugar y que el objeto GameEngine esté a null y que después de ejecutar el conectar no sea null.
+
+Esta es la tabla de casos de prueba y resultados esperados.
 
 {\footnotesize
 \begin{longtable}[c]{lccc}
@@ -158,7 +159,6 @@ Test3 & (1) & límite superior & InvalidArgument\\
 \end{longtable}
 }
 
-\end{enumerate}
 
-\subsubsection{Pruebas exploratorias}
+\subsection{Pruebas exploratorias}
 
