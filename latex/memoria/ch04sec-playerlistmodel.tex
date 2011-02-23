@@ -1,0 +1,331 @@
+\section{Clase PlayerListModel}
+
+\subsection{PlayerListModel::PlayerListModel}
+
+{\small
+\begin{tabular}{r|l}
+Nombre del \textit{tester} & \'Angel Dur\'an Izquierdo\\
+Fecha de asignación & 21 de febrero de 2011 \\
+Fecha de finalización & 22 de febrero de 2011 \\
+Código bajo prueba & \texttt{PlayerListModel::PlayerListModel}
+\end{tabular}
+}
+
+A continuación se detallarán las pruebas de desarrollo (Pruebas unitarias con \textit{JUnit}).
+
+Lista de los valores de prueba para cada atributo.
+El criterio elegido para todos los valores de prueba (test data) ha sido: Añadir valores interesantes propensos a error (Conjetura de error).
+
+Al constructor se le pasa dos parametros, el primero es el player propio (selfPlayer) y el segundo es una lista de usuarios (data).
+
+\begin{itemize}
+\item \textbf{\texttt{selfPlayer}}
+\subitem Valor correcto: owner
+\subitem Valor nulo: null 
+\end{itemize}
+
+\begin{itemize}
+\item \textbf{\texttt{data}}
+\subitem Valor correcto: lista de jugadores
+\subitem Valor nulo: null 
+\end{itemize}
+
+La estrategia para obtener los casos de prueba elegida ha sido
+\textit{pair wise} seleccionando las combinaciones interesantes.
+
+La tabla completa de los casos de prueba y los resultados esperados son:
+
+{\footnotesize
+\begin{longtable}[c]{lccc}
+ & \textbf{Valores de Prueba} & \textbf{Objetivo del test} & \textbf{Resultado esperado} \\
+\hline \hline
+\endhead
+
+Test1 & (owner, lista de jugadores) & selfPlayer y data & El objeto se crea correctamente\\
+Test2 & (null, null) & selfPlayer y data & InvalidArgument\\
+
+\hline
+\end{longtable}
+}
+
+\subsection{PlayerListModel::getColumnName}
+
+{\small
+\begin{tabular}{r|l}
+Nombre del \textit{tester} & \'Angel Dur\'an Izquierdo\\
+Fecha de asignación & 21 de febrero de 2011 \\
+Fecha de finalización & 22 de febrero de 2011 \\
+Código bajo prueba & \texttt{PlayerListModel::getColumnName}
+\end{tabular}
+}
+
+A continuación se detallarán las pruebas de desarrollo (Pruebas unitarias con \textit{JUnit}).
+
+Lista de los valores de prueba para cada atributo.
+El criterio elegido para todos los valores de prueba (test data) ha sido: Añadir valores interesantes propensos a error (Conjetura de error).
+
+Al m\'etodo se le pasa un entero (col) que indica la columna de la cual queremos recuperar el nombre.
+
+\begin{itemize}
+\item \textbf{\texttt{col}}
+\subitem Valor correcto de columna: 1
+\subitem Valor de coluna invalido: 5
+\end{itemize}
+
+La estrategia para obtener los casos de prueba elegida ha sido
+\textit{each choice}.
+
+La tabla completa de los casos de prueba y los resultados esperados son:
+
+{\footnotesize
+\begin{longtable}[c]{lccc}
+ & \textbf{Valores de Prueba} & \textbf{Objetivo del test} & \textbf{Resultado esperado} \\
+\hline \hline
+\endhead
+
+Test1 & (1) & col & Devuelve el dato correcto\\
+Test2 & (5) & col & Excepci\'on\\
+
+\hline
+\end{longtable}
+}
+
+\subsection{PlayerListModel::getPlayerAt}
+
+{\small
+\begin{tabular}{r|l}
+Nombre del \textit{tester} & \'Angel Dur\'an Izquierdo\\
+Fecha de asignación & 21 de febrero de 2011 \\
+Fecha de finalización & 22 de febrero de 2011 \\
+Código bajo prueba & \texttt{PlayerListModel::getPlayerAt}
+\end{tabular}
+}
+
+A continuación se detallarán las pruebas de desarrollo (Pruebas unitarias con \textit{JUnit}).
+
+Lista de los valores de prueba para cada atributo.
+El criterio elegido para todos los valores de prueba (test data) ha sido: Añadir valores interesantes propensos a error (Conjetura de error).
+
+Al m\'etodo se le pasa un entero (index) que indica la posici\'on del jugador que se quiere recuperar.
+
+\begin{itemize}
+\item \textbf{\texttt{index}}
+\subitem Valor correcto: 0
+\subitem Valor de posici\'on que no existe: 5
+\end{itemize}
+
+La estrategia para obtener los casos de prueba elegida ha sido
+\textit{each choice}.
+
+La tabla completa de los casos de prueba y los resultados esperados son:
+
+{\footnotesize
+\begin{longtable}[c]{lccc}
+ & \textbf{Valores de Prueba} & \textbf{Objetivo del test} & \textbf{Resultado esperado} \\
+\hline \hline
+\endhead
+
+Test1 & (0) & index & Devuelve el jugador correcto\\
+Test2 & (5) & index & Excepci\'on\\
+
+\hline
+\end{longtable}
+}
+
+\subsection{PlayerListModel::setData}
+
+{\small
+\begin{tabular}{r|l}
+Nombre del \textit{tester} & \'Angel Dur\'an Izquierdo\\
+Fecha de asignación & 21 de febrero de 2011 \\
+Fecha de finalización & 22 de febrero de 2011 \\
+Código bajo prueba & \texttt{PlayerListModel::setData}
+\end{tabular}
+}
+
+A continuación se detallarán las pruebas de desarrollo (Pruebas unitarias con \textit{JUnit}).
+
+Lista de los valores de prueba para cada atributo.
+El criterio elegido para todos los valores de prueba (test data) ha sido: Añadir valores interesantes propensos a error (Conjetura de error).
+
+Al m\'etodo se le pasa una lista de jugadores (data).
+
+\begin{itemize}
+\item \textbf{\texttt{data}}
+\subitem Lista correcta de jugadores: lista de jugadores
+\subitem Valor nulo: null
+\end{itemize}
+
+La estrategia para obtener los casos de prueba elegida ha sido
+\textit{each choice}.
+
+La tabla completa de los casos de prueba y los resultados esperados son:
+
+{\footnotesize
+\begin{longtable}[c]{lccc}
+ & \textbf{Valores de Prueba} & \textbf{Objetivo del test} & \textbf{Resultado esperado} \\
+\hline \hline
+\endhead
+
+Test1 & lista de jugadores & data & setdata correcto\\
+Test2 & null & data & Excepci\'on\\
+
+\hline
+\end{longtable}
+}
+
+\subsection{PlayerListModel::getRowCount}
+
+{\small
+\begin{tabular}{r|l}
+Nombre del \textit{tester} & \'Angel Dur\'an Izquierdo\\
+Fecha de asignación & 21 de febrero de 2011 \\
+Fecha de finalización & 22 de febrero de 2011 \\
+Código bajo prueba & \texttt{PlayerListModel::getRowCount}
+\end{tabular}
+}
+
+A continuación se detallarán las pruebas de desarrollo (Pruebas unitarias con \textit{JUnit}).
+
+Este m\'etodo devuelve el n\'umero de jugadores disponibles, no recibe ning\'un valor por lo que solo se ha realizado la para comprobar que se devuelve el n\'umero correcto de jugadores.
+
+\subsection{PlayerListModel::getColumnCount}
+
+{\small
+\begin{tabular}{r|l}
+Nombre del \textit{tester} & \'Angel Dur\'an Izquierdo\\
+Fecha de asignación & 21 de febrero de 2011 \\
+Fecha de finalización & 22 de febrero de 2011 \\
+Código bajo prueba & \texttt{PlayerListModel::getColumnCount}
+\end{tabular}
+}
+
+A continuación se detallarán las pruebas de desarrollo (Pruebas unitarias con \textit{Junit}).
+
+Este m\'etodo no tiene ning\'un parametro por lo que solo se prueba que devuelve el n\'umero correcto de columnas, este dato esta fijado en la clase y no es variable. A su vez se comprueba que no se produce ninguna excepci\'on durante la realizaci\'on de las pruebas.
+
+\subsection{PlayerListModel::getValueAt}
+
+{\small
+\begin{tabular}{r|l}
+Nombre del \textit{tester} & \'Angel Dur\'an Izquierdo\\
+Fecha de asignación & 21 de febrero de 2011 \\
+Fecha de finalización & 22 de febrero de 2011 \\
+Código bajo prueba & \texttt{PlayerListModel::getValueAt}
+\end{tabular}
+}
+
+A continuación se detallarán las pruebas de desarrollo (Pruebas unitarias con \textit{JUnit}).
+
+Lista de los valores de prueba para cada atributo.
+El criterio elegido para todos los valores de prueba (test data) ha sido: Añadir valores interesantes propensos a error (Conjetura de error).
+
+Al m\'etodo se le pasan dos variables, la primera indica el jugador del cual se quiere recuperar la informaci\'on (rowIndex). El segundo parametro indica que tipo de informaci\'on debe devolver el m\'etodo (columnIndex).
+
+\begin{itemize}
+\item \textbf{\texttt{rowIndex}}
+\subitem Existe la fila: 0
+\subitem No existe la fila: 3
+\end{itemize}
+
+\begin{itemize}
+\item \textbf{\texttt{columnIndex}}
+\subitem Existe el parametro a devolver: 0,1,2
+\subitem No existe el parametro a devolver: 10
+\end{itemize}
+
+La estrategia para obtener los casos de prueba elegida ha sido
+\textit{pair wise} eligiendo despu\'es los casos interesantes. Los test 2 y 3 son redundantes pero se han elegido
+para conseguir una covertura mayor del c\'odigo.
+
+La tabla completa de los casos de prueba y los resultados esperados son:
+
+{\footnotesize
+\begin{longtable}[c]{lccc}
+ & \textbf{Valores de Prueba} & \textbf{Objetivo del test} & \textbf{Resultado esperado} \\
+\hline \hline
+\endhead
+
+Test1 & (0,0) & rowIndex y columnIndex & Devuelve el nombre del jugador\\
+Test2 & (0,1) & columnIndex & Devuelve turno del jugador\\
+Test3 & (0,2) & rowIndex & Devuelve si el jugador esta conectado\\
+Test4 & (3,0) & rowIndex  & Excepci\'on\\
+Test5 & (0,10) & columnIndex & Excepci\'on\\
+
+\hline
+\end{longtable}
+} 
+
+\subsection{PlayerListModel::getActivePlayer}
+
+{\small
+\begin{tabular}{r|l}
+Nombre del \textit{tester} & \'Angel Dur\'an Izquierdo\\
+Fecha de asignación & 21 de febrero de 2011 \\
+Fecha de finalización & 22 de febrero de 2011 \\
+Código bajo prueba & \texttt{PlayerListModel::getActivePlayer}
+\end{tabular}
+}
+
+A continuación se detallarán las pruebas de desarrollo (Pruebas unitarias con \textit{Junit}).
+
+Este m\'etodo devuelve el jugador activo en un momento determinando, dicha funci\'on no requiere de parametros por lo que unicamente se prueba que al haber un jugador activo el m\'etodo devuelve este jugador.
+
+\subsection{PlayerListModel::getSelfPlayer}
+
+{\small
+\begin{tabular}{r|l}
+Nombre del \textit{tester} & \'Angel Dur\'an Izquierdo\\
+Fecha de asignación & 21 de febrero de 2011 \\
+Fecha de finalización & 22 de febrero de 2011 \\
+Código bajo prueba & \texttt{PlayerListModel::getSelfPlayer}
+\end{tabular}
+}
+
+A continuación se detallarán las pruebas de desarrollo (Pruebas unitarias con \textit{Junit}).
+
+Este m\'etodo devuelve el jugador propio, no recibe ning\'un parametro y por lo tanto se ha probado simplemente que al llamar a la funci\'on devuelve el jugador adecuado.
+
+\subsection{PlayerListModel::getPlayerByName}
+
+{\small
+\begin{tabular}{r|l}
+Nombre del \textit{tester} & \'Angel Dur\'an Izquierdo\\
+Fecha de asignación & 21 de febrero de 2011 \\
+Fecha de finalización & 22 de febrero de 2011 \\
+Código bajo prueba & \texttt{PlayerListModel::getPlayerByName}
+\end{tabular}
+}
+
+A continuación se detallarán las pruebas de desarrollo (Pruebas unitarias con \textit{JUnit}).
+
+Lista de los valores de prueba para cada atributo.
+El criterio elegido para todos los valores de prueba (test data) ha sido: Añadir valores interesantes propensos a error (Conjetura de error).
+
+Al m\'etodo se le pasa un String (name) que indica el nombre del jugador que se quiere recuperar.
+
+\begin{itemize}
+\item \textbf{\texttt{name}}
+\subitem Valor correcto : "oponente"
+\subitem Valor jugador inexistente: "no existe"
+\subitem Valor nulo: null
+\end{itemize}
+
+La estrategia para obtener los casos de prueba elegida ha sido
+\textit{each choice}.
+
+La tabla completa de los casos de prueba y los resultados esperados son:
+
+{\footnotesize
+\begin{longtable}[c]{lccc}
+ & \textbf{Valores de Prueba} & \textbf{Objetivo del test} & \textbf{Resultado esperado} \\
+\hline \hline
+\endhead
+
+Test1 & ("oponente") & name & Devuelve el juego\\
+Test2 & ("no existe") & name & No devuelve nada\\
+Test2 & (null) & name & Excepci\'on\\
+
+\hline
+\end{longtable}
+} 
