@@ -57,5 +57,18 @@ carga de partidas.
 \end{figure}
 
 Los datos de las partidas disponibles en el servidor son almacenados en objetos
-de tipo \texttt{GameListModel}.
+de tipo \texttt{GameListModel}. Esta clase, y otras que se describen a
+continuación, heredan de la clase \texttt{AbstractTableModel}. Esta clase
+abstracta forma parte del \textit{framework} que proporciona Swing para
+implementar el patrón arquitectónico Model-Vista-Controlador.
 
+Hacer uso de este \textit{framework} significa que los accesos que hacen las
+vistas a los modelos están definidos de antemano por una serie de interfaces.
+Esto permite asociar clases disponibles en Swing con clases implementadas por el
+equipo de trabajo de forma transparente.
+
+En último lugar está el motor de juego, la clase \texttt{GameEngine}. Esta
+clase se crea al comenzar a jugar a una partida e implementa toda la lógica de
+dominio de una partida. Los datos con los que trabaja están almacenados en las
+clases \texttt{PlayerListModel} y \texttt{MapModel}, los cuales heredan de la
+clase \texttt{AbstractTableModel}, nombrada anteriormente.
