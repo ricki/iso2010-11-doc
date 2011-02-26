@@ -1,0 +1,212 @@
+\section{Clase GameListModel}
+
+\subsection{GameListModel::getColumnCount}
+
+{\small
+\begin{tabular}{r|l}
+Nombre del \textit{tester} & \'Angel Dur\'an Izquierdo\\
+Fecha de asignación & 21 de febrero de 2011 \\
+Fecha de finalización & 22 de febrero de 2011 \\
+Código bajo prueba & \texttt{GameListModel::getColumnCount}
+\end{tabular}
+}
+
+A continuación se detallarán las pruebas de desarrollo (Pruebas unitarias con \textit{Junit}).
+
+Este m\'etodo no tiene ning\'un parametro por lo que solo se prueba que devuelve el n\'umero correcto de columnas, este dato esta fijado en la clase y no es variable. A su vez se comprueba que no se produce ninguna excepci\'on durante la realizaci\'on de las pruebas.
+
+\subsection{GameListModel::getColumnName}
+
+{\small
+\begin{tabular}{r|l}
+Nombre del \textit{tester} & \'Angel Dur\'an Izquierdo\\
+Fecha de asignación & 21 de febrero de 2011 \\
+Fecha de finalización & 22 de febrero de 2011 \\
+Código bajo prueba & \texttt{GameListModel::getColumnName}
+\end{tabular}
+}
+
+A continuación se detallarán las pruebas de desarrollo (Pruebas unitarias con \textit{JUnit}).
+
+Lista de los valores de prueba para cada atributo.
+El criterio elegido para todos los valores de prueba (test data) ha sido: Añadir valores interesantes propensos a error (Conjetura de error).
+
+Al m\'etodo se le pasa un entero (col) que indica la columna de la cual queremos recuperar el nombre. 
+
+\begin{itemize}
+\item \textbf{\texttt{col}}
+\subitem Valor correcto de columna: 0
+\subitem Valor negativo: -1
+\subitem Valor positivo pero no existe coluna: 6
+\end{itemize}
+
+La estrategia para obtener los casos de prueba elegida ha sido
+\textit{each choice}.
+
+La tabla completa de los casos de prueba y los resultados esperados son:
+
+{\footnotesize
+\begin{longtable}[c]{lccc}
+ & \textbf{Valores de Prueba} & \textbf{Objetivo del test} & \textbf{Resultado esperado} \\
+\hline \hline
+\endhead
+
+Test1 & (0) & col & Devuelve el dato correcto\\
+Test2 & (-1) & col & Excepci\'on\\
+Test3 & (6) & col & Excepci\'on\\
+
+\hline
+\end{longtable}
+}
+
+\subsection{GameListModel::getGameAt}
+
+{\small
+\begin{tabular}{r|l}
+Nombre del \textit{tester} & \'Angel Dur\'an Izquierdo\\
+Fecha de asignación & 21 de febrero de 2011 \\
+Fecha de finalización & 22 de febrero de 2011 \\
+Código bajo prueba & \texttt{GameListModel::getGameAt}
+\end{tabular}
+}
+
+A continuación se detallarán las pruebas de desarrollo (Pruebas unitarias con \textit{JUnit}).
+
+Lista de los valores de prueba para cada atributo.
+El criterio elegido para todos los valores de prueba (test data) ha sido: Añadir valores interesantes propensos a error (Conjetura de error).
+
+Al m\'etodo se le pasa un entero (gameSelected) que indica la posici\'on del juego que se quiere recuperar.
+
+\begin{itemize}
+\item \textbf{\texttt{col}}
+\subitem Valor correcto de posici\'on del juego: 0
+\subitem Valor positivo pero no existe el juego: 20
+\end{itemize}
+
+La estrategia para obtener los casos de prueba elegida ha sido
+\textit{each choice}.
+
+La tabla completa de los casos de prueba y los resultados esperados son:
+
+{\footnotesize
+\begin{longtable}[c]{lccc}
+ & \textbf{Valores de Prueba} & \textbf{Objetivo del test} & \textbf{Resultado esperado} \\
+\hline \hline
+\endhead
+
+Test1 & (0) & gameSelected & Devuelve el juego\\
+Test2 & (20) & gameSelected & Excepci\'on\\
+
+\hline
+\end{longtable}
+}
+
+\subsection{GameListModel::setData}
+
+{\small
+\begin{tabular}{r|l}
+Nombre del \textit{tester} & \'Angel Dur\'an Izquierdo\\
+Fecha de asignación & 21 de febrero de 2011 \\
+Fecha de finalización & 22 de febrero de 2011 \\
+Código bajo prueba & \texttt{GameListModel::setData}
+\end{tabular}
+}
+
+A continuación se detallarán las pruebas de desarrollo (Pruebas unitarias con \textit{JUnit}).
+
+Lista de los valores de prueba para cada atributo.
+El criterio elegido para todos los valores de prueba (test data) ha sido: Añadir valores interesantes propensos a error (Conjetura de error).
+
+Al m\'etodo se le pasa una lista de juegos (data).
+
+\begin{itemize}
+\item \textbf{\texttt{data}}
+\subitem Lista correcta de juegos: lista de juegos
+\subitem Valor nulo: null
+\end{itemize}
+
+La estrategia para obtener los casos de prueba elegida ha sido
+\textit{each choice}.
+
+La tabla completa de los casos de prueba y los resultados esperados son:
+
+{\footnotesize
+\begin{longtable}[c]{lccc}
+ & \textbf{Valores de Prueba} & \textbf{Objetivo del test} & \textbf{Resultado esperado} \\
+\hline \hline
+\endhead
+
+Test1 & lista de juegos & data & Devuelve el juego\\
+Test2 & null & data & InvalidArgument\\
+
+\hline
+\end{longtable}
+}
+
+\subsection{GameListModel::getRowCount}
+
+{\small
+\begin{tabular}{r|l}
+Nombre del \textit{tester} & \'Angel Dur\'an Izquierdo\\
+Fecha de asignación & 21 de febrero de 2011 \\
+Fecha de finalización & 22 de febrero de 2011 \\
+Código bajo prueba & \texttt{GameListModel::getRowCount}
+\end{tabular}
+}
+
+A continuación se detallarán las pruebas de desarrollo (Pruebas unitarias con \textit{JUnit}).
+
+Este m\'etodo devuelve el n\'umero de juegos disponibles, no recibe ning\'un valor por lo que solo se ha realizado la para comprobar que se devuelve el n\'umero correcto de juegos.
+
+\subsection{GameListModel::getValueAt}
+
+{\small
+\begin{tabular}{r|l}
+Nombre del \textit{tester} & \'Angel Dur\'an Izquierdo\\
+Fecha de asignación & 21 de febrero de 2011 \\
+Fecha de finalización & 22 de febrero de 2011 \\
+Código bajo prueba & \texttt{GameListModel::getValueAt}
+\end{tabular}
+}
+
+A continuación se detallarán las pruebas de desarrollo (Pruebas unitarias con \textit{JUnit}).
+
+Lista de los valores de prueba para cada atributo.
+El criterio elegido para todos los valores de prueba (test data) ha sido: Añadir valores interesantes propensos a error (Conjetura de error).
+
+Al m\'etodo se le pasan dos variables, la primera indica el juego del cual se quiere recuperar la informaci\'on (rowIndex). El segundo parametro indica que tipo de informaci\'on debe devolver el m\'etodo (columnIndex).
+
+\begin{itemize}
+\item \textbf{\texttt{rowIndex}}
+\subitem Existe la fila: 0,1
+\subitem No existe la fila: 10
+\end{itemize}
+
+\begin{itemize}
+\item \textbf{\texttt{columnIndex}}
+\subitem Existe el parametro a devolver: 0,1,2
+\subitem No existe el parametro a devolver: 10
+\end{itemize}
+
+La estrategia para obtener los casos de prueba elegida ha sido
+\textit{pair wise} eligiendo despu\'es los casos interesantes. Los test 5 y 6 son redundantes pero se han elegido
+para conseguir una covertura mayor del c\'odigo.
+
+La tabla completa de los casos de prueba y los resultados esperados son:
+
+{\footnotesize
+\begin{longtable}[c]{lccc}
+ & \textbf{Valores de Prueba} & \textbf{Objetivo del test} & \textbf{Resultado esperado} \\
+\hline \hline
+\endhead
+
+Test1 & (0,0) & rowIndex y columnIndex & Devuelve el atributo nombre\\
+Test2 & (1,10) & columnIndex & No devuelve nada\\
+Test3 & (10,1) & rowIndex & Devuelve el juego\\
+Test4 & (10,10) & rowIndex y columnIndex & No devuelve nada\\
+Test5 & (1,1) & rowIndex y columnIndex & Devuelve el juego\\
+Test6 & (0,2) & rowIndex y columnIndex & Devuelve el n\'umero de jugadores\\
+
+\hline
+\end{longtable}
+}
