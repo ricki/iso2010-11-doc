@@ -1,0 +1,46 @@
+\section{Clase TerritoryDecorator}
+
+{\small
+\begin{tabular}{r|l}
+Nombre del \textit{tester} & Antonio Gómez Poblete \\
+Fecha de asignación & 21 de febrero de 2011 \\
+Fecha de finalización & 25 de febrero de 2011 \\
+Código bajo prueba & \texttt{TerritoryDecorator}
+\end{tabular}
+}
+
+Gran parte de la lógica  de \texttt{TerritoryDecorator} ha sido ya probada al realizar los casos de pruebas descritos en la sección anterior, 90\% de cobertura.
+No obstante quedan algunas funcionalidades sin probar que se describirán a continuación con los siguientes test (se llegará a un 99\%). 
+
+Para realizar todos los test partimos como precondición (método \texttt{setUp()})que se ha creado un \texttt{MapModel}, que existe el jugador \texttt{selfPlayer} y que ha  dos territorios se les ha asignado jugador.  
+
+\subsection{TerritoryDecoratorTest::testgetclone1}
+
+En este test se clonan tres territorios (0, 6, 14) y se comprueba que el identificador del original y la copia sean el mismo. También se comprueba que los territorios copiados sean los mismo que los originales llamando directamente a la función \texttt{equal}, de  este modo en este  test se comprobará  el \texttt{clone} y el \texttt{equal} de la clase \texttt{TerritoryDecorator}.
+
+
+\subsection{TerritoryDecoratorTest::testgetEqual1}
+
+En este test se coparan  territorios diferentes (6, 0, 14) con la función \texttt{equal}. Así se comprobaran que ambas posibilidades (true, false) del \texttt{equal} funcionan correctamente.
+ 
+\subsection{TerritoryDecoratorTest::testgetName1} 
+
+El objetivo aquí es comprobar que funciona bien el \texttt{getName} de territorio. Para ello se comprueba que el nombre de dos países es diferente (14, 6).
+
+\subsection{TerritoryDecoratorTest::testgetAdjacentTerritories1}
+
+En este test se comprueba que la función \texttt{getAdjacentTerritories} se comporta correctamente, para ello realizamos algunos test intentando probar las dos posibilidades (ser o no adyacente a un país). 
+
+\begin{itemize} 
+
+\item Se comprueba que \texttt{getAdjacentTerritories()} no devuelva \texttt{null}.
+
+\item Se comprueba que el territorio 0 es adyacente al 1 y el 1 al 0.
+	
+\item Se comprueba que el territorio 0 no es adyacente al 30.
+	
+\item Se comprueba que el territorio 6  es adyacente al 0 y el 0 al 6.
+	
+\item Se comprueba que el territorio 6 no es adyacente al 17.	
+
+\end{itemize}

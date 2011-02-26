@@ -1,0 +1,80 @@
+\section{Clase MapModel}
+
+{\small
+\begin{tabular}{r|l}
+Nombre del \textit{tester} & Antonio Gómez Poblete \\
+Fecha de asignación & 21 de febrero de 2011 \\
+Fecha de finalización & 25 de febrero de 2011 \\
+Código bajo prueba & \texttt{MapModel}
+\end{tabular}
+}
+
+A diferencia de otras clases como los gestores, la clase \texttt{MapModel} únicamente contiene métodos para implementar el patrón MVC, no  implementa casi ninguna otra funcionalidad . Estos métodos son en su mayoría para acceder a los datos que el modelo proporciona y no filtran los atributos de entrada (en ocasiones no tienen) como pueden hacerlo otras clases de dominio. Por esta razón para comprobar esta clase se va a hacer usa de técnicas de caja blanca , intentando cubrir una máxima cobertura del código.  
+
+A continuación se van a ir mencionando los distintos test que se han realizado a esta clase para obtener un cobertura de un 99 \%, teniendo en cuenta que como precondición debe darse que exista un mapModel (recién creado) y dos jugadores (\texttt{Antonio} y \texttt{Ambrosio}) sin ningún territorio.  
+
+
+\subsection{MapModelTest::testMapModel} 
+
+En este test se comprueba que el constructor de la clase \texttt{MapModel} funciona adecuadamente. Para ello se pregunta por cada uno de los territorios si  son distintos a \texttt{null} y si tienen el identificador que les corresponde.
+
+\subsection {MapModelTest::testSetData}
+
+En este test se comprueba que si los territorios son asignados nuevamente, la información es correcta.
+
+Este test además de probar la función \texttt{setData}, prueba también el método \texttt{updateTerritory} ya que este es llamado desde \texttt{setData}.
+
+\subsection {MapModelTest::testUpdateTerritory}
+
+En este test se actualiza un territorio existente, para ello se le asigna un jugador (\texttt{Antonio}) y se comprueba que ningún país tienen un jugador salvo el país de \texttt{Antonio}. 
+
+\subsection {MapModelTest::testgetColumnName}
+
+En este test se comprueba que \texttt{testgetColumnName} devuelve el nombre correcto para todos los casos.
+
+\subsection {MapModel::getValueAt}
+
+A diferencia de  los métodos anteriormente mencionados, para probar \texttt{getValueAt} se ha aplicado también un enfoque de caja negra.
+
+El criterio elegido para todos los valores de prueba (test data) ha sido: Añadir valores límite y valores interesantes propensos a error (Conjetura de error)  
+\begin{itemize}
+\item \textbf{\texttt{rowIndex}}
+\subitem  Valores fuera de rango: \texttt{map.getRowCount()}, \texttt{-1}.
+\subitem \texttt{0}
+
+\item \textbf{\texttt{columnIndex}}
+\subitem  Valores fuera de rango: \texttt{map.getColumnCount()}, \texttt{-1}.
+\subitem \texttt{0}
+\end{itemize}
+
+La estrategia para obtener los casos de prueba elegida ha sido
+\textit{each choice}  y añadir algunos casos interesantes .
+
+
+Teniendo en cuenta las consideraciones anteriormente mencionadas, la tabla completa de los casos de prueba y los resultados esperados son:
+
+{\footnotesize
+\begin{longtable}[c]{lcc}
+ & \textbf{Valores de Prueba}  & \textbf{Resultado esperado} \\
+\hline \hline
+\endhead
+Test1 & (-1, 0)  & null\\
+Test2 & (\texttt{map.getRowCount()}, 0) &  null\\
+Test3 & (0, -1)  & null\\
+Test4 & (0, \texttt{map.getColumnCount()}) &  null\\
+\hline
+\end{longtable}
+}
+
+\subsubsection {MapModelTest::testgetValueAt5}
+
+Este test ha sido creado para completar los casos de pruebas antes mencionados y así obtener una mayor cobertura. Además los anteriores test esperaban el mismo resultado (todos producían error). 
+
+En este test los dos jugadores (\texttt{Antonio} y \texttt{Ambrosio}) son asignados a dos territorios. Luego se pregunta por la información de dos territorios (14, 6) y se comprueba que al no tener espías solo se mostrará \texttt{¿?} y el nombre del país.
+
+Para finalizar se añade un espía al jugador \texttt{Antonio} que es el \texttt{selfPlayer} y se comprueba que ahora si es posible saber la información del país (14) también se comprueba que  todos los atributos de este son correctos.
+
+
+
+
+
