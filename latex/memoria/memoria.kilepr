@@ -4,7 +4,7 @@ img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
 kileversion=2.0.86
-lastDocument=ch02-arch.tex
+lastDocument=memoria.tex
 masterDocument=memoria.tex
 name=memoria
 pkg_extIsRegExp=false
@@ -58,12 +58,12 @@ ReadWrite=true
 
 [item:ch01-intro.tex]
 archive=true
-column=12
+column=0
 encoding=UTF-8
 highlight=LaTeX
-line=23
+line=0
 mode=LaTeX
-open=true
+open=false
 order=3
 
 [item:ch02-arch.tex]
@@ -71,10 +71,10 @@ archive=true
 column=0
 encoding=UTF-8
 highlight=LaTeX
-line=61
+line=102
 mode=LaTeX
-open=true
-order=4
+open=false
+order=1
 
 [item:ch03-devel.tex]
 archive=true
@@ -83,7 +83,7 @@ encoding=UTF-8
 highlight=LaTeX
 line=0
 mode=LaTeX
-open=true
+open=false
 order=1
 
 [item:ch03sec01-register.tex]
@@ -93,7 +93,7 @@ encoding=UTF-8
 highlight=LaTeX
 line=0
 mode=LaTeX
-open=true
+open=false
 order=2
 
 [item:memoria.kilepr]
@@ -108,10 +108,10 @@ order=-1
 
 [item:memoria.tex]
 archive=true
-column=0
+column=17
 encoding=UTF-8
 highlight=LaTeX
-line=103
+line=101
 mode=LaTeX
 open=true
 order=0
@@ -122,7 +122,7 @@ CursorLine=23
 
 [view-settings,view=0,item:ch02-arch.tex]
 CursorColumn=0
-CursorLine=61
+CursorLine=102
 
 [view-settings,view=0,item:ch03-devel.tex]
 CursorColumn=0
@@ -133,5 +133,7 @@ CursorColumn=0
 CursorLine=0
 
 [view-settings,view=0,item:memoria.tex]
-CursorColumn=0
-CursorLine=103
+CursorColumn=17
+CursorLine=101
+ViRegisterContents=Jorge Colao Adán\\\\\\\\\n
+ViRegisterNames=-
