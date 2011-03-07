@@ -22,9 +22,15 @@ Debido a que con la herramienta \textit{JUnit} no podemos alcanzar una covertura
 
 \subsection{GameManager::createGame}
 
-Este método tiene seis parámetros de entrada, por lo que tenemos que utilizar alguna estrategia de generación de casos de prueba. Hemos utilizado \textit{Each Choice} con la herramienta de la página \url{http://161.67.140.42/CombTestWeb/}. Pero comprobando las combinaciones que hemos obtenido nos hemos dado cuenta de que eran poco exahustivas (Test 1 a 4). Debido a este motivo, hemos añadido otros casos de prueba interesantes (Test 5 a 14), como son; probar para que falle cada parámetro independientemente.
+Este método tiene seis parámetros de entrada, por lo que tenemos que utilizar alguna estrategia de generación de casos de prueba. Hemos utilizado \textit{Each Choice} con la herramienta de la página \url{http://161.67.140.42/CombTestWeb/}. Pero comprobando las combinaciones que hemos obtenido nos hemos dado cuenta de que eran poco exahustivas (Test 1 a 3). Debido a este motivo, hemos añadido otros casos de prueba interesantes (Test 4 a 12), como son; probar para que falle cada parámetro independientemente.
 
-Para elegir tanto los valores de prueba como los casos de pruebas de los casos interesantes se ha analizado el comportamiento de este método (mediante caja blanca). Después de analizar el método nos hemos dado cuenta de que solamente puede haber un tipo de error, que es "throw InvalidArgumentException". Esta comprobación es local, por ello si se lanza la excepcion InvalidArgumentException no se creará la partida en el servidor.
+Para elegir tanto los valores de prueba como los casos de pruebas de los casos interesantes se ha analizado el comportamiento de este método (mediante caja blanca). Después de analizar el método nos hemos dado cuenta de que pude haber los siguientes errores:
+\begin{itemize}
+\item NullPointerException
+\item EmptyStringException
+\item NegativeValueException
+\end{itemize}
+Esta comprobación es local, por ello si se lanza alguna excepción de las anteriores, no se creará la partida en el servidor.
 
 \begin{itemize}
 \item \textbf{\texttt{name}}
@@ -39,20 +45,19 @@ Para elegir tanto los valores de prueba como los casos de pruebas de los casos i
 
 \item \textbf{\texttt{gameSession}}
 \subitem \textit{null}
-\subitem Fecha errónea: \texttt{"01/Marzo/2009 a las 14:00"}
-\subitem Fecha correctas: \texttt{"Hora actual"} y \texttt{"01/Marzo/2012 a las 14:00"}
+\subitem Fecha: \texttt{"Hora actual"} y \texttt{"01/Marzo/2012 a las 14:00"}
 
 \item \textbf{\texttt{turnTime}}
-\subitem Número incorrecto: \texttt{"\--1"}
-\subitem Número correcto. \texttt{"0"} y \texttt{"112"}
+\subitem Número incorrecto: \texttt{"0"}
+\subitem Número correcto. \texttt{"1"} y \texttt{"112"}
 
 \item \textbf{\texttt{defTime}}
-\subitem Número incorrecto: \texttt{"\--1"}
-\subitem Número correcto. \texttt{"0"} y \texttt{"20"}
+\subitem Número incorrecto: \texttt{"0"}
+\subitem Número correcto. \texttt{"1"} y \texttt{"20"}
 
 \item \textbf{\texttt{negTime}}
-\subitem Número incorrecto: \texttt{"\--1"}
-\subitem Número correcto. \texttt{"0"} y \texttt{"33"}
+\subitem Número incorrecto: \texttt{"0"}
+\subitem Número correcto. \texttt{"1"} y \texttt{"33"}
 \end{itemize}
 
 La única comprobación especial que podemos hacer es mirar si salta alguna excepción, si no salta ninguna excepción el método estará correcto, lo que creará una partida en el servidor.
@@ -65,35 +70,32 @@ Esta es la tabla de casos de prueba y resultados esperados.
 \hline \hline
 \endhead
 
-Test1 & (vacío, vacío, null,  & name, gameSession & InvalidArgument\\
- & 112, 20, 33) & & \\
-Test2 & (vacío, vacío, Fecha\_Actual, & name, defTime & InvalidArgument\\
- & 0, --1, 0) & & \\
-Test3 & (null, "partida guerra mundo", & name, gameSession, & InvalidArgument\\
- &   Fecha\_Anterior, --1, --1, --1) & turnTime, defTime, negTime & \\
-Test4 & ("partida", null,  & description   & InvalidArgument\\
- &  Fecha\_Posterior, 0, 0, 0) & & \\
+Test1 & ("partida", "partida guerra mundo",  & crear partida & Funcinamiento Correcto \\
+ & Fecha\_Posterior, 112, 1, 1) & & \\
+Test2 & (null, null, Fecha\_Actual, & name, description & NullPointer\\
+ & 1, 20, 33) & & \\
+Test3 & (vacío, vacío, & gameSession & NullPointer\\
+ & null, 0, 0, 0) & & \\
 
-Test5 & (vacío, vacío,  & name & InvalidArgument\\
- &  Fecha\_Posterior, 0, 0, 0) & & \\
-Test6 & (null, "partida guerra mundo",  & name & InvalidArgument\\
- &   Fecha\_Posterior, 0, 0, 0) & & \\
-Test7 & ("partida", null,  & description  & InvalidArgument\\
- &  Fecha\_Actual, 0, 0, 33) & & \\
-Test8 & ("partida", "partida guerra mundo",  & gameSession & InvalidArgument\\
- &   Fecha\_Anterior, 0, 0, 33) & & \\
-Test9 & ("partida", "partida guerra mundo",  & gameSession & InvalidArgument\\
- &   null, 0, 0, 33) & & \\
-Test10 & ("partida", "partida guerra mundo",  & turnTime & InvalidArgument\\
- &   Fecha\_Actual, --1, 20, 33) & & \\
-Test11 & ("partida", "partida guerra mundo",  & defTime & InvalidArgument\\
- &  Fecha\_Actual, 112, --1, 33) & & \\
-Test12 & ("partida", "partida guerra mundo",  & negTime & InvalidArgument\\
- &  Fecha\_Actual, 112, 20, --1) & & \\
-Test13 & ("partida", "partida guerra mundo",   & crear partida & Funcinamiento Correcto \\
+
+Test4 & (vacío, vacío,  & name & EmptyString\\
+ &  Fecha\_Posterior, 1, 1, 1) & & \\
+Test5 & (null, "partida guerra mundo",  & name & NullPointer\\
+ &   Fecha\_Posterior, 1, 1, 1) & & \\
+Test6 & ("partida", null,  & description  & NullPointer\\
+ &  Fecha\_Actual, 1, 1, 33) & & \\
+Test7 & ("partida", "partida guerra mundo",  & gameSession & NullPointer\\
+ &   null, 1, 1, 33) & & \\
+Test8 & ("partida", "partida guerra mundo",  & turnTime & NegativeValue\\
+ &   Fecha\_Actual, 0, 20, 33) & & \\
+Test9 & ("partida", "partida guerra mundo",  & defTime & NegativeValue\\
+ &   Fecha\_Actual, 112, 0, 33) & & \\
+Test10 & ("partida", "partida guerra mundo",  & negTime & NegativeValue\\
+ &  Fecha\_Actual, 112, 20, 0) & & \\
+Test11 & ("partida", "partida guerra mundo",  & crear partida & Funcinamiento Correcto \\
  &  Fecha\_Actual, 112, 20, 33) & & \\
-Test14 & ("partida", vacío,   & crear partida & Funcinamiento Correcto \\
- &  Fecha\_Posterior, 112, 20, 33) & & \\
+Test12 & ("partida", vacío,   & crear partida & Funcinamiento Correcto \\
+ &  Fecha\_Posterior, 1, 1, 1) & & \\
 
 \hline
 \end{longtable}
@@ -110,6 +112,11 @@ Para este caso de uso tan sólo tenemos un parámetro que es el número del jueg
 \end{itemize}
 
 También tenemos que comprobar que antes de unirnos a la partida tiene que haber al menos una partida a la que podamos unirnos. Y después de unirnos comprobar que el número de filas en la lista de partidas actuales es mayor que antes y la lista de partidas para unirme es menor.
+Las posobles excepciones que puede tener este método son:
+\begin{itemize}
+\item ArrayIndexOutOfBoundsException, para números por debajo del rango.
+\item IndexOutOfBoundsException, pra números por encima del rango.
+\end{itemize}
 
 Esta es la tabla de casos de prueba y resultados esperados.
 
@@ -119,10 +126,10 @@ Esta es la tabla de casos de prueba y resultados esperados.
 \hline \hline
 \endhead
 
-Test1 & (-1) & límite inferior & InvalidArgument\\
-Test2 & (0) & primera partida & Funcionamiento correcto\\
-Test3 & (0) & segunda partida & Funcionamiento correcto\\
-Test4 & (2) & límite superior & InvalidArgument\\
+Test1 & (-1) & gameIndex (límite inferior) & ArrayIndexOutOfBounds\\
+Test2 & (1) & seleccionar segunda partida & Funcionamiento correcto\\
+Test3 & (0) & seleccionar primera partida & Funcionamiento correcto\\
+Test4 & (2) & gameIndex (límite superior) & IndexOutOfBounds\\
 
 \hline
 \end{longtable}
@@ -130,7 +137,7 @@ Test4 & (2) & límite superior & InvalidArgument\\
 
 \subsection{GameManager::connectToGame}
 
-En este método tenemos dos parámetros, uno es el número de la partida seleccionada para jugar y el otro un evento, que para poder realizar la pruebas lo vamos a considerar ``null''. De esta forma, nos centramos en el primer parámetro que es el interesante. Como sólo tenemos un parámetro al igual que antes tenemos que sacar los valores límite. En esta ocasión en el servidor tenemos una única partida actual, por lo que el tope es ``0'' y el tope más uno es ``1''.
+En este método tenemos dos parámetros, uno es el número de la partida seleccionada para jugar y el otro un evento, que para poder realizar la pruebas tenemos que crearnos una clase privada que implemente \textit{GameEventListener}. De esta forma, nos centramos en el primer parámetro que es el interesante. Como sólo tenemos un parámetro al igual que antes tenemos que sacar los valores límite. En esta ocasión en el servidor tenemos una única partida actual, por lo que el tope es ``0'' y el tope más uno es ``1''.
 
 \begin{itemize}
 \item \textbf{\texttt{gameSelected}}
@@ -148,10 +155,17 @@ Esta es la tabla de casos de prueba y resultados esperados.
 \hline \hline
 \endhead
 
-Test1 & (-1) & límite inferior & InvalidArgument\\
-Test2 & (0) & seleccionar partida & Funcionamiento correcto\\
-Test3 & (1) & límite superior & InvalidArgument\\
+Test1 & (-1, new TestGameEventListener()) & gameIndex (límite inferior) & ArrayIndexOutOfBounds\\
+Test2 & (0, new TestGameEventListener()) & seleccionar partida & Funcionamiento correcto\\
+Test3 & (1, new TestGameEventListener()) & gameIndex (límite superior) & IndexOutOfBounds\\
+Test4 & (0, null) & gameListener & NullPointer\\
 
 \hline
 \end{longtable}
 }
+
+\subsection{GameManager::disconnectFromGame}
+
+Este método no tiene ningún parámetro de entrada, por lo que para comprobar que funciona correctamente. Tenemos que conectarnos previamante a una partida y luego ejecutar este método, si se lanza la excepción \textit{NullPointerExcepcition}, la ejecución fallará. En caso contrario el método funciona correctamente.
+
+
