@@ -1,0 +1,33 @@
+\section{Clase GameEngine}
+
+{\small
+\begin{tabular}{r|l}
+Nombre del \textit{tester} & Jorge Colao Adán \\
+& Daniel León Romero\\
+Fecha de asignación & 1 de marzo de 2011 \\
+Fecha de finalización & 7 de marzo de 2011 \\
+Código bajo prueba & \texttt{GameEngine}
+\end{tabular}
+}
+
+En este apartado se hablará sobre las pruebas realizadas con la herramienta \textit{JUnit} sobre esta clase.
+
+La estrategia a seguir para las pruebas de estos apartados será \textit{Each Choice}. La elección de los valores de los parámetos, se realizarán con valores límite para los atributos númericos y valores propensos a error para el resto.
+
+A la hora de realizar las pruebas en la clase GameEngine tenemos unos atributos privados a los que no podemos acceder. Para acceder a ellos se necesita la clase \textit{PrivateAccesor.java}, disponible en la página \url{http://onjava.com/pub/a/onjava/2003/11/12/reflection.html?page=2}. Por ejemplo, para acceder a la variable mCurrentAttack de la clase GameEngine, se tendría declarar un objeto de esta manera:
+\begin{verbatim}
+Object o = PrivateAccessor.getPrivateField(gameEngine, 
+	"mCurrentAttack");
+\end{verbatim}
+
+Para poder probar los ataques primero tenemos que conectarnos a la partida. La conexión se realiza con el método connectToGame que tiene como argumentos el número de la partida a la que hay que conectarse y un objeto de la clase \textit{GameEventListener}. Para crear este objeto tenemos que crear una clase privada que implemente \textit{GameEventListener}.
+
+\subsection{GameEngine::attackTerritory}
+
+
+
+\subsection{GameEngine::territoryUnderAttack}
+\subsection{GameEngine::acceptAttack}
+\subsection{GameEngine::requestNegotiation}
+\subsection{GameEngine::resolveAttack}
+\subsection{GameEngine::resolveNegotiation}
