@@ -101,9 +101,9 @@ Test18 & (0, 2, 20, 6, 0, 0)  & realizar ataque & Funcinamiento Correcto\\
 
 Este método tiene tres parámetros de entrada, por lo que se utilizará \textit{Each Choice}. Combinando las entradas para que falle una y sólo una, en cada caso de prueba y poder saber en donde está el error.
 
-Para elegir tanto los valores de prueba como los casos de pruebas de los casos interesantes se ha analizado el comportamiento de este método (mediante caja blanca). Después de analizar el método nos hemos dado cuenta de que sólo pude darse la excepción de NullPointerException.
+Para elegir tanto los valores de prueba como los casos de pruebas de los casos interesantes se ha analizado el comportamiento de este método (mediante caja blanca). Después de analizar el método nos hemos dado cuenta de que sólo pude darse la excepción de \textit{NullPointerException}.
 
-Esta comprobación es local, por ello si se lanza alguna excepción de las anteriores, no se informará de que te quieren atacar.
+Esta comprobación es local, por ello si se lanza la excepción anterior, no se informará de que te quieren atacar.
 
 Estos son los valores de los atributos para los casos de prueba:
 \begin{itemize}
@@ -138,6 +138,19 @@ Test4 & (T2\_Aduran, T0\_JorgeCA, null) & arsenal & NullPointer\\
 }
 
 \subsection{GameEngine::acceptAttack}
+
+Este método es una respuesta a al método anterior. No tiene ningún parámetro de entrada, por lo que para poder probarlo sólo podemos comprobar que antes de realizar este método la variable \textit{mCurrentAttack} no sea null y después de ejecutarlo que sea null.
+
+Analizando el comportamiento del método se puede observar que solamente puede dar un error, \textit{OutOfTurnException}.
+
+Esta comprobación es local, por ello si se lanza la excepción OutOfTurnException, no se aceptará el ataque.
+
+Se han realizado dos casos de prueba:
+\begin{itemize}
+\item Ejecutando primero el método territoryUnderAttack. El cuál da un valor la variable mCurrentAttack y el método aceptar ataque no da error.
+\item Sin ejecutar primero el método territoryUnderAttack. En este caso no se le da valor a la varible mCurrentAttack y como es null falla la ejecución de aceptar ataque.
+\end{itemize}
+
 \subsection{GameEngine::requestNegotiation}
 \subsection{GameEngine::resolveAttack}
 \subsection{GameEngine::resolveNegotiation}
