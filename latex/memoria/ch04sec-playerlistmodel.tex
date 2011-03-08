@@ -21,13 +21,13 @@ Al constructor se le pasa dos parametros, el primero es el player propio (selfPl
 \begin{itemize}
 \item \textbf{\texttt{selfPlayer}}
 \subitem Valor correcto: owner
-\subitem Valor nulo: null 
+\subitem Valor nulo: null
 \end{itemize}
 
 \begin{itemize}
 \item \textbf{\texttt{data}}
 \subitem Valor correcto: lista de jugadores
-\subitem Valor nulo: null 
+\subitem Valor nulo: null
 \end{itemize}
 
 La estrategia para obtener los casos de prueba elegida ha sido
@@ -42,7 +42,7 @@ La tabla completa de los casos de prueba y los resultados esperados son:
 \endhead
 
 Test1 & (owner, lista de jugadores) & selfPlayer y data & El objeto se crea correctamente\\
-Test2 & (null, null) & selfPlayer y data & InvalidArgument\\
+Test2 & (null, null) & selfPlayer y data & NullPointerException\\
 
 \hline
 \end{longtable}
@@ -249,12 +249,12 @@ La tabla completa de los casos de prueba y los resultados esperados son:
 Test1 & (0,0) & rowIndex y columnIndex & Devuelve el nombre del jugador\\
 Test2 & (0,1) & columnIndex & Devuelve turno del jugador\\
 Test3 & (0,2) & rowIndex & Devuelve si el jugador esta conectado\\
-Test4 & (3,0) & rowIndex  & Excepci\'on\\
-Test5 & (0,10) & columnIndex & Excepci\'on\\
+Test4 & (3,0) & rowIndex  & IndexOutOfBoundsException\\
+Test5 & (0,10) & columnIndex & IndexOutOfBoundsException\\
 
 \hline
 \end{longtable}
-} 
+}
 
 \subsection{PlayerListModel::getActivePlayer}
 
