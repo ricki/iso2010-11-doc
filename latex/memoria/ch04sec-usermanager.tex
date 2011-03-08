@@ -40,9 +40,9 @@ La estrategia para obtener los casos de prueba elegida ha sido
 interesantes (Test 4 a 7).
 El test 13 se ha elaborado para ver el comportamiento de registerUser cuando el servidor se ha desconectado.
 
-Para elegir tanto los valores de prueba como los casos de pruebas se ha analizado el comportamiento de este caso de uso (caja blanca). Tras este análisis se ha llegado a la conclusión de que hay en dos lugares en los que se pueden encontrar errores: Si al método registerUser se le da un parámetro erróneo (throw InvalidArgumentException), o si el nombre del usuario ya existe en el servidor (throw UserAlreadyExistsException). La primera comprobación es local, por ello si se lanza la excepcion InvalidArgumentException no se hará nada en el servidor y no se analizará si el usuario ya existe o no.
+Para elegir tanto los valores de prueba como los casos de pruebas se ha analizado el comportamiento de este caso de uso (caja blanca). Tras este análisis se ha llegado a la conclusión de que hay en dos lugares en los que se pueden encontrar errores: Si al método registerUser se le da un parámetro erróneo (throw EmptyStringException, MalformedEmailException, NullPointerException), o si el nombre del usuario ya existe en el servidor (throw UserAlreadyExistsException). La primera comprobación es local, por ello si se lanza la excepcion InvalidArgumentException no se hará nada en el servidor y no se analizará si el usuario ya existe o no.
 
-Además, si observamos las comprobaciones que se hacen en el cliente se ve que si login == null, independientemente del valor de los demás atributos se lanzará  InvalidArgumentException, por esa razón es independiente el valor de los demas atributos, lo que hace que muchos casos de prueba no sean necesarios de probar. Por otro lado, para probar qué pasa si el email es \textit{null} el resto de los parámetros deberán ser correctos, lo que añade algunos casos interesantes. Además de con \textit{null} lo comentado en este parrafo sucede con el resto de los parámetros.
+Además, si observamos las comprobaciones que se hacen en el cliente se ve que si login == null, independientemente del valor de los demás atributos se lanzará  NullPointerException, por esa razón es independiente el valor de los demas atributos, lo que hace que muchos casos de prueba no sean necesarios de probar. Por otro lado, para probar qué pasa si el email es \textit{null} el resto de los parámetros deberán ser correctos, lo que añade algunos casos interesantes. Además de con \textit{null} lo comentado en este parrafo sucede con el resto de los parámetros.
 
 
 Teniendo en cuenta las consideraciones anteriormente mencionadas, la tabla completa de los casos de prueba y los resultados esperados son:
@@ -53,20 +53,20 @@ Teniendo en cuenta las consideraciones anteriormente mencionadas, la tabla compl
 \hline \hline
 \endhead
 
-Test1 & (vacío, vacío, vacío)  & login & InvalidArgument\\
-Test2 & (null, null, null) & login & InvalidArgument\\
-Test3 & (JorgeCA, jorge, jorge.colao@gmail.com) & Usuario ya existente & UserAlreadyExistst\\
-Test4 & (JorgeCA, vacío, jorge.colao@gmail.com) & passwd   & InvalidArgument\\
-Test5 & (JorgeCA, null, jorge.colao@gmail.com) & passwd   & InvalidArgument\\
-Test6 & (JorgeCA, jorge, vacío) & email   & InvalidArgument\\
-Test7 & (JorgeCA, jorge, null) & email   & InvalidArgument\\
-Test8 & (JorgeCA, jorge, jorge) & email & InvalidArgument\\
-Test9 & (JorgeCA, jorge, jorge@) & email & InvalidArgument\\
-Test10 & (JorgeCA, jorge, jorge@gmail) & email & InvalidArgument\\
-Test11& (JorgeCA, jorge, jorge@gmail.) & email  & InvalidArgument\\
-Test12& (LuisAn, luis, luis@gmail.com) & email  &  El usuario \\
+T1 & (vacío, vacío, vacío)  & login & EmptyStringException\\
+T2 & (null, null, null) & login & NullPointerException\\
+T3 & (JorgeCA, jorge, jorge.colao@gmail.com) & Usuario ya existente & UserAlreadyExistst\\
+T4 & (JorgeCA, vacío, jorge.colao@gmail.com) & passwd   & EmptyStringException\\
+T5 & (JorgeCA, null, jorge.colao@gmail.com) & passwd   & NullPointerException\\
+T6 & (JorgeCA, jorge, vacío) & email   & EmptyStringException\\
+T7 & (JorgeCA, jorge, null) & email   & NullPointerException\\
+T8 & (JorgeCA, jorge, jorge) & email & MalformedEmailException\\
+T9 & (JorgeCA, jorge, jorge@) & email & MalformedEmailException\\
+T10 & (JorgeCA, jorge, jorge@gmail) & email & MalformedEmailException\\
+T11& (JorgeCA, jorge, jorge@gmail.) & email  & MalformedEmailException\\
+T12& (LuisAn, luis, luis@gmail.com) & email  &  El usuario \\
 & &  & queda registrado\\
-Test13& (Angel\&Duran, angel, a@d.com)  & Comportamiento registerUser & RemoteException \\
+T13& (Angel\&Duran, angel, a@d.com)  & Comportamiento registerUser & RemoteException \\
 \hline
 \end{longtable}
 }

@@ -9,7 +9,7 @@ Código bajo prueba & \texttt{MapModel}
 \end{tabular}
 }
 
-A diferencia de otras clases como los gestores, la clase \texttt{MapModel} únicamente contiene métodos para implementar el patrón MVC, no  implementa casi ninguna otra funcionalidad . Estos métodos son en su mayoría para acceder a los datos que el modelo proporciona y no filtran los atributos de entrada (en ocasiones no tienen) como pueden hacerlo otras clases de dominio. Por esta razón para comprobar esta clase se va a hacer usa de técnicas de caja blanca , intentando cubrir una máxima cobertura del código.  
+A diferencia de otras clases como los gestores, la clase \texttt{MapModel} únicamente contiene métodos para implementar el patrón MVC, no  implementa casi ninguna otra funcionalidad. Estos métodos son en su mayoría para acceder a los datos que el modelo proporciona y no filtran los atributos de entrada (en ocasiones no tienen) como pueden hacerlo otras clases de dominio. Por esta razón para comprobar esta clase se va a hacer usa de técnicas de caja blanca , intentando cubrir una máxima cobertura del código.  
 
 A continuación se van a ir mencionando los distintos test que se han realizado a esta clase para obtener un cobertura de un 99 \%, teniendo en cuenta que como precondición debe darse que exista un mapModel (recién creado) y dos jugadores (\texttt{Antonio} y \texttt{Ambrosio}) sin ningún territorio.  
 
@@ -58,10 +58,10 @@ Teniendo en cuenta las consideraciones anteriormente mencionadas, la tabla compl
  & \textbf{Valores de Prueba}  & \textbf{Resultado esperado} \\
 \hline \hline
 \endhead
-Test1 & (-1, 0)  & null\\
-Test2 & (\texttt{map.getRowCount()}, 0) &  null\\
-Test3 & (0, -1)  & null\\
-Test4 & (0, \texttt{map.getColumnCount()}) &  null\\
+Test1 & (-1, 0)  & ArrayIndexOutOfBoundsException\\
+Test2 & (\texttt{map.getRowCount()}, 0) &  IndexOutOfBoundsException\\
+Test3 & (0, -1)  & IndexOutOfBoundsException\\
+Test4 & (0, \texttt{map.getColumnCount()}) &  IndexOutOfBoundsException\\
 \hline
 \end{longtable}
 }
