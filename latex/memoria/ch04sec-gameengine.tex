@@ -5,7 +5,7 @@
 Nombre del \textit{tester} & Jorge Colao Adán \\
 & Daniel León Romero\\
 Fecha de asignación & 1 de marzo de 2011 \\
-Fecha de finalización & 7 de marzo de 2011 \\
+Fecha de finalización & 8 de marzo de 2011 \\
 Código bajo prueba & \texttt{GameEngine}
 \end{tabular}
 }
@@ -139,7 +139,7 @@ Test4 & (T2\_Aduran, T0\_JorgeCA, null) & arsenal & NullPointer\\
 
 \subsection{GameEngine::acceptAttack}
 
-Este método es una respuesta a al método anterior. No tiene ningún parámetro de entrada, por lo que para poder probarlo sólo podemos comprobar que antes de realizar este método la variable \textit{mCurrentAttack} no sea null y después de ejecutarlo que sea null.
+Este método es una respuesta al método anterior. No tiene ningún parámetro de entrada, por lo que para poder probarlo sólo podemos comprobar que antes de realizar este método la variable \textit{mCurrentAttack} no sea null y después de ejecutarlo que sea null.
 
 Analizando el comportamiento del método se puede observar que solamente puede dar un error, \textit{OutOfTurnException}.
 
@@ -196,4 +196,15 @@ Test6 & (200, 21) & soldiers & NotEnoughUnits\\
 (*)El caso de prueba; Test2 es igual que el primero, pero no se ha realizado el \textit{territoryUnderAttack}, por lo que la variable \textit{mCurrentAttack} es null.
 
 \subsection{GameEngine::resolveAttack}
+
+Este método es la respuesta al método \textit{acceptAttack}. No tiene ningún parámetro de entrada, por lo que para poder probarlo sólo podemos comprobar que antes de realizar este método la variable \textit{mCurrentAttack} no sea null y después de ejecutarlo que sea null.
+
+Esta comprobación es local, por ello si se lanza la excepción OutOfTurnException, no se aceptará el ataque.
+
+Se han realizado dos casos de prueba:
+\begin{itemize}
+\item Ejecutando primero el método territoryUnderAttack. Para poder ejecutar el método resolver ataque se necesita que primero la variable mCurrentAttack tenga un valor no nulo, por este motivo ejecutamos antes el método territoryUnderAttack y luego el método resolver ataque no da error.
+\item Sin ejecutar primero el método territoryUnderAttack. En este caso no se le da un valor a la varible mCurrentAttack y como es null falla la ejecución de resolver ataque.
+\end{itemize}
+
 \subsection{GameEngine::resolveNegotiation}
