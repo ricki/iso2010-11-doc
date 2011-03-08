@@ -98,6 +98,45 @@ Test18 & (0, 2, 20, 6, 0, 0)  & realizar ataque & Funcinamiento Correcto\\
 
 
 \subsection{GameEngine::territoryUnderAttack}
+
+Este método tiene tres parámetros de entrada, por lo que se utilizará \textit{Each Choice}. Combinando las entradas para que falle una y sólo una, en cada caso de prueba y poder saber en donde está el error.
+
+Para elegir tanto los valores de prueba como los casos de pruebas de los casos interesantes se ha analizado el comportamiento de este método (mediante caja blanca). Después de analizar el método nos hemos dado cuenta de que sólo pude darse la excepción de NullPointerException.
+
+Esta comprobación es local, por ello si se lanza alguna excepción de las anteriores, no se informará de que te quieren atacar.
+
+Estos son los valores de los atributos para los casos de prueba:
+\begin{itemize}
+\item \textbf{\texttt{src}}
+\subitem Territorio 2 de Aduran
+\subitem null
+
+\item \textbf{\texttt{dst}}
+\subitem Territorio 0 de JorgeCA
+\subitem null
+
+\item \textbf{\texttt{arsenal}}
+\subitem Arsenal(5, 4, 1, 0)
+\subitem null
+\end{itemize}
+
+La tabla siguiente recoge los resultados esperados, para los casos de prueba.
+
+{\footnotesize
+\begin{longtable}[c]{lccc}
+ & \textbf{Valores de Prueba} & \textbf{Objetivo del test} & \textbf{Resultado esperado} \\
+\hline \hline
+\endhead
+
+Test1 & (T2\_Aduran, T0\_JorgeCA, Arsenal) & informar del ataque & Funcinamiento Correcto\\
+Test2 & (null, T0\_JorgeCA, Arsenal) & src & NullPointer\\
+Test3 & (T2\_Aduran, null, Arsenal) & dst & NullPointer\\
+Test4 & (T2\_Aduran, T0\_JorgeCA, null) & arsenal & NullPointer\\
+
+\hline
+\end{longtable}
+}
+
 \subsection{GameEngine::acceptAttack}
 \subsection{GameEngine::requestNegotiation}
 \subsection{GameEngine::resolveAttack}
