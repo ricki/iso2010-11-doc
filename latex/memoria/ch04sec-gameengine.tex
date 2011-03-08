@@ -14,7 +14,7 @@ En este apartado se hablará sobre las pruebas realizadas con la herramienta \te
 
 La estrategia a seguir para las pruebas de estos apartados será \textit{Each Choice}. La elección de los valores de los parámetos, se realizarán con valores límite para los atributos númericos y valores propensos a error para el resto.
 
-A la hora de realizar las pruebas en la clase GameEngine tenemos unos atributos privados a los que no podemos acceder. Para acceder a ellos se necesita la clase \textit{PrivateAccesor.java}, disponible en la página \url{http://onjava.com/pub/a/onjava/2003/11/12/reflection.html?page=2}. Por ejemplo, para acceder a la variable mCurrentAttack de la clase GameEngine, se tendría declarar un objeto de esta manera:
+A la hora de realizar las pruebas en la clase GameEngine tenemos unos atributos privados a los que no podemos acceder. Para acceder a ellos se necesita la clase \textit{PrivateAccesor.java}, disponible en la página \url{http://onjava.com/pub/a/onjava/2003/11/12/reflection.html?page=2}. Por ejemplo, para acceder a la variable \textit{mCurrentAttack} de la clase GameEngine, se tendría declarar un objeto de esta manera:
 \begin{verbatim}
 Object o = PrivateAccessor.getPrivateField(gameEngine, 
 	"mCurrentAttack");
@@ -147,8 +147,8 @@ Esta comprobación es local, por ello si se lanza la excepción OutOfTurnExcepti
 
 Se han realizado dos casos de prueba:
 \begin{itemize}
-\item Ejecutando primero el método territoryUnderAttack. El cuál da un valor la variable mCurrentAttack y el método aceptar ataque no da error.
-\item Sin ejecutar primero el método territoryUnderAttack. En este caso no se le da valor a la varible mCurrentAttack y como es null falla la ejecución de aceptar ataque.
+\item Ejecutando primero el método \textit{territoryUnderAttack}. El cuál da un valor la variable \textit{mCurrentAttack} y el método aceptar ataque no da error.
+\item Sin ejecutar primero el método \textit{territoryUnderAttack}. En este caso no se le da valor a la varible \textit{mCurrentAttack} y como es null falla la ejecución de aceptar ataque.
 \end{itemize}
 
 \subsection{GameEngine::requestNegotiation}
@@ -193,18 +193,24 @@ Test6 & (200, 21) & soldiers & NotEnoughUnits\\
 \end{longtable}
 }
 
-(*)El caso de prueba; Test2 es igual que el primero, pero no se ha realizado el \textit{territoryUnderAttack}, por lo que la variable \textit{mCurrentAttack} es null.
+(*) El caso de prueba; Test2 es igual que el primero, pero no se ha realizado el \textit{territoryUnderAttack}, por lo que la variable \textit{mCurrentAttack} es null.
 
 \subsection{GameEngine::resolveAttack}
 
 Este método es la respuesta al método \textit{acceptAttack}. No tiene ningún parámetro de entrada, por lo que para poder probarlo sólo podemos comprobar que antes de realizar este método la variable \textit{mCurrentAttack} no sea null y después de ejecutarlo que sea null.
 
-Esta comprobación es local, por ello si se lanza la excepción OutOfTurnException, no se aceptará el ataque.
-
 Se han realizado dos casos de prueba:
 \begin{itemize}
-\item Ejecutando primero el método territoryUnderAttack. Para poder ejecutar el método resolver ataque se necesita que primero la variable mCurrentAttack tenga un valor no nulo, por este motivo ejecutamos antes el método territoryUnderAttack y luego el método resolver ataque no da error.
-\item Sin ejecutar primero el método territoryUnderAttack. En este caso no se le da un valor a la varible mCurrentAttack y como es null falla la ejecución de resolver ataque.
+\item Ejecutando primero el método \textit{territoryUnderAttack}. Para poder ejecutar el método resolver ataque se necesita que primero la variable \textit{mCurrentAttack} tenga un valor no nulo, por este motivo ejecutamos antes el método \textit{territoryUnderAttack} y luego el método resolver ataque no da error.
+\item Sin ejecutar primero el método \textit{territoryUnderAttack}. En este caso no se le da un valor a la varible \textit{mCurrentAttack} y como es null falla la ejecución de resolver ataque.
 \end{itemize}
 
 \subsection{GameEngine::resolveNegotiation}
+
+Este método es la respuesta al método \textit{requestNegotiation}. La variable \textit{mCurrentAttack} se comporta igual que el caso anterior.
+
+Se han realizado dos casos de prueba:
+\begin{itemize}
+\item Ejecutando primero el método \textit{territoryUnderAttack}. Para poder ejecutar el método resolver negociación se necesita que primero la variable \textit{mCurrentAttack} tenga un valor no nulo, por este motivo ejecutamos antes el método territoryUnderAttack y luego el método resolver negociación no da error.
+\item Sin ejecutar primero el método \textit{territoryUnderAttack}. En este caso no se le da un valor a la varible \textit{mCurrentAttack} y como es null falla la ejecución de resolver negociación.
+\end{itemize}
