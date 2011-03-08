@@ -1,0 +1,216 @@
+\section{Clase GameEngine}
+
+{\small
+\begin{tabular}{r|l}
+Nombre del \textit{tester} & Jorge Colao Adán \\
+& Daniel León Romero\\
+Fecha de asignación & 1 de marzo de 2011 \\
+Fecha de finalización & 8 de marzo de 2011 \\
+Código bajo prueba & \texttt{GameEngine}
+\end{tabular}
+}
+
+En este apartado se hablará sobre las pruebas realizadas con la herramienta \textit{JUnit} sobre esta clase.
+
+La estrategia a seguir para las pruebas de estos apartados será \textit{Each Choice}. La elección de los valores de los parámetos, se realizarán con valores límite para los atributos númericos y valores propensos a error para el resto.
+
+A la hora de realizar las pruebas en la clase GameEngine tenemos unos atributos privados a los que no podemos acceder. Para acceder a ellos se necesita la clase \textit{PrivateAccesor.java}, disponible en la página \url{http://onjava.com/pub/a/onjava/2003/11/12/reflection.html?page=2}. Por ejemplo, para acceder a la variable \textit{mCurrentAttack} de la clase GameEngine, se tendría declarar un objeto de esta manera:
+\begin{verbatim}
+Object o = PrivateAccessor.getPrivateField(gameEngine, 
+	"mCurrentAttack");
+\end{verbatim}
+
+Para poder probar los ataques primero tenemos que conectarnos a la partida. La conexión se realiza con el método connectToGame que tiene como argumentos el número de la partida a la que hay que conectarse y un objeto de la clase \textit{GameEventListener}. Para crear este objeto tenemos que crear una clase privada que implemente \textit{GameEventListener}.
+
+\subsection{GameEngine::attackTerritory}
+
+Este método tiene seis parámetros de entrada, por lo que tenemos que utilizar alguna estrategia de generación de casos de prueba. Hemos utilizado \textit{Each Choice}, combinando las entradas para que falle una y sólo una, en cada caso de prueba y poder saber en donde esta el error.
+
+Para elegir tanto los valores de prueba como los casos de pruebas de los casos interesantes se ha analizado el comportamiento de este método (mediante caja blanca). Después de analizar el método nos hemos dado cuenta de que pude haber los siguientes errores:
+\begin{itemize}
+\item PendingAttackException
+\item ArrayIndexOutOfBoundsException
+\item IndexOutOfBoundsException
+\item UnocupiedTerritoryException
+\item NegativeValueException
+\item NotEnoughUnitsException
+\item InvalidTerritoryException
+\end{itemize}
+Esta comprobación es local, por ello si se lanza alguna excepción de las anteriores, no se realizará el ataque.
+
+Estos son los valores de los atributos para los casos de prueba:
+\begin{itemize}
+\item \textbf{\texttt{src}}
+\subitem Número incorrecto: \texttt{"\--1"}, \texttt{"41"} y \texttt{"42"}
+\subitem Número correcto: \texttt{"0"}, territorio en el que se encuetra \textit{JorgeCA}
+
+\item \textbf{\texttt{dst}}
+\subitem Número incorrecto: \texttt{"\--1"}, \texttt{"0"}, \texttt{"41"} y \texttt{"42"}
+\subitem Número correcto: \texttt{"2"}, territorio en el que se encuetra \textit{Aduran}
+
+\item \textbf{\texttt{soldiers}}
+\subitem Número incorrecto: \texttt{"\--1"} y \texttt{"21"}
+\subitem Número correcto: \texttt{"0"} y \texttt{"20"}
+
+\item \textbf{\texttt{cannons}}
+\subitem Número incorrecto: \texttt{"\--1"} y \texttt{"7"}
+\subitem Número correcto: \texttt{"0"} y \texttt{"6"}
+
+\item \textbf{\texttt{missiles}}
+\subitem Número incorrecto: \texttt{"\--1"} y \texttt{"2"}
+\subitem Número correcto: \texttt{"0"} y \texttt{"1"}
+
+\item \textbf{\texttt{icbm}}
+\subitem Número incorrecto: \texttt{"\--1"} y \texttt{"7"}
+\subitem Número correcto: \texttt{"0"} y \texttt{"6"}
+\end{itemize}
+
+La tabla siguiente recoge los resultados esperados.
+
+{\footnotesize
+\begin{longtable}[c]{lccc}
+ & \textbf{Valores de Prueba} & \textbf{Objetivo del test} & \textbf{Resultado esperado} \\
+\hline \hline
+\endhead
+
+Test1 & (0, 2, 0, 0, 1, 6)  & realizar ataque & Funcinamiento Correcto\\
+Test2 & (0, 2, 0, 0, 1, 6)  & realizar 2 ataques & PendingAttack\\
+Test3 & (-1, 2, 0, 0, 1, 6)  & src & ArrayIndexOutOfBounds\\
+Test4 & (42, 2, 0, 0, 1, 6)  & src & IndexOutOfBounds\\
+Test5 & (41, 2, 0, 0, 1, 6)  & src & UnocupiedTerritory\\
+Test6 & (0, -1, 0, 0, 1, 6)  & dst  & ArrayIndexOutOfBounds\\
+Test7 & (0, 42, 0, 0, 1, 6)  & dst & IndexOutOfBounds\\
+Test8 & (0, 0, 0, 0, 1, 6)  & dst & InvalidTerritory\\
+Test9 & (0, 2, -1, 0, 1, 6)  & soldiers & NegativeValue\\
+Test10 & (0, 2, 21, 0, 1, 6)  & negTime & NotEnoughUnits\\
+Test11 & (0, 2, 20, -1, 1, 6)  & cannons & NegativeValue\\
+Test12 & (0, 2, 20, 7, 1, 6)  & cannons & NotEnoughUnits\\
+Test13 & (0, 2, 20, 6, -1, 6)  & missiles & NegativeValue\\
+Test14 & (0, 2, 20, 6, 2, 6)  & missiles & NotEnoughUnits\\
+Test15 & (0, 2, 20, 6, 1, -1)  & icbm & NegativeValue\\
+Test16 & (0, 2, 20, 6, 1, 7)  & icbm & NotEnoughUnits\\
+Test17 & (0, 2, 0, 0, 0, 0)  & realizar ataque & Funcinamiento Correcto\\
+Test18 & (0, 2, 20, 6, 0, 0)  & realizar ataque & Funcinamiento Correcto\\
+
+\hline
+\end{longtable}
+}
+
+
+\subsection{GameEngine::territoryUnderAttack}
+
+Este método tiene tres parámetros de entrada, por lo que se utilizará \textit{Each Choice}. Combinando las entradas para que falle una y sólo una, en cada caso de prueba y poder saber en donde está el error.
+
+Para elegir tanto los valores de prueba como los casos de pruebas de los casos interesantes se ha analizado el comportamiento de este método (mediante caja blanca). Después de analizar el método nos hemos dado cuenta de que sólo pude darse la excepción de \textit{NullPointerException}.
+
+Esta comprobación es local, por ello si se lanza la excepción anterior, no se informará de que te quieren atacar.
+
+Estos son los valores de los atributos para los casos de prueba:
+\begin{itemize}
+\item \textbf{\texttt{src}}
+\subitem Territorio 2 de Aduran
+\subitem null
+
+\item \textbf{\texttt{dst}}
+\subitem Territorio 0 de JorgeCA
+\subitem null
+
+\item \textbf{\texttt{arsenal}}
+\subitem Arsenal(5, 4, 1, 0)
+\subitem null
+\end{itemize}
+
+La tabla siguiente recoge los resultados esperados, para los casos de prueba.
+
+{\footnotesize
+\begin{longtable}[c]{lccc}
+ & \textbf{Valores de Prueba} & \textbf{Objetivo del test} & \textbf{Resultado esperado} \\
+\hline \hline
+\endhead
+
+Test1 & (T2\_Aduran, T0\_JorgeCA, Arsenal) & informar del ataque & Funcinamiento Correcto\\
+Test2 & (null, T0\_JorgeCA, Arsenal) & src & NullPointer\\
+Test3 & (T2\_Aduran, null, Arsenal) & dst & NullPointer\\
+Test4 & (T2\_Aduran, T0\_JorgeCA, null) & arsenal & NullPointer\\
+
+\hline
+\end{longtable}
+}
+
+\subsection{GameEngine::acceptAttack}
+
+Este método es una respuesta al método anterior. No tiene ningún parámetro de entrada, por lo que para poder probarlo sólo podemos comprobar que antes de realizar este método la variable \textit{mCurrentAttack} no sea null y después de ejecutarlo que sea null.
+
+Analizando el comportamiento del método se puede observar que solamente puede dar un error, \textit{OutOfTurnException}.
+
+Esta comprobación es local, por ello si se lanza la excepción OutOfTurnException, no se aceptará el ataque.
+
+Se han realizado dos casos de prueba:
+\begin{itemize}
+\item Ejecutando primero el método \textit{territoryUnderAttack}. El cuál da un valor la variable \textit{mCurrentAttack} y el método aceptar ataque no da error.
+\item Sin ejecutar primero el método \textit{territoryUnderAttack}. En este caso no se le da valor a la varible \textit{mCurrentAttack} y como es null falla la ejecución de aceptar ataque.
+\end{itemize}
+
+\subsection{GameEngine::requestNegotiation}
+
+Al igual que el método anterior, también es la respuesta al método \textit{territoryUnderAttack}. Como valores de entrada tiene dos parámetos:
+\begin{itemize}
+\item \textbf{\texttt{money}}
+\subitem Número incorrecto: \texttt{"\--1"} y \texttt{"201"}
+\subitem Número correcto: \texttt{"0"} y \texttt{"200"}
+
+\item \textbf{\texttt{sodiers}}
+\subitem Número incorrecto: \texttt{"\--1"} y \texttt{"21"}
+\subitem Número correcto: \texttt{"0"} y \texttt{"20"}
+\end{itemize}
+
+Los posibles excepciones que pueden lanzarse al ejecutar este método son:
+\begin{itemize}
+\item OutOfTurnException
+\item NegativeValueException
+\item NotEnoughUnitsException
+\item NotEnoughMoneyException
+\item NullPointerException
+\end{itemize}
+
+\newpage
+La tabla siguiente recoge los resultados esperados.
+
+{\footnotesize
+\begin{longtable}[c]{lccc}
+ & \textbf{Valores de Prueba} & \textbf{Objetivo del test} & \textbf{Resultado esperado} \\
+\hline \hline
+\endhead
+
+Test1 & (0, 20) & pedir negociación & Funcinamiento Correcto\\
+Test2 & (0, 20) & (*) & NullPointer\\
+Test3 & (-1, 0) & money & NegativeValue\\
+Test4 & (201, 0) & money & NotEnoughMoney\\
+Test5 & (200, -1) & soldiers & NegativeValue\\
+Test6 & (200, 21) & soldiers & NotEnoughUnits\\
+
+\hline
+\end{longtable}
+}
+
+(*) El caso de prueba; Test2 es igual que el primero, pero no se ha realizado el \textit{territoryUnderAttack}, por lo que la variable \textit{mCurrentAttack} es null.
+
+\subsection{GameEngine::resolveAttack}
+
+Este método es la respuesta al método \textit{acceptAttack}. No tiene ningún parámetro de entrada, por lo que para poder probarlo sólo podemos comprobar que antes de realizar este método la variable \textit{mCurrentAttack} no sea null y después de ejecutarlo que sea null.
+
+Se han realizado dos casos de prueba:
+\begin{itemize}
+\item Ejecutando primero el método \textit{territoryUnderAttack}. Para poder ejecutar el método resolver ataque se necesita que primero la variable \textit{mCurrentAttack} tenga un valor no nulo, por este motivo ejecutamos antes el método \textit{territoryUnderAttack} y luego el método resolver ataque no da error.
+\item Sin ejecutar primero el método \textit{territoryUnderAttack}. En este caso no se le da un valor a la varible \textit{mCurrentAttack} y como es null falla la ejecución de resolver ataque.
+\end{itemize}
+
+\subsection{GameEngine::resolveNegotiation}
+
+Este método es la respuesta al método \textit{requestNegotiation}. La variable \textit{mCurrentAttack} se comporta igual que el caso anterior.
+
+Se han realizado dos casos de prueba:
+\begin{itemize}
+\item Ejecutando primero el método \textit{territoryUnderAttack}. Para poder ejecutar el método resolver negociación se necesita que primero la variable \textit{mCurrentAttack} tenga un valor no nulo, por este motivo ejecutamos antes el método territoryUnderAttack y luego el método resolver negociación no da error.
+\item Sin ejecutar primero el método \textit{territoryUnderAttack}. En este caso no se le da un valor a la varible \textit{mCurrentAttack} y como es null falla la ejecución de resolver negociación.
+\end{itemize}
