@@ -1,0 +1,132 @@
+\documentclass[a4paper,11pt,oneside]{article}
+\usepackage[pdftex]{graphicx}
+\usepackage[utf8x]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{fancyhdr}
+\usepackage[Bjornstrup]{fncychap}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{eurosym}
+\usepackage{longtable}
+\usepackage[table]{xcolor}
+\usepackage{verbatim}
+% \usepackage[usenames,dvipsnames]{color}
+% \usepackage{colortbl}
+% \usepackage[caption=false]{subfig}
+% \usepackage{float}
+% \usepackage{pdflscape}
+
+\setlength{\headheight}{25pt}
+\setlength{\parskip}{6pt}
+
+% Margenes 1cm mas pequennos
+% \addtolength{\oddsidemargin}{-1cm}
+% \addtolength{\evensidemargin}{-1cm}
+% \addtolength{\textwidth}{2cm}
+% \addtolength{\voffset}{-1cm}
+% \addtolength{\textheight}{2cm}
+
+\lhead{\includegraphics[height=20pt]{logo-umbrella.png}}
+\chead{}
+\rhead{\nouppercase{\leftmark}}
+
+\hypersetup{
+colorlinks,
+citecolor=black,
+filecolor=black,
+linkcolor=black,
+urlcolor=black
+}
+
+ % La que hay que liar para que las cabeceras de los capitulos
+ % no tiren media pagina a la basura...
+
+\makeatletter
+\def\@makechapterhead#1{{
+\parindent \z@ \raggedright \normalfont
+\ifnum \c@secnumdepth >\m@ne
+	\if@mainmatter
+		\DOCH
+	\fi
+\fi
+\interlinepenalty\@M
+\if@mainmatter
+	\DOTI{#1}
+\else
+	\DOTIS{#1}
+\fi
+}}
+
+\def\@makeschapterhead#1{{
+\parindent \z@ \raggedright
+\normalfont
+\interlinepenalty\@M
+\DOTIS{#1}
+}}
+\makeatother
+
+\begin{document}
+
+\renewcommand\listtablename{Índice de tablas}
+\renewcommand\tablename{Tabla}
+
+\pagestyle{plain}
+
+%%%% Title Page %%%%%
+
+\pagenumbering{alph}
+
+\begin{titlepage}
+\begin{center}
+
+% Logo
+\includegraphics[width=0.6\textwidth]{logo-umbrella.png}\\[4cm]
+
+% Title
+{\huge \textbf{\#\#\#PROYECTO\#\#\#}}\\[0.5cm]
+{\huge {\#\#\#DOCUMENTO\#\#\#}}\\[4cm]
+
+% Authors
+\begin{minipage}{0.5\textwidth}
+\large
+\hspace{1cm}\textbf{\emph{Director de proyecto}}\\
+Ricardo Ruedas García\\
+\end{minipage}
+
+\begin{minipage}{0.5\textwidth}
+\large
+\hspace{1cm}\textbf{\emph{Equipo de \#\#\#}}\\
+Jorge Colao Adán\\
+Ángel Durán Izquierdo\\
+Antonio Gómez Poblete\\
+Daniel León Romero\\
+Antonio Martín Menor de Santos\\
+Laura Núñez Villa\\
+\end{minipage}\\[2cm]
+
+{\Large \today}
+\end{center}
+\end{titlepage}
+
+%%%% end Title Page %%%%%
+
+\clearpage
+\pagenumbering{arabic}
+\setcounter{page}{2}
+
+\tableofcontents
+
+\clearpage
+
+\pagestyle{fancy}
+
+\input{sec-usermanager.tex}
+\input{sec-gamemanager.tex}
+\input{sec-gamelistmodel.tex}
+\input{sec-playerlistmodel.tex}
+\input{sec-mapmodel.tex}
+\input{sec-territorydecorator.tex}
+\input{sec-gameengine.tex}
+\input{sec-unitinfo.tex}
+
+\end{document}
