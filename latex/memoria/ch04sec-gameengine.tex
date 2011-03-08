@@ -24,6 +24,77 @@ Para poder probar los ataques primero tenemos que conectarnos a la partida. La c
 
 \subsection{GameEngine::attackTerritory}
 
+Este método tiene seis parámetros de entrada, por lo que tenemos que utilizar alguna estrategia de generación de casos de prueba. Hemos utilizado \textit{Each Choice}, combinando las entradas para que falle una y sólo una, en cada caso de prueba y poder saber en donde esta el error.
+
+Para elegir tanto los valores de prueba como los casos de pruebas de los casos interesantes se ha analizado el comportamiento de este método (mediante caja blanca). Después de analizar el método nos hemos dado cuenta de que pude haber los siguientes errores:
+\begin{itemize}
+\item PendingAttackException
+\item ArrayIndexOutOfBoundsException
+\item IndexOutOfBoundsException
+\item UnocupiedTerritoryException
+\item NegativeValueException
+\item NotEnoughUnitsException
+\item InvalidTerritoryException
+\end{itemize}
+Esta comprobación es local, por ello si se lanza alguna excepción de las anteriores, no se realizará el ataque.
+
+Estos son los valores de los atributos para los casos de prueba:
+\begin{itemize}
+\item \textbf{\texttt{src}}
+\subitem Número incorrecto: \texttt{"\--1"}, \texttt{"41"} y \texttt{"42"}
+\subitem Número correcto: \texttt{"0"}, territorio en el que se encuetra \textit{JorgeCA}
+
+\item \textbf{\texttt{dst}}
+\subitem Número incorrecto: \texttt{"\--1"}, \texttt{"0"}, \texttt{"41"} y \texttt{"42"}
+\subitem Número correcto: \texttt{"2"}, territorio en el que se encuetra \textit{Aduran}
+
+\item \textbf{\texttt{soldiers}}
+\subitem Número incorrecto: \texttt{"\--1"} y \texttt{"21"}
+\subitem Número correcto: \texttt{"0"} y \texttt{"20"}
+
+\item \textbf{\texttt{cannons}}
+\subitem Número incorrecto: \texttt{"\--1"} y \texttt{"7"}
+\subitem Número correcto: \texttt{"0"} y \texttt{"6"}
+
+\item \textbf{\texttt{missiles}}
+\subitem Número incorrecto: \texttt{"\--1"} y \texttt{"2"}
+\subitem Número correcto: \texttt{"0"} y \texttt{"1"}
+
+\item \textbf{\texttt{icbm}}
+\subitem Número incorrecto: \texttt{"\--1"} y \texttt{"7"}
+\subitem Número correcto: \texttt{"0"} y \texttt{"6"}
+\end{itemize}
+
+La tabla siguiente recoge los resultados esperados.
+
+{\footnotesize
+\begin{longtable}[c]{lccc}
+ & \textbf{Valores de Prueba} & \textbf{Objetivo del test} & \textbf{Resultado esperado} \\
+\hline \hline
+\endhead
+
+Test1 & (0, 2, 0, 0, 1, 6)  & realizar ataque & Funcinamiento Correcto\\
+Test2 & (0, 2, 0, 0, 1, 6)  & realizar 2 ataques & PendingAttack\\
+Test3 & (-1, 2, 0, 0, 1, 6)  & src & ArrayIndexOutOfBounds\\
+Test4 & (42, 2, 0, 0, 1, 6)  & src & IndexOutOfBounds\\
+Test5 & (41, 2, 0, 0, 1, 6)  & src & UnocupiedTerritory\\
+Test6 & (0, -1, 0, 0, 1, 6)  & dst  & ArrayIndexOutOfBounds\\
+Test7 & (0, 42, 0, 0, 1, 6)  & dst & IndexOutOfBounds\\
+Test8 & (0, 0, 0, 0, 1, 6)  & dst & InvalidTerritory\\
+Test9 & (0, 2, -1, 0, 1, 6)  & soldiers & NegativeValue\\
+Test10 & (0, 2, 21, 0, 1, 6)  & negTime & NotEnoughUnits\\
+Test11 & (0, 2, 20, -1, 1, 6)  & cannons & NegativeValue\\
+Test12 & (0, 2, 20, 7, 1, 6)  & cannons & NotEnoughUnits\\
+Test13 & (0, 2, 20, 6, -1, 6)  & missiles & NegativeValue\\
+Test14 & (0, 2, 20, 6, 2, 6)  & missiles & NotEnoughUnits\\
+Test15 & (0, 2, 20, 6, 1, -1)  & icbm & NegativeValue\\
+Test16 & (0, 2, 20, 6, 1, 7)  & icbm & NotEnoughUnits\\
+Test17 & (0, 2, 0, 0, 0, 0)  & realizar ataque & Funcinamiento Correcto\\
+Test18 & (0, 2, 20, 6, 0, 0)  & realizar ataque & Funcinamiento Correcto\\
+
+\hline
+\end{longtable}
+}
 
 
 \subsection{GameEngine::territoryUnderAttack}
