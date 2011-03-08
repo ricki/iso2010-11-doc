@@ -152,5 +152,48 @@ Se han realizado dos casos de prueba:
 \end{itemize}
 
 \subsection{GameEngine::requestNegotiation}
+
+Al igual que el método anterior, también es la respuesta al método \textit{territoryUnderAttack}. Como valores de entrada tiene dos parámetos:
+\begin{itemize}
+\item \textbf{\texttt{money}}
+\subitem Número incorrecto: \texttt{"\--1"} y \texttt{"201"}
+\subitem Número correcto: \texttt{"0"} y \texttt{"200"}
+
+\item \textbf{\texttt{sodiers}}
+\subitem Número incorrecto: \texttt{"\--1"} y \texttt{"21"}
+\subitem Número correcto: \texttt{"0"} y \texttt{"20"}
+\end{itemize}
+
+Los posibles excepciones que pueden lanzarse al ejecutar este método son:
+\begin{itemize}
+\item OutOfTurnException
+\item NegativeValueException
+\item NotEnoughUnitsException
+\item NotEnoughMoneyException
+\item NullPointerException
+\end{itemize}
+
+\newpage
+La tabla siguiente recoge los resultados esperados.
+
+{\footnotesize
+\begin{longtable}[c]{lccc}
+ & \textbf{Valores de Prueba} & \textbf{Objetivo del test} & \textbf{Resultado esperado} \\
+\hline \hline
+\endhead
+
+Test1 & (0, 20) & pedir negociación & Funcinamiento Correcto\\
+Test2 & (0, 20) & (*) & NullPointer\\
+Test3 & (-1, 0) & money & NegativeValue\\
+Test4 & (201, 0) & money & NotEnoughMoney\\
+Test5 & (200, -1) & soldiers & NegativeValue\\
+Test6 & (200, 21) & soldiers & NotEnoughUnits\\
+
+\hline
+\end{longtable}
+}
+
+(*)El caso de prueba; Test2 es igual que el primero, pero no se ha realizado el \textit{territoryUnderAttack}, por lo que la variable \textit{mCurrentAttack} es null.
+
 \subsection{GameEngine::resolveAttack}
 \subsection{GameEngine::resolveNegotiation}
