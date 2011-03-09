@@ -256,7 +256,7 @@ Test12 & (12, 1, 0, 0, 0, 0)  & Comprar con ataque en curso & PendingAttackExcep
 \subsubsection{Observaciones}
 \begin{itemize}
  \item \textbf{Test 2} El territorio no pertenece al usuario.
-\item \textbf{Test 3} El jugador no tiene dinero suficiente para comprar esa cantidad de soldados.
+\item \textbf{Test 3} Antes de comprar, establecemos el dinero del jugador a 0 gallifantes.
 \item \textbf{Test 11} El territorio no está asignado a ningún jugador.
 \item \textbf{Test 12} Antes de ejecutar buyUnits, lanzamos un ataque.
 \end{itemize}
@@ -362,6 +362,46 @@ Test6 & (2)  & Enviar espia con ataque en curso  & PendingAttackException\\
  \item \textbf{Test 2} Antes de ejecutar deploySpy, nos aseguramos de que el jugador tenga dinero suficiente.
 \item \textbf{Test 5} Antes de ejecutar deploySpy, establecemos la cantidad de dinero del jugador a 0.
 \item \textbf{Test 6} Antes de ejecutar deploySpy, lanzamos un ataque.
+\end{itemize}
+
+}
+\subsection{GameEngine::buyTerritory}
+
+El método \textbf{buyTerritory(int index)} tiene solamente un parámetro de entrada, y para comprobar su funcionamiento nos hemos inclinado por un enfoque de caja blanca. Hemos optado por un criterio de 
+cobertura \textit{modificada de condición decisión } usando valores interesantes.
+Las excepciones que este método lanza son las siguientes:
+\begin{itemize}
+\item \textbf{PendingAttackException} Cuando se intenta comprar un territorio y hay un ataque en curso.
+\item \textbf{NotEnoughMoneyException} Cuando el jugador no tiene dinero para comprar el territorio.
+\item \textbf{InvalidTerritoryException} Cuando el territorio pertenece a algún jugador o no es adyacente a ninguno de los pertenecientes al jugador que solicita la compra.
+\item \textbf{ArrayIndexOutOfBoundsException} Si el índice del país es negativo.
+\item \textbf{IndexOutOfBoundsException} Si el índice del país es mayor de 41.
+\end{itemize}
+
+A continuación se muestra una tabla que muestra los diferentes valores para los casos de prueba y el resultado esperado para cada uno de ellos.
+
+{\footnotesize
+\begin{longtable}[c]{lccc}
+ & \textbf{Valores de Prueba} & \textbf{Objetivo del test} & \textbf{Resultado esperado}  \\
+\hline \hline
+\endhead
+
+Test1 & (6)& Comprar territorio & Funcionamiento correcto \\
+Test2 & (22) & index & InvalidTerritoryException \\
+Test3 & (2)  & index & OcupiedTerritoryException \\
+Test4 & (6)  & Comprar sin el dinero suficiente & NotEnoughMoneyException \\
+Test5 & (6) & Comprar con ataque en curso  & PendingAttackException \\
+Test6 & (-1)  & index & ArrayIndexOutOfBoundsException \\
+Test7 & (42)  & index & IndexOutOfBoundsException \\
+
+\hline
+\end{longtable}
+\subsubsection{Observaciones}
+\begin{itemize}
+ \item El jugador es propietario de los territorios 0,1 y 7. El territorio 2 también tiene propietario.
+\item El territorio 22 no es adyacente a ninguno perteneciente al jugador.
+\item \textbf{Test 4} Antes de ejecutar buyTerritory, establecemos el dinero del jugador a 0.
+\item \textbf{Test 5} Antes de ejecutar buyTerritory, lanzamos un ataque.
 \end{itemize}
 
 }
