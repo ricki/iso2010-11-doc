@@ -1,0 +1,21 @@
+\section{Notificación de Ataque de Territorio}
+
+Guión de pruebas exploratorias para el método notificación de ataque a un territorio:
+
+\begin{enumerate}
+\item Ser atacado por un oponente y aceptar ataque.
+	\begin{itemize}
+	\item Acciones previas: El servidor debe estar funcionando, haberse logeado con éxito, haberse conectado una partida y estar en el turno del oponente que va a atacar.
+	\item Acciones de prueba: Se muestra un diálogo que informa de que un oponente te quiere atacar, en esta ventana se pulsa el botón de ''Aceptar Ataque''.
+	\item Resultados esperados: Se cierra la ventana y se realiza el ataque.
+	\end{itemize}
+	
+\item  Ser atacado por un oponente y rechazar ataque
+	\begin{itemize}
+	\item Acciones previas: El servidor debe estar funcionando, haberse logeado con éxito, haberse conectado una partida y estar en el turno del oponente que va a atacar.
+	\item Acciones de prueba: Se muestra un diálogo que informa de que un oponente te quiere atacar, en esta ventana se pulsa el botón de ''Rechazar Ataque''. Se activa la parte de la ventana correspondiente a la negociación; se seleccionan 50 gallifantes y 5 soldados y se pulsa sobre el botón ''Negociar''.
+	\item Resultados esperados: Se cierra la ventana y se envia la petición de negociación al oponente.
+	\end{itemize}
+\end{enumerate}
+
+Los fallos comprobados en las pruebas de desarrollo con \textit{JUnit} no se darán ya en la interfaz no se permite poner un número menor que cero y mayor del disponible en ese territorio.
