@@ -1,0 +1,218 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=black]{hyperref}
+% PAQUETES PARA AJUSTE DE MARGENES, ESPACIOS
+\usepackage[top=3cm,bottom=3cm,inner=3cm,outer=3cm]{geometry}
+\usepackage{float}
+\usepackage{verbatim}   % useful for program listings
+\usepackage{hyperref}
+
+\newcommand{\LineaCabecera}{%
+\makebox[0pt][l]{\rule[-1.5ex]{\textwidth}{0.4pt}}}
+
+
+
+%% Encabezado
+% cabecera y pie
+\usepackage{fancyhdr} % activamos el paquete
+\pagestyle{fancy} % seleccionamos un estilo
+
+\lhead{\small \leftmark} % texto izquierda de la cabecera
+%\chead{TEXTO} % texto centro de la cabecera
+\rhead{\textbf{}} %texto de cabecera arriba a la derecha
+\lfoot{\emph{La conquista del mundo}} % texto izquierda del pie
+\cfoot{\thepage} % imagen centro del pie
+\rfoot{\emph{Manual}} % texto derecha del pie
+\renewcommand{\headrulewidth}{0.4pt} % grosor de la lï¿½nea de la cabecera
+\renewcommand{\footrulewidth}{0.4pt} % grosor de la lï¿½nea del pie
+
+%% Interlineado
+\renewcommand{\baselinestretch}{1.2}
+
+\begin{document}
+%% Primer nivel de listas
+{\renewcommand{\labelitemii}{$\triangleright$}
+
+%% PORTADA
+\begin{titlepage}
+    \begin{center}
+    \includegraphics[width=400px,height=180px]{logoumbrella.png}\\[0.8cm]
+    {\Large Umbrella Corporation presenta...}\\[1.5cm]
+    {\huge \bf La conquista del mundo}\\[0.8cm]    
+    {\Large Manual de usuario}\\[1cm]    
+    \end{center}   
+\end{titlepage}
+
+\newpage
+
+%% Indice
+\tableofcontents
+\newpage
+%% Lista de figuras
+\listoffigures
+\newpage
+
+%% ARTICULO
+
+\section{Cómo iniciar el cliente.}
+   Para iniciar el programa cliente del juego tenemos dos formas.
+   \begin{itemize}
+\item Una forma es ejecutando desde consola el comando java -jar worldconq.jar
+\item Otra forma de arrancar el cliente es picando dos veces con el ratón sobre el fichero worldconq.jar
+\end{itemize}
+
+\section{En ejecución.}
+Una vez que se ha arrancado el programa cliente del juego, podemos observar la ventana que muestra la figura 1.
+\begin{figure}[H]
+    \vspace{0.5cm}
+    \centering
+    \includegraphics{figuno.png}
+    \caption{\bfseries \footnotesize \emph{Ventana inicial decliente (ventana de login).}}
+\label{FIG1}
+\end{figure}
+
+En esta ventana se ha de introducir el nombre de usuario y la contraseña, siempre y cuando nos hayamos registrado previamente en el sistema.
+
+\subsection*{Registro.}
+En caso de que todavía no nos hayamos registrado, hemos de pulsar en el botón Registrarse y nos aparecerá la ventana mostrada en la figura 2.
+\begin{figure}[H]
+    \vspace{0.5cm}
+    \centering
+    \includegraphics{figdos.png}
+    \caption{\bfseries \footnotesize \emph{Ventana de registro.}}
+\label{FIG2}
+\end{figure}
+
+En la ventana de registro se ha de introducir el nombre de usuario, el correo electrónico y la contraseña. Una vez hayamos rellenado todos los campos se ha de pulsar sobre el botón Aceptar para que el registro se haga efectivo.
+
+\subsection*{Iniciar sesión.}
+Tras registrarnos se vuelve a mostrar la ventana de la figura 1, en la que nuestro usuario está preseleccionado, para que iniciemos sesión en el sistema.
+Una vez se ha iniciado sesión en el sistema, aparecerá la ventana mostrada en la figura 3.
+
+\begin{figure}[H]
+    \vspace{0.5cm}
+    \centering
+    \includegraphics[width=1\textwidth]{figcuatro.png}
+    \caption{\bfseries \footnotesize \emph{Ventana con información de las partidas.}}
+\label{FIG3}
+\end{figure}
+
+En esta ventana se muestra una barra de herramientas con los siguientes botones: Actualizar lista, Crear partida, Unirse a la partida, Conectarse a partida y Cerrar sesión. También se puede ver una lista de partidas en las que el usuario está jugando y otra lista con las partidas que hay disponibles y en las que el usuario no está jugando.
+
+\subsubsection*{Funcionalidades de los botones:}
+
+\begin{itemize}
+\item Actualizar lista: botón para actualizar las listas de partidas (actuales y disponibles).
+\item Crear partida: botón para crear una nueva partida.
+\item Unirse a la partida: botón para unirse a una partida de las que hay disponibles.
+\item Conectarse a partida: botón para conectarse a una partida, a la que ya se había unido anteriormente el jugador.
+\item Cerrar sesión: botón para cerrar sesión y salir del sistema.
+\end{itemize}
+
+En el caso de que no exista ninguna partida creada (en juego o disponible), el usuario podrá crearla pulsando sobre el botón Crear partida. Tras pulsar este botón se puede ver la ventana mostrada por la figura 4.
+
+\begin{figure}[H]
+    \vspace{0.5cm}
+    \centering
+    \includegraphics{figcinco.png}
+    \caption{\bfseries \footnotesize \emph{Ventana para crear una partida.}}
+\label{FIG4}
+\end{figure}
+
+En la ventana de la figura 4 se ha de introducir el nombre de la partida, una descripción de la misma, la fecha del juego y los tiempos que duran un turno, el tiempo para defenderse y el tiempo de negociación. Para introducir la fecha y hora del juego se ha de pulsar el botón Añadir fecha de juego. Tras crear la partida, regresamos a la ventana de la figura 3, en la que se nos muestra ahora la partida creada dentro de la lista de partidas a las que el usuario está unido para jugar.\par Si existiesen partidas disponibles, el usuario se podría unir a una sólo pulsando sobre el botón Unirse a la partida y, tras esto, la partida pasaría a aparecer dentro de la lista de partidas a las que el usuario se ha unido. Ahora se debe seleccionar una partida de las que existen en la lista de partidas actuales, a las que el usuario está unido, y, pulsando sobre el botón Conectarse a partida, se procedería a jugar en la misma.\par Cuando se procede a jugar una partida, aparece la ventana que se muestra en la figura 5.
+
+\begin{figure}[H]
+    \vspace{0.5cm}
+    \centering
+    \includegraphics[width=1\textwidth]{figonce.png}
+    \caption{\bfseries \footnotesize \emph{Ventana de partida con el panel de juego.}}
+\label{FIG5}
+\end{figure}
+
+En esta ventana se puede ver, en primer lugar, una barra de herramientas con los botones: Atacar, Mover tropas, Enviar espía, Comprar refuerzos, Comprar territorio, Desconectarse y Pasar turno. En segundo lugar, se observa el panel principal con el mapa del juego. En tercer lugar encontramos, a la derecha de la ventana, una serie de paneles de que muestran información sobre el usuario y sus gallifantes, los usuarios unidos a esa partida (en línea o desconectados), el usuario que tiene el turno y más abajo información sobre el territorio seleccionado que, en caso de ser propiedad del jugador, mostrará las unidades que tiene desplegadas y el valor del territorio.\par Debajo del panel de juego se muestra un panel que albergará toda la información referente a las acciones que realicemos dentro de la partida.
+
+\subsubsection*{Funcionalidades de los botones:}
+\begin{itemize}
+    \item Atacar. botón para realizar un ataque.
+	\item Mover tropas. botón para realizar movimientos de tropas entre territorios de un mismo jugador.
+	\item Enviar espía. botón para situar un espía dentro de un territorio enemigo y obtener información sobre el mismo.
+	\item Comprar refuerzos. botón para comprar más unidades, tanto de soldados como de armas de cualquier tipo.
+	\item Comprar territorio. botón para comprar un territorio libre.
+	\item Desconectarse. botón para desconectarse y abandonar la partida en curso.
+	\item Pasar turno. botón para renunciar al turno y cederlo a otro jugador.
+\end{itemize}
+
+\subsection{Funcionalidades del juego.}
+
+\subsubsection*{Atacar:} 
+Para atacar desde un territorio a otro se ha de seleccionar primero un territorio que sea propiedad del propio jugador, se habilitará el botón Atacar y, tras pulsarlo, aparecerá la ventana mostrada en la figura 6. En esta ventana se ha de indicar el territorio y las unidades con las que se pretende atacar. Pulsando sobre el botón Aceptar se ejecutaría el ataque.
+
+\begin{figure}[H]
+    \vspace{0.5cm}
+    \centering
+    \includegraphics{figdoce.png}
+    \caption{\bfseries \footnotesize \emph{Ventana de configuración del ataque.}}
+    \label{FIG6}
+\end{figure}
+
+\subsubsection*{Mover tropas:}
+ Se ha de seleccionar un territorio que sea propiedad del usuario, se habilita el botón Mover tropas, se pulsa sobre este botón y aparece la ventana de la figura 7. Seleccionamos el territorio al que mover las tropas y el número de unidades de cada tipo de arma o soldados que deseemos mover. A continuación pulsamos el botón aceptar para hacer efectivo el movimiento de tropas.
+
+\begin{figure}[H]
+    \vspace{0.5cm}
+    \centering
+    \includegraphics{figdieciseis.png}
+    \caption{\bfseries \footnotesize \emph{Ventana para mover tropas.}}
+    \label{FIG7}
+\end{figure}
+
+\subsubsection*{Enviar espía:}
+ Para enviar un espía hay que seleccionar un territorio que sea propiedad de un adversario para que el botón Enviar espía aparezca habilitado. Una vez que este botón se ha habilitado habrá que pulsarlo y, si se dispone del dinero suficiente, se enviará automáticamente un espía al territorio seleccionado para poder ver información sobre el mismo.
+
+\subsubsection*{Comprar refuerzos:}
+ Para comprar refuerzos seleccionamos un territorio de nuestra propiedad, se nos habilita el botón correspondiente, lo pulsamos y nos aparece la ventana de la figura 8.
+ 
+ \begin{figure}[H]
+    \vspace{0.5cm}
+    \centering
+    \includegraphics{figdieciocho.png}
+    \caption{\bfseries \footnotesize \emph{Ventana para comprar refuerzos.}}
+    \label{FIG8}
+ \end{figure}
+
+Seleccionamos las unidades que queremos comprar y pulsamos el botón Aceptar para efectuar la compra.
+
+\subsubsection*{Comprar territorio:}
+ Si pulsamos sobre un territorio que no tiene dueño se nos habilitará el botón Comprar territorio y pulsando sobre él podremos comprar automáticamente ese territorio, siempre y cuando se disponga del suficiente dinero.\par
+Pulsando sobre el botón Desconectarse abandonamos la partida y regresamos a la ventana de la figura 3, en la que se nos muestra las listas de partidas (actuales y disponibles).\par
+Finamente, pulsando sobre el botón Cerrar sesión nos desconectamos del sistema, regresando a la primera ventana mostrada en la figura 1. Para cerrar el cliente del juego solo tenemos que pulsar sobre la x de la esquina superior derecha de la ventana.
+
+\subsection{Principales eventos.}
+Uno de los eventos más importantes que se desatan como consecuencia de un ataque es el aviso de ese mismo ataque al jugador atacado y el posterior mensaje de negociación, si lo hubiese, por parte del jugador atacado al jugador atacante.
+En la figura 9 se muestra la ventana de dialogo que se le muestra a un jugador cuando uno de sus territorios está siendo atacado por otro jugador.
+
+\begin{figure}[H]
+    \vspace{0.5cm}
+    \centering
+    \includegraphics{figtrece.png}
+    \caption{\bfseries \footnotesize \emph{Ventana de aviso de un ataque.}}
+    \label{FIG9}
+ \end{figure}
+ 
+ En esta ventana se le brinda, al jugador atacado, la posibilidad de aceptar el ataque o de rechazarlo y negociar con el jugador atacanteofreciéndole una cantidad de soldados y gallifantes.\par
+ En el caso de que el jugador atacado haya rechazado el ataque y decida negociar, se mostrará la ventana de la figura 10 al jugador atacante.
+ 
+ \begin{figure}[H]
+    \vspace{0.5cm}
+    \centering
+    \includegraphics{figcatorce.png}
+    \caption{\bfseries \footnotesize \emph{Ventana de aviso de una negocviación.}}
+    \label{FIG10}
+ \end{figure}
+ 
+ El jugador atacante que recibe la petición de negociación puede aceptarla o rechazarla.
+ 
+\end{document}
