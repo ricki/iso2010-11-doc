@@ -1,0 +1,20 @@
+\section{Petición de Negociación}
+
+Guión de pruebas exploratorias para el método petición de negociación:
+
+\begin{enumerate}
+\item Recibir petición de negociación y elegir negociar.
+	\begin{itemize}
+	\item Acciones previas: El servidor debe estar funcionando, haberse logeado con éxito, haberse conectado a una partida y haber realizado un ataque anteriormente.
+	\item Acciones de prueba: Como respuesta al ataque realizado anteriormente el oponente ha elegido negociar, se muestra la ventana de solicitud de negociación con el mensaje ''¿Acepta la negociación?'' y pulsamos la opción ''Sí''.
+	\item Resultados esperados: Se cierra la ventana y se resuelve la negociación.
+	\end{itemize}
+	
+\item Recibir petición de negociación y elegir no negociar.
+	\begin{itemize}
+	\item Acciones previas: El servidor debe estar funcionando, haberse logeado con éxito, haberse conectado a una partida y haber realizado un ataque anteriormente.
+	\item Acciones de prueba: En esta prueba se pulsa ''No'' en el mensaje de ''¿Acepta la negociación?''.
+	\item Resultados esperados: Se cierra la ventana y se resuelve el ataque.
+	\end{itemize}
+\end{enumerate}
+
