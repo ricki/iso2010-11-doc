@@ -1,0 +1,23 @@
+\subsection{Otras acciones}
+
+Además de atacar otros territorios, el jugador puede realizar las siguientes
+acciones:
+
+\begin{itemize}
+\item Comprar unidades
+\item Mover unidades
+\item Comprar otros territorios
+\item Desplegar espías
+\end{itemize}
+
+Todas estas acciones siguen un patrón común. En primer lugar se muestra al
+usuario un diálogo para que introduzca los datos necesarios. En algunos casos,
+este diálogo no es más que una mera confirmación de la acción. En otros, se
+pedirán más datos como cantidades de unidades o territorios objetivo.
+
+A continuación se realizará la petición al motor del juego. Éste comprobará la
+validez de la acción, y si se supera la comprobación, se realizarán las
+modificaciones correspondientes sobre los objetos de dominio.
+
+Finalmente se realiza la llamada a \texttt{updateGame} en el servidor, que
+envía los cambios efectuados y los propaga al resto de clientes.

@@ -1,0 +1,30 @@
+\section{Comprar Territorio}
+
+Guión de pruebas exploratorias para el método buyTerritory. Entre paréntesis se muestran los valores de ciertos parámetros utilizados con el servidor de prueba (en partidas
+reales estos parámetros son variables):
+
+\begin{enumerate}
+\item Pulsamos el botón ``Comprar territorio'', habiendo seleccionado un país que no tiene dueño y es adyacente a uno nuestro.
+	\begin{itemize}
+	\item Acciones previas: El servidor debe estar funcionando, habernos logeado con éxito (como usuario JorgeCA)  y conectado a una partida.
+	\item Acciones de prueba: Una vez en la  partida, seleccionamos un país que no nos pertenece (España). Pulsamos el botón ``Comprar Territorio''. 
+	\item Resultados esperados: Se cambia la interfaz mostrando la ventana de juego y los datos del territorio y dinero actualizados.
+	\end{itemize}
+\item Pulsamos el botón ``Comprar territorio'', habiendo seleccionado un país que no tiene dueño pero no es adyacente a alguno nuestro.
+	\begin{itemize}
+	\item Acciones previas: El servidor debe estar funcionando, habernos logeado con éxito (como usuario JorgeCA) y haber una partida disponible.
+	\item Acciones de prueba: Una vez en la  partida, seleccionamos un país que no pertenece a nadie y no es adyacente a ninguno nuestro 
+	(Sudáfrica). Pulsamos ``Comprar territorio''.
+	\item Resultados esperados: Aparece un diálogo informándonos de que el territorio es inválido.
+	\end{itemize}
+\item Pulsamos el botón ``Comprar territorio'', habiendo seleccionado un país que no tiene dueño y es adyacente a uno nuestro, pero no tenemos dinero.
+	\begin{itemize}
+	\item Acciones previas: El servidor debe estar funcionando, habernos logeado con éxito (como usuario JorgeCA) y conectado a una partida. Debemos habernos gastado
+	el suficiente dinero como para no poder comprar el territorio.
+	\item Acciones de prueba: Seleccionamos un país que no pertenece a nadie, es adyacente a alguno nuestro y cuyo precio sea mayor que el dinero que poseemos.
+ Pulsamos ``Comprar territorio''.
+	\item Resultados esperados: Aparece un diálogo informándonos de que no tenemos dinero suficiente para realizar la acción.
+	\end{itemize}
+\item No es posible pulsar el botón ``Comprar territorio'' en ninguna otra situación, puesto que la interfaz no lo permite.
+\end{enumerate}
+

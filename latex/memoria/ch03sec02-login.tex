@@ -1,0 +1,79 @@
+\section{Caso de Uso: Login}
+
+\subsection{Análisis y diseño}
+
+\subsection{Implementación}
+
+\subsection{Informe de pruebas}
+
+{\small
+\begin{tabular}{r|l}
+Nombre del \textit{tester} & Angel Durán Izquierdo \\
+Fecha de asignación & 27 de enero de 2011 \\
+Fecha de finalización & 2 de febrero de 2011 \\
+Código bajo prueba & \texttt{UserManager::createSession}
+\end{tabular}
+}
+
+\subsubsection{Pruebas de desarrollo}
+
+A continuación se detallarán las pruebas de desarrollo (Pruebas unitarias con \textit{JUnit}).
+
+Lista de los valores de prueba para cada atributo.
+El criterio elegido para todos los valores de prueba (test data) ha sido: Añadir valores interesantes propensos a error (Conjetura de error).
+
+\begin{itemize}
+\item \textbf{\texttt{login}}
+\subitem \textit{null}
+\subitem Cadena vacía
+\subitem Usuario existente: \texttt{Angel}
+\subitem Usuario no existente: \texttt{ADuran}
+\subitem Nombre de usuario registrado pero introducido con mayusculas: \texttt{ADuran}
+\subitem Usuario existente con carácteres especiales: \texttt {Angel\&Duran}
+\subitem Usuario existente con numeros: \texttt{1111, -1}
+
+\item \textbf{\texttt{passwd}}
+\subitem \textit{null}
+\subitem Cadena vacía
+\subitem Cadenas no vacías: \texttt{angel}
+\subitem Cadenas con carácteres especiales: \texttt{22\&22}
+\subitem Cadenas con numeros: \texttt{2222}
+
+\end{itemize}
+
+La estrategia para obtener los casos de prueba elegida ha sido
+\textit{each choice} eligiendo los casos mas interesantes.
+
+Para elegir tanto los valores de prueba como los casos de pruebas se ha analizado el comportamiento de este caso de uso (caja blanca). Tras este análisis se ha llegado a la conclusión de que hay en dos lugares en los que se pueden encontrar errores: Si al método createSession se le da un parámetro erróneo (throw InvalidArgumentException), o si el nombre del usuario no se ha registrado en el servidor (throw UserAlreadyExistsException).
+
+Por otro lado se comprueba si al crear una sesion cuando ya se existía una, la anterior se cierra correctamente.
+
+
+Teniendo en cuenta las consideraciones anteriormente mencionadas, la tabla completa de los casos de prueba y los resultados esperados son:
+
+{\footnotesize
+\begin{longtable}[c]{lccc}
+ & \textbf{Valores de Prueba} & \textbf{Objetivo del test} & \textbf{Resultado esperado} \\
+\hline \hline
+\endhead
+
+Test1 & (vacío, vacío)  & login-pass & InvalidArgument\\
+Test2 & (Aduran, vacío) & pass & InvalidArgument\\
+Test3 & (vacío, angel) & login & UserAlreadyExistst\\
+Test4 & (Aduran, angel) & login-pass   & Sesión creada correctamente\\
+Test5 & (null, angel) & login   & InvalidArgument\\
+Test6 & (Aduran, null) & pass   & InvalidArgument\\
+Test7 & (null, null) & login-pass   & InvalidArgument\\
+Test8 & (ADuran, angel) & login & WrongLoginException\\
+Test9 & (Aduran, Angel) & pass & WrongLoginException\\
+Test10 & (1111, 22\&22) & login-pass & Sesión creada correctamente\\
+Test11& (-1, 2222) & login-pass  & Sesión creada correctamente\\
+Test12& (Angel\&Duran, angel) & login  &  Sesión creada correctamente \\
+Test13 & (Aduran y ricki, angel y ricki) & Comportamiento createSession & Sesión creada correctamente\\
+Test14 & (Aduran, angel) & Comportamiento createSession & RemoteException\\
+Test15 & (Aduran, angel) & Comportamiento createSession & Sesión cerrada correctamente\\
+Test16 & (Aduran, angel) & Comportamiento createSession & Sesión creada correctamente\\
+
+\hline
+\end{longtable}
+}
