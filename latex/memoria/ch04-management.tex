@@ -1,0 +1,212 @@
+\chapter{Procesos de gestión}
+
+En este capítulo se muestra una descripción no técnica de los procesos que han
+influido en el desarrollo de la práctica.
+
+\section{Actividades}
+
+Para el desarrollo de esta práctica, se han desempeñado las siguientes
+actividades.
+
+\subsection*{Especificación de requisitos}
+
+Realizada durante las primeras dos semanas, esta actividad consitió en una
+lectura detallada del enunciado de la práctica para extraer las funcionalidades
+que la aplicación debía tener.
+
+Del desarrollo de esta actividad se obtuvo el documento \textit{UC 01-002.01
+Especificación de requisitos software}, que describe de una manera más
+detallada y directa el alcance de la aplicación. Además se generó el diagrama
+de modelos de casos de uso, que muestra esquemáticamente todos los requisitos
+funcionales de la aplicación.
+
+\subsection*{Análisis y diseño}
+
+Partiendo de la especificación de requisitos, los analistas-diseñadores
+realizarán en esta actividad una serie de acciones que definirán el diseño de
+la arquitectura de la aplicación y las relaciones existentes entre las clases
+de la misma.
+
+Resultado de esta actividad habrá como mínimo un \textit{diagrama de secuencia}
+por cada caso de uso. En estos diagramas se muestra en un nivel de detalle medio
+el flujo de mensajes entre clases para la consecución de un determinado caso de
+uso.
+
+Con el conocimiento obtenido del análisis de cada caso de uso se irán creando de
+manera incremental los \textit{diagramas de clases}. El resultado son tres
+diagramas por cada capa arquitectónica, y un cuarto diagrama de clases que
+muestra las relaciones entre las clases más importantes a alto nivel.
+
+\subsection*{Implementación}
+
+Esta actividad materializa el diseño realizado en la actividad anterior. El
+resultado será una nueva versión de la aplicación con la funcionalidad
+correspondiente.
+
+La brevedad de este apartado no refleja el tiempo invertido en esta actividad
+con respecto al resto de actividades. Esta actividad no se limita a programar,
+sino que a veces es necesario resolver problemas técnicos que pueden sergir
+durante la programación.
+
+\subsection*{Pruebas}
+
+Con esta actividad se busca la validación y verificación de los componentes de
+la aplicación, a nivel tanto individual como de conjunto. Las pruebas
+se han realizado usando el \textit{framework} de pruebas \textit{JUnit} en
+combinación con el analizador de covertura \textit{EclEmma}.
+
+De esta actividad se ha obtenido una extensa batería de pruebas que prueban el
+comportamiento a nivel de integración de toda la capa de dominio.
+
+Por su excesiva complejidad, se decidió no probar programáticamente la capa de
+presentación de la aplicación. En su lugar, se crearían guiones de pruebas
+exploratorias.
+
+\subsection*{Documentación}
+
+Actividad de cierre del proyecto, dentro de esta actividad se incluye la
+redacción del presente documento, los informes de las pruebas realizadas en la
+actividad anterior, o el manual de usuario de la aplicación.
+
+En el entregable final, presentado en un DVD, se incluirán todos los artefactos
+generados por las actividades aquí explicadas.
+
+\section{Planificación}
+
+De la planificación mostrada en el documento \textit{UC 01-001.02 Plan de
+gestión de proyecto software} se podía decir en su día que era muy optimista. A
+día de hoy, se puede decir que aquella planificación era extremadamente
+optimista.
+
+Únicamente las dos o tres primeras semanas se cumplieron hasta cierto grado.
+Sin embargo la incertidumbre de no estar aún disponible la interfaz de
+comunicaciones ralentizó el proceso de analisis y diseño hasta pararlo por
+completo.
+
+Se tomó la decisión de no continuar con el desarrolló hasta que la interfaz no
+estuviera definida para no realizar trabajo que tuviera que ser desechado más
+adelante por no ajustarse a la especificación.
+
+Aún con todo, retrospectivamente se pueden apreciar distintas fases en el
+desarrollo que en mayor o menor medida conciden con las del proceso unificado.
+
+\subsection{Fase de inicio}
+
+\textit{Del 6 de octubre al 31 de octubre}
+
+Durante estas aproximadamente tres semanas y media, las actividades realizadas
+se ajustaron a la planificación expuesta en el plan de proyecto. En este
+período se redactaron el plan gestión de proyecto software y la especificación
+de requisitos software.
+
+En los últimos días, se inicio con las actividades de análisis y diseño. Se
+llegaron a cubrir los primeros casos de uso, todos relacionados con la gestión
+de usuarios.
+
+\subsection{Fase de elaboración}
+
+\textit{Del 1 de noviembre al 25 de diciembre}
+
+Esta fase estuvo marcada por la falta de una interfaz de comunicaciones
+definida y estable. Se necesitaba avanzar en el proceso de diseño, pero a la
+hora de definir las clases, sus atributos, y los argumentos usados en los
+métodos, siempre surgía la duda de qué datos se usarían.
+
+Esto no significa que el equipo estuviera totalmente parado, pero sí que el
+rendimiento estaba muy por debajo del posible, y del deseado. Se realizaron los
+diagramas de secuencia de hasta el sexto caso de uso, casi todos los
+relacionados con la gestión de partida, intentando usar los valores que se
+creían más adecuados. Así mismo, se empezó con la implementación del módulo de
+gestión de usuarios. Estas funciones eran relativamente sencillas y era poco
+probable que el trabajo hecho fuera a resultar incorrecto al tener la interfaz
+definitiva.
+
+El día 22 de diciembre tuvo lugar la reunión de jefes de grupo de la que surgió
+la primera versión estable de la interfaz de comunicaciones, y que
+posteriormente sólo sufriría cambios menores. En los días siguientes a esa
+fecha, y con una idea mucho más clara de la arquitectura de la aplicación de la
+que se tenía en octubre, se repasaron todos los diagramas realizados hasta la
+fecha. Este hito dio por concluida la fase de elaboración.
+
+\subsection{Fase de construcción}
+
+\textit{Del 26 de diciembre al 27 de febrero}
+
+El primer paso de esta fase fue reescribir el código para que se ajustara a los
+cambios realizados en diseño, lo cual no supuso un gran esfuerzo.
+
+Durante el mes de enero, el rendimiento fue también bajo debido a ser el
+período de exámenes. En este mes se realizaron dos elementos importantes en
+diseño y en implementación.
+
+Por un lado, se empezó la implementación del caso de uso ``Conectarse a una
+partida''. Este caso de uso es la base para todos los que vendrían a
+continuación. En él se obtienen los datos de una partida, se configura dominio
+creando el motor de juego, y se carga la interfaz de partida, la cual incluye
+el mapa. Es una actividad bastante extensa que no estaría terminada hasta el 5
+de febrero.
+
+Paralelamente, los analista-diseñadores estuvieron trabajando en el caso de uso
+``Atacar un territorio''. Este caso de uso está formado por una secuencia de
+mensajes entre dos clientes. Estos mensajes son asíncronos, lo que implica
+tener que guardar información sobre el ataque en curso. Son muchos pequeños
+detalles que debían pensarse detenidamente para que la implementación
+funcionara correctamente.
+
+Durante el mes de febrero, los analista-diseñadores continuaron con su trabajo
+hasta tener el diseño completo de la aplicación. A la vez, los programadores, y
+en la recta final de esta fase también los \textit{testers}, implementaban o
+probaban los diseños que iban siendo generados.
+
+\subsection{Fase de transición}
+
+\textit{Del 28 de febrero al 9 de marzo}
+
+Para el 28 de febrero, y ya con la tranquilidad de disponer de otra semana más
+para el desarrollo, la aplicación estaba casi concluida. Los casos de uso que
+quedaran por implementar no supondrían un gran esfuerzo pues toda la
+infraestructura software estaba ya creada.
+
+Comenzaba el momento de realizar pruebas de integración con el servidor real en
+producción. En esta pruebas se corrigieron errores de implementación en puntos
+poco claros en la comunicación con el servidor, a la vez que se iban
+corrigiendo errores en la interfaz, pues ésta no había sido probada con
+\textit{JUnit}.
+
+Tras una sesión de pruebas en conjunto con el equipo del servidor y otro equipo
+cliente, no quedaba nada más por hacer.
+
+\section{Riesgos}
+
+\subsection{Riesgos externos}
+
+El desarrollo de la aplicación ha sido afectado externamente por la tardía
+especificación de la interfaz de comunicaciones con el servidor. Sin embargo,
+este retraso fue sufrido en las primeras semanas del desarrollo, por lo que su
+influencia ha sido relativamente pequeña, dando tiempo al equipo de recuperarse
+del mismo.
+
+\subsection{Riesgos técnicos}
+
+Los mayores retrasos en el desarrollo se han sufrido debido a implementaciones
+que no se ajustaban al diseño realizado. Errores de concepto que hacían que
+otros casos de uso no funcionaran correctamente pues el comportamiento de las
+clases no era el previsto en diseño.
+
+Este continuo ir y venir entre diseñadores y programadores hizo que tareas que
+se esperaran terminadas para un determinado plazo, tuvieran que ser aplazadas
+por tener que volver a realizarse.
+
+\subsection{Riesgos de planificación}
+
+En los últimos días de febrero se disponía del diseño de varios casos de uso
+que, en principio, podrían ser implementados en paralelo. No resultó ser el
+caso, y debido a los retrasos que provocaba trabajar en un sólo caso de uso
+explicados en el punto anterior, se decidió cambiar la forma de asignar tareas
+a los programadores.
+
+Hasta ese momento, un equipo de programadores realizaría un caso de uso
+completo, creando código en todas las capas de la aplicación. Para que varias
+personas pudieran trabajar a la vez, se agruparon las tareas de programación de
+varios casos de uso. Con esto se consiguio una carga de trabajo mayor que
+podría ser repartida más eficientemente entre varias personas.

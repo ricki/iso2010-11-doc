@@ -3,8 +3,8 @@ def_graphic_ext=png
 img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
-kileversion=2.0.86
-lastDocument=memoria.tex
+kileversion=2.0.85
+lastDocument=ch06-eval.tex
 masterDocument=memoria.tex
 name=memoria
 pkg_extIsRegExp=false
@@ -40,7 +40,7 @@ Indentation Mode=none
 Mode=LaTeX
 ReadWrite=true
 
-[document-settings,item:ch03sec01-register.tex]
+[document-settings,item:ch03sec-attack.tex]
 Bookmarks=
 Encoding=UTF-8
 Highlighting=LaTeX
@@ -48,7 +48,7 @@ Indentation Mode=none
 Mode=LaTeX
 ReadWrite=true
 
-[document-settings,item:ch04-junit.tex]
+[document-settings,item:ch03sec-creategame.tex]
 Bookmarks=
 Encoding=UTF-8
 Highlighting=LaTeX
@@ -56,7 +56,7 @@ Indentation Mode=none
 Mode=LaTeX
 ReadWrite=true
 
-[document-settings,item:ch04sec-gamemanager.tex]
+[document-settings,item:ch03sec-exitgame.tex]
 Bookmarks=
 Encoding=UTF-8
 Highlighting=LaTeX
@@ -64,7 +64,7 @@ Indentation Mode=none
 Mode=LaTeX
 ReadWrite=true
 
-[document-settings,item:ch04sec-usermanager.tex]
+[document-settings,item:ch03sec-gameactions.tex]
 Bookmarks=
 Encoding=UTF-8
 Highlighting=LaTeX
@@ -72,7 +72,7 @@ Indentation Mode=none
 Mode=LaTeX
 ReadWrite=true
 
-[document-settings,item:ch05-explore.tex]
+[document-settings,item:ch03sec-joingame.tex]
 Bookmarks=
 Encoding=UTF-8
 Highlighting=LaTeX
@@ -80,7 +80,7 @@ Indentation Mode=none
 Mode=LaTeX
 ReadWrite=true
 
-[document-settings,item:ch05sec-creategame.tex]
+[document-settings,item:ch03sec-listgames.tex]
 Bookmarks=
 Encoding=UTF-8
 Highlighting=LaTeX
@@ -88,7 +88,7 @@ Indentation Mode=none
 Mode=LaTeX
 ReadWrite=true
 
-[document-settings,item:ch05sec-joingame.tex]
+[document-settings,item:ch03sec-login.tex]
 Bookmarks=
 Encoding=UTF-8
 Highlighting=LaTeX
@@ -96,7 +96,7 @@ Indentation Mode=none
 Mode=LaTeX
 ReadWrite=true
 
-[document-settings,item:ch05sec-listgames.tex]
+[document-settings,item:ch03sec-logout.tex]
 Bookmarks=
 Encoding=UTF-8
 Highlighting=LaTeX
@@ -104,7 +104,7 @@ Indentation Mode=none
 Mode=LaTeX
 ReadWrite=true
 
-[document-settings,item:ch05sec-login.tex]
+[document-settings,item:ch03sec-playgame.tex]
 Bookmarks=
 Encoding=UTF-8
 Highlighting=LaTeX
@@ -112,7 +112,7 @@ Indentation Mode=none
 Mode=LaTeX
 ReadWrite=true
 
-[document-settings,item:ch05sec-playgame.tex]
+[document-settings,item:ch03sec-register.tex]
 Bookmarks=
 Encoding=UTF-8
 Highlighting=LaTeX
@@ -120,7 +120,31 @@ Indentation Mode=none
 Mode=LaTeX
 ReadWrite=true
 
-[document-settings,item:ch05sec-register.tex]
+[document-settings,item:ch03sec-update.tex]
+Bookmarks=
+Encoding=UTF-8
+Highlighting=LaTeX
+Indentation Mode=none
+Mode=LaTeX
+ReadWrite=true
+
+[document-settings,item:ch04-management.tex]
+Bookmarks=
+Encoding=UTF-8
+Highlighting=LaTeX
+Indentation Mode=none
+Mode=LaTeX
+ReadWrite=true
+
+[document-settings,item:ch05-docs.tex]
+Bookmarks=
+Encoding=UTF-8
+Highlighting=LaTeX
+Indentation Mode=none
+Mode=LaTeX
+ReadWrite=true
+
+[document-settings,item:ch06-eval.tex]
 Bookmarks=
 Encoding=UTF-8
 Highlighting=LaTeX
@@ -151,24 +175,84 @@ archive=true
 column=0
 encoding=UTF-8
 highlight=LaTeX
-line=102
+line=91
 mode=LaTeX
 open=false
 order=1
 
 [item:ch03-devel.tex]
 archive=true
-column=16
+column=24
 encoding=UTF-8
 highlight=LaTeX
-line=13
+line=22
 mode=LaTeX
 open=false
 order=1
 
-[item:ch03sec01-register.tex]
+[item:ch03sec-attack.tex]
 archive=true
-column=0
+column=1
+encoding=UTF-8
+highlight=LaTeX
+line=0
+mode=LaTeX
+open=false
+order=-1
+
+[item:ch03sec-creategame.tex]
+archive=true
+column=4
+encoding=UTF-8
+highlight=LaTeX
+line=0
+mode=LaTeX
+open=false
+order=-1
+
+[item:ch03sec-exitgame.tex]
+archive=true
+column=4
+encoding=UTF-8
+highlight=LaTeX
+line=0
+mode=LaTeX
+open=false
+order=-1
+
+[item:ch03sec-gameactions.tex]
+archive=true
+column=4
+encoding=UTF-8
+highlight=LaTeX
+line=0
+mode=LaTeX
+open=false
+order=-1
+
+[item:ch03sec-joingame.tex]
+archive=true
+column=4
+encoding=UTF-8
+highlight=LaTeX
+line=0
+mode=LaTeX
+open=false
+order=-1
+
+[item:ch03sec-listgames.tex]
+archive=true
+column=4
+encoding=UTF-8
+highlight=LaTeX
+line=0
+mode=LaTeX
+open=false
+order=4
+
+[item:ch03sec-login.tex]
+archive=true
+column=4
 encoding=UTF-8
 highlight=LaTeX
 line=0
@@ -176,9 +260,19 @@ mode=LaTeX
 open=false
 order=2
 
-[item:ch04-junit.tex]
+[item:ch03sec-logout.tex]
 archive=true
-column=0
+column=4
+encoding=UTF-8
+highlight=LaTeX
+line=0
+mode=LaTeX
+open=false
+order=3
+
+[item:ch03sec-playgame.tex]
+archive=true
+column=4
 encoding=UTF-8
 highlight=LaTeX
 line=0
@@ -186,19 +280,9 @@ mode=LaTeX
 open=false
 order=-1
 
-[item:ch04sec-gamemanager.tex]
+[item:ch03sec-register.tex]
 archive=true
-column=0
-encoding=UTF-8
-highlight=LaTeX
-line=157
-mode=LaTeX
-open=false
-order=-1
-
-[item:ch04sec-usermanager.tex]
-archive=true
-column=0
+column=4
 encoding=UTF-8
 highlight=LaTeX
 line=0
@@ -206,9 +290,9 @@ mode=LaTeX
 open=false
 order=-1
 
-[item:ch05-explore.tex]
+[item:ch03sec-update.tex]
 archive=true
-column=0
+column=4
 encoding=UTF-8
 highlight=LaTeX
 line=0
@@ -216,7 +300,7 @@ mode=LaTeX
 open=false
 order=-1
 
-[item:ch05sec-creategame.tex]
+[item:ch04-management.tex]
 archive=true
 column=0
 encoding=UTF-8
@@ -224,57 +308,27 @@ highlight=LaTeX
 line=0
 mode=LaTeX
 open=false
-order=-1
+order=1
 
-[item:ch05sec-joingame.tex]
+[item:ch05-docs.tex]
 archive=true
 column=0
 encoding=UTF-8
 highlight=LaTeX
 line=0
 mode=LaTeX
-open=false
-order=-1
+open=true
+order=1
 
-[item:ch05sec-listgames.tex]
+[item:ch06-eval.tex]
 archive=true
 column=0
 encoding=UTF-8
 highlight=LaTeX
 line=0
 mode=LaTeX
-open=false
-order=-1
-
-[item:ch05sec-login.tex]
-archive=true
-column=0
-encoding=UTF-8
-highlight=LaTeX
-line=0
-mode=LaTeX
-open=false
-order=-1
-
-[item:ch05sec-playgame.tex]
-archive=true
-column=0
-encoding=UTF-8
-highlight=LaTeX
-line=0
-mode=LaTeX
-open=false
-order=-1
-
-[item:ch05sec-register.tex]
-archive=true
-column=0
-encoding=UTF-8
-highlight=LaTeX
-line=0
-mode=LaTeX
-open=false
-order=-1
+open=true
+order=2
 
 [item:memoria.kilepr]
 archive=true
@@ -288,10 +342,10 @@ order=-1
 
 [item:memoria.tex]
 archive=true
-column=17
+column=0
 encoding=UTF-8
 highlight=LaTeX
-line=101
+line=104
 mode=LaTeX
 open=true
 order=0
@@ -302,16 +356,68 @@ CursorLine=23
 
 [view-settings,view=0,item:ch02-arch.tex]
 CursorColumn=0
-CursorLine=102
+CursorLine=91
 
 [view-settings,view=0,item:ch03-devel.tex]
-CursorColumn=16
-CursorLine=13
+CursorColumn=24
+CursorLine=22
 
-[view-settings,view=0,item:ch03sec01-register.tex]
-CursorColumn=0
-CursorLine=78
+[view-settings,view=0,item:ch03sec-attack.tex]
+CursorColumn=1
+CursorLine=0
 
-[view-settings,view=0,item:ch04-junit.tex]
+[view-settings,view=0,item:ch03sec-creategame.tex]
+CursorColumn=4
+CursorLine=0
+
+[view-settings,view=0,item:ch03sec-exitgame.tex]
+CursorColumn=4
+CursorLine=0
+
+[view-settings,view=0,item:ch03sec-gameactions.tex]
+CursorColumn=4
+CursorLine=0
+
+[view-settings,view=0,item:ch03sec-joingame.tex]
+CursorColumn=4
+CursorLine=0
+
+[view-settings,view=0,item:ch03sec-listgames.tex]
+CursorColumn=4
+CursorLine=0
+
+[view-settings,view=0,item:ch03sec-login.tex]
+CursorColumn=4
+CursorLine=0
+
+[view-settings,view=0,item:ch03sec-logout.tex]
+CursorColumn=4
+CursorLine=0
+
+[view-settings,view=0,item:ch03sec-playgame.tex]
+CursorColumn=4
+CursorLine=0
+
+[view-settings,view=0,item:ch03sec-register.tex]
+CursorColumn=4
+CursorLine=0
+
+[view-settings,view=0,item:ch03sec-update.tex]
+CursorColumn=4
+CursorLine=0
+
+[view-settings,view=0,item:ch04-management.tex]
+CursorColumn=31
+CursorLine=201
+
+[view-settings,view=0,item:ch05-docs.tex]
 CursorColumn=0
 CursorLine=0
+
+[view-settings,view=0,item:ch06-eval.tex]
+CursorColumn=0
+CursorLine=0
+
+[view-settings,view=0,item:memoria.tex]
+CursorColumn=0
+CursorLine=104
