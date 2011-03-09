@@ -44,6 +44,7 @@ El criterio elegido para todos los valores de prueba (test data) ha sido: Añadi
 La estrategia para obtener los casos de prueba elegida ha sido
 \textit{each choice} (Test 1 a 3 y 8 a 12 ) y añadir algunos casos
 interesantes (Test 4 a 7).
+El test 13 se ha elaborado para ver el comportamiento de registerUser cuando el servidor se ha desconectado.
 
 Para elegir tanto los valores de prueba como los casos de pruebas se ha analizado el comportamiento de este caso de uso (caja blanca). Tras este análisis se ha llegado a la conclusión de que hay en dos lugares en los que se pueden encontrar errores: Si al método registerUser se le da un parámetro erróneo (throw InvalidArgumentException), o si el nombre del usuario ya existe en el servidor (throw UserAlreadyExistsException). La primera comprobación es local, por ello si se lanza la excepcion InvalidArgumentException no se hará nada en el servidor y no se analizará si el usuario ya existe o no.
 
@@ -71,31 +72,7 @@ Test10 & (JorgeCA, jorge, jorge@gmail) & email & InvalidArgument\\
 Test11& (JorgeCA, jorge, jorge@gmail.) & email  & InvalidArgument\\
 Test12& (LuisAn, luis, luis@gmail.com) & email  &  El usuario \\
 & &  & queda registrado\\
+Test13& (Angel\&Duran, angel, a@d.com)  & Comportamiento registerUser & RemoteException \\
 \hline
 \end{longtable}
 }
-
-\subsubsection{Pruebas exploratorias}
-
-A continuación se muestra un guión de pruebas exploratorias para cada uno de los escenarios posibles:
-\begin{enumerate}
-\item Todos los datos son válidos y el usuario no existe.
-	\begin{itemize}
-	\item Acciones previas: El servidor debe estar funcionando y no tener un usuario con el nombre LuisAn.
-	\item Acciones de prueba : En la ventana de inicio pinchamos en registrarnos y rellenamos el diálogo que nos aparecerá con los siguientes valores: LuisAn, luis, luis@gmail.com.
-	\item Resultados esperados : Tras pulsar en aceptar  desaparecerá el diálogo de registro y en la parte superior de la ventana de inicio nos aparecerá en verde \emph {Usuario : LuisAn registrado"}.
-	\end{itemize}
-\item Todos los datos son válidos, pero el usuario existe.
-	\begin{itemize}
-	\item Acciones previas: El servidor debe estar funcionando y no tener un usuario con el nombre JorgeCA.
-	\item Acciones de prueba : En la ventana de inicio pinchamos en registrarnos y rellenamos el diálogo que nos aparecerá con los siguientes valores: JorgeCA, jorge, jorge.colao@gmail.com.
-	\item Resultados esperados : Tras pulsar en aceptar desaparecerá el diálogo de registro y en la parte superior de la ventana de inicio nos aparecerá en rojo \emph {El servidor indica: Error en el registro}.
-	\end{itemize}
-
-\item Algún dato introducido en el diálogo no es válido, independientemente de que el usuario exista o no.
-	\begin{itemize}
-	\item Acciones previas: El servidor debe estar funcionando.
-	\item Acciones de prueba : En la ventana de inicio pinchamos en registranos y rellenamos el diálogo que nos aparecerá con los siguientes valores: JorgeCA, jorge, jorge@gmail..
-	\item Resultados esperados : Tras pulsar en aceptar desaparecerá el diálogo de registro y aparecerá un panel de error mostrando \emph{Algún argumento es erroneo}. Despues de pulsar aceptar en el panel, volverá a aparecer el diálogo. Esto sucederá hasta que los datos sean correctos o demos a cancelar.
-	\end{itemize}
-\end{enumerate}

@@ -1,4 +1,4 @@
-\documentclass[a4paper,11pt,oneside]{report}
+\documentclass[a4paper,11pt,oneside]{article}
 \usepackage[pdftex]{graphicx}
 \usepackage[utf8x]{inputenc}
 \usepackage[spanish]{babel}
@@ -84,23 +84,16 @@ urlcolor=black
 
 % Title
 {\huge \textbf{La Conquista del Mundo}}\\[0.5cm]
-{\huge {Memoria del proyecto}}\\[4cm]
+{\huge {Informe de pruebas exploratorias}}\\[4cm]
 
 % Authors
 \begin{minipage}{0.5\textwidth}
 \large
-\hspace{1cm}\textbf{\emph{Director de proyecto}}\\
-Ricardo Ruedas García\\
-\end{minipage}
-
-\begin{minipage}{0.5\textwidth}
-\large
-\hspace{1cm}\textbf{\emph{Equipo de desarrollo}}\\
+\hspace{1cm}\textbf{\emph{Equipo de pruebas}}\\
 Jorge Colao Adán\\
 Ángel Durán Izquierdo\\
 Antonio Gómez Poblete\\
 Daniel León Romero\\
-Antonio Martín Menor de Santos\\
 Laura Núñez Villa\\
 \end{minipage}\\[2cm]
 
@@ -115,18 +108,24 @@ Laura Núñez Villa\\
 \setcounter{page}{2}
 
 \tableofcontents
-\addcontentsline{toc}{chapter}{\contentsname}
-% \listoffigures
-% \listoftables
 
 \clearpage
 
 \pagestyle{fancy}
 
-\input{ch01-intro.tex}
-\input{ch02-arch.tex}
-\input{ch03-devel.tex}
-\input{ch04-junit.tex}
-\input{ch05-explore.tex}
+\input{explore-register.tex}
+\input{explore-login.tex}
+\input{explore-listgames.tex}
+\input{explore-creategame.tex}
+\input{explore-joingame.tex}
+\input{explore-playgame.tex}
+\input{explore-disconnectfromgame.tex}
+\input{explore-attack.tex}
+\input{explore-territoryUnderAttack.tex}
+\input{explore-requestNegotiation.tex}
+\input{explore-buyunits.tex}
+\input{explore-moveunits.tex}
+\input{explore-deployspy.tex}
+\input{explore-buyterritory.tex}
 
 \end{document}

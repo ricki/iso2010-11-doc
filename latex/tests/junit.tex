@@ -1,4 +1,4 @@
-\documentclass[a4paper,11pt,oneside]{report}
+\documentclass[a4paper,11pt,oneside]{article}
 \usepackage[pdftex]{graphicx}
 \usepackage[utf8x]{inputenc}
 \usepackage[spanish]{babel}
@@ -84,7 +84,7 @@ urlcolor=black
 
 % Title
 {\huge \textbf{La Conquista del Mundo}}\\[0.5cm]
-{\huge {Memoria del proyecto}}\\[4cm]
+{\huge {Informe de pruebas de desarrollo}}\\[4cm]
 
 % Authors
 \begin{minipage}{0.5\textwidth}
@@ -95,12 +95,11 @@ Ricardo Ruedas García\\
 
 \begin{minipage}{0.5\textwidth}
 \large
-\hspace{1cm}\textbf{\emph{Equipo de desarrollo}}\\
+\hspace{1cm}\textbf{\emph{Equipo de pruebas}}\\
 Jorge Colao Adán\\
 Ángel Durán Izquierdo\\
 Antonio Gómez Poblete\\
 Daniel León Romero\\
-Antonio Martín Menor de Santos\\
 Laura Núñez Villa\\
 \end{minipage}\\[2cm]
 
@@ -115,18 +114,18 @@ Laura Núñez Villa\\
 \setcounter{page}{2}
 
 \tableofcontents
-\addcontentsline{toc}{chapter}{\contentsname}
-% \listoffigures
-% \listoftables
 
 \clearpage
 
 \pagestyle{fancy}
 
-\input{ch01-intro.tex}
-\input{ch02-arch.tex}
-\input{ch03-devel.tex}
-\input{ch04-junit.tex}
-\input{ch05-explore.tex}
+\input{junit-usermanager.tex}
+\input{junit-gamemanager.tex}
+\input{junit-gamelistmodel.tex}
+\input{junit-playerlistmodel.tex}
+\input{junit-mapmodel.tex}
+\input{junit-territorydecorator.tex}
+\input{junit-gameengine.tex}
+\input{junit-unitinfo.tex}
 
 \end{document}

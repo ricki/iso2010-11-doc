@@ -1,0 +1,26 @@
+\section{Atacar un territorio}
+
+Guión de pruebas exploratorias para el método atacar un territorio:
+
+\begin{enumerate}
+\item Atacar desde un territorio propio.
+	\begin{itemize}
+	\item Acciones previas: El servidor debe estar funcionando, haberse logeado con éxito y haberse conectado una partida.
+	\item Acciones de prueba: Una vez que se está en la partida, se selecciona el territorio (uno propio, ''Gran Bretaña de JorgeCA'') desde el que quieres atacar y se pulsa el botón ''Atacar''. Se muestra el diálogo de atacar, en el que se elige el territorio destino del ataque (''Europa del Norte''). Las tropas con las que se ataca: 6 soldados y 2 cañones. Por último se pulsa el botón ''Aceptar''.
+	\item Resultados esperados: No se muestra ningún diálogo de error.
+	\end{itemize}
+\item Atacar desde un territorio vacío.
+	\begin{itemize}
+	\item Acciones previas: El servidor debe estar funcionando, haberse logeado con éxito y haberse conectado una partida.
+	\item Acciones de prueba: Una vez que se está en la partida, se selecciona un territorio vacío (''Europa Occidental'') desde el que quieres atacar y se pulsa el botón ''Atacar''. 
+	\item Resultados esperados: No se realiza ninguna acción, puesto que el territorio no es del usuario.
+	\end{itemize}
+\item Atacar desde un territorio de un contrincante.
+	\begin{itemize}
+	\item Acciones previas: El servidor debe estar funcionando, haberse logeado con éxito y haberse conectado una partida.
+	\item Acciones de prueba: Una vez que se está en la partida, se selecciona un territorio de un contrincante (''Europa del Norte'') desde el que quieres atacar y se pulsa el botón ''Atacar''. 
+	\item Resultados esperados: No se realiza ninguna acción, puesto que el territorio no es del usuario.
+	\end{itemize}
+\end{enumerate}
+
+Los fallos comprobados en las pruebas de desarrollo con \textit{JUnit} no se darán ya que el número mínimo de las tropas del arsenal es cero y el máximo, el disponible para ese territorio.
