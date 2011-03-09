@@ -42,11 +42,11 @@ Estos son los valores de los atributos para los casos de prueba:
 \begin{itemize}
 \item \textbf{\texttt{src}}
 \subitem Número incorrecto: \texttt{"\--1"}, \texttt{"41"} y \texttt{"42"}
-\subitem Número correcto: \texttt{"0"}, territorio en el que se encuetra \textit{JorgeCA}
+\subitem Número correcto: \texttt{"0"}, territorio en el que se encuentra \textit{JorgeCA}
 
 \item \textbf{\texttt{dst}}
 \subitem Número incorrecto: \texttt{"\--1"}, \texttt{"0"}, \texttt{"41"} y \texttt{"42"}
-\subitem Número correcto: \texttt{"2"}, territorio en el que se encuetra \textit{Aduran}
+\subitem Número correcto: \texttt{"2"}, territorio en el que se encuentra \textit{Aduran}
 
 \item \textbf{\texttt{soldiers}}
 \subitem Número incorrecto: \texttt{"\--1"} y \texttt{"21"}
@@ -73,7 +73,7 @@ La tabla siguiente recoge los resultados esperados.
 \hline \hline
 \endhead
 
-Test1 & (0, 2, 0, 0, 1, 6)  & realizar ataque & Funcinamiento Correcto\\
+Test1 & (0, 2, 0, 0, 1, 6)  & realizar ataque & Funcionamiento Correcto\\
 Test2 & (0, 2, 0, 0, 1, 6)  & realizar 2 ataques & PendingAttack\\
 Test3 & (-1, 2, 0, 0, 1, 6)  & src & ArrayIndexOutOfBounds\\
 Test4 & (42, 2, 0, 0, 1, 6)  & src & IndexOutOfBounds\\
@@ -89,8 +89,8 @@ Test13 & (0, 2, 20, 6, -1, 6)  & missiles & NegativeValue\\
 Test14 & (0, 2, 20, 6, 2, 6)  & missiles & NotEnoughUnits\\
 Test15 & (0, 2, 20, 6, 1, -1)  & icbm & NegativeValue\\
 Test16 & (0, 2, 20, 6, 1, 7)  & icbm & NotEnoughUnits\\
-Test17 & (0, 2, 0, 0, 0, 0)  & realizar ataque & Funcinamiento Correcto\\
-Test18 & (0, 2, 20, 6, 0, 0)  & realizar ataque & Funcinamiento Correcto\\
+Test17 & (0, 2, 0, 0, 0, 0)  & realizar ataque & Funcionamiento Correcto\\
+Test18 & (0, 2, 20, 6, 0, 0)  & realizar ataque & Funcionamiento Correcto\\
 
 \hline
 \end{longtable}
@@ -128,7 +128,7 @@ La tabla siguiente recoge los resultados esperados, para los casos de prueba.
 \hline \hline
 \endhead
 
-Test1 & (T2\_Aduran, T0\_JorgeCA, Arsenal) & informar del ataque & Funcinamiento Correcto\\
+Test1 & (T2\_Aduran, T0\_JorgeCA, Arsenal) & informar del ataque & Funcionamiento Correcto\\
 Test2 & (null, T0\_JorgeCA, Arsenal) & src & NullPointer\\
 Test3 & (T2\_Aduran, null, Arsenal) & dst & NullPointer\\
 Test4 & (T2\_Aduran, T0\_JorgeCA, null) & arsenal & NullPointer\\
@@ -182,7 +182,7 @@ La tabla siguiente recoge los resultados esperados.
 \hline \hline
 \endhead
 
-Test1 & (0, 20) & pedir negociación & Funcinamiento Correcto\\
+Test1 & (0, 20) & pedir negociación & Funcionamiento Correcto\\
 Test2 & (0, 20) & (*) & NullPointer\\
 Test3 & (-1, 0) & money & NegativeValue\\
 Test4 & (201, 0) & money & NotEnoughMoney\\
@@ -214,3 +214,195 @@ Se han realizado dos casos de prueba:
 \item Ejecutando primero el método \textit{territoryUnderAttack}. Para poder ejecutar el método resolver negociación se necesita que primero la variable \textit{mCurrentAttack} tenga un valor no nulo, por este motivo ejecutamos antes el método territoryUnderAttack y luego el método resolver negociación no da error.
 \item Sin ejecutar primero el método \textit{territoryUnderAttack}. En este caso no se le da un valor a la varible \textit{mCurrentAttack} y como es null falla la ejecución de resolver negociación.
 \end{itemize}
+
+
+\subsection{GameEngine::buyUnits}
+
+El método \textbf{buyUnits(int index, int soldiers, int cannons, int missiles, int icbm, int antimissiles)} tiene seis parámetros de entrada, y para comprobar su funcionamiento nos hemos inclinado por un enfoque de caja blanca. Hemos optado por un criterio de 
+cobertura \textit{modificada de condición decisión } usando valores interesantes.
+Las excepciones que este método lanza son las siguientes:
+\begin{itemize}
+\item \textbf{PendingAttackException} Cuando se intenta comprar y hay un ataque en curso.
+\item \textbf{UnocupiedTerritoryException} Si se intentan comprar unidades en un territorio no asignado a ningún jugador.
+\item \textbf{InvalidTerritoryException} Si el dueño del territorio es otro jugador.
+\item \textbf{NegativeValueException} Si se intenta comprar un número negativo de algún tipo de unidad.
+\item \textbf{NotEnoughMoneyException} Si el jugador no tiene dinero suficiente para comprar las unidades.
+\item \textbf{ArrayIndexOutOfBoundsException} Si el índice del país es negativo.
+\item \textbf{IndexOutOfBoundsException} Si el índice del país es mayor de 41.
+\end{itemize}
+
+A continuación se muestra una tabla que muestra los diferentes valores para los casos de prueba y el resultado esperado para cada uno de ellos.
+
+{\footnotesize
+\begin{longtable}[c]{lccc}
+ & \textbf{Valores de Prueba} & \textbf{Objetivo del test} & \textbf{Resultado esperado}  \\
+\hline \hline
+\endhead
+
+Test1 & (0, 1, 0, 0, 0, 0) & Comprar unidades & Funcionamiento Correcto\\
+Test2 & (2, 1, 0, 0, 0, 0)  & index & InvalidTerritoryException\\
+Test3 & (0, 3, 0, 0, 0, 0)  &  & NotEnoughMoneyException \\
+Test4 & (0, -1, 0, 0, 0, 0)  & soldiers & NegativeValueException \\
+Test5 & (0, 0, -1, 0, 0, 0)  & cannons & NegativeValueException \\
+Test6 & (0, 0, 0, -1, 0, 0)  & missiles  & NegativeValueException \\
+Test7 & (0, 0, 0, 0, -1, 0)  & icbm & NegativeValueException \\
+Test8 & (0, 0, 0, 0, 0, -1)  & antimissiles & NegativeValueException \\
+Test9 & (-1, 0, 0, 0, 0, 0) & index & ArrayIndexOutOfBoundsException \\
+Test10 & (42, 0, 0, 0, 0, 0) & index & IndexOutOfBoundsException\\
+Test11 & (12, 1, 0, 0, 0, 0)  & index & UnocupiedTerritoryException\\
+Test12 & (12, 1, 0, 0, 0, 0)  & Comprar con ataque en curso & PendingAttackException\\
+
+\hline
+\end{longtable}
+\subsubsection{Observaciones}
+\begin{itemize}
+ \item \textbf{Test 2} El territorio no pertenece al usuario.
+\item \textbf{Test 3} Antes de comprar, establecemos el dinero del jugador a 0 gallifantes.
+\item \textbf{Test 11} El territorio no está asignado a ningún jugador.
+\item \textbf{Test 12} Antes de ejecutar buyUnits, lanzamos un ataque.
+\end{itemize}
+
+}
+\subsection{GameEngine::moveUnits}
+
+El método \textbf{moveUnits(int src, int dst, int soldiers, int[] cannons, int missiles, int icbm, int antimissiles)} tiene siete parámetros de entrada (uno de ellos compuesto por
+tres enteros), y para comprobar su funcionamiento nos hemos inclinado por un enfoque de caja blanca. Hemos optado por un criterio de 
+cobertura \textit{modificada de condición decisión } usando valores interesantes. 
+Las excepciones que este método lanza son las siguientes:
+\begin{itemize}
+\item \textbf{PendingAttackException} Cuando se intenta mover tropas y hay un ataque en curso.
+\item \textbf{UnocupiedTerritoryException} Si se intenta mover desde o hacia un país no asignado a ningún jugador.
+\item \textbf{InvalidTerritoryException} Si el dueño del territorio origen o destino es otro jugador; si los territorios destino y origen no son adyacentes.
+\item \textbf{NegativeValueException} Si se intenta mover un número negativo de algún tipo de unidad.
+\item \textbf{ArrayIndexOutOfBoundsException} Si el origen o el destino son negativos.
+\item \textbf{IndexOutOfBoundsException} Si el origen o el destino son mayores de 41.
+\end{itemize}
+
+A continuación se muestra una tabla que muestra los diferentes valores para los casos de prueba y el resultado esperado para cada uno de ellos.
+
+{\footnotesize
+\begin{longtable}[c]{lccc}
+ & \textbf{Valores de Prueba} & \textbf{Objetivo del test} & \textbf{Resultado esperado}  \\
+\hline \hline
+\endhead
+
+Test1 & (0, 1, 0, [0,0,0] , 0, 0, 0) & Mover unidades & Funcionamiento Correcto\\
+Test2 & (0, 1, 1, [0,0,0], 1, 1, 1)  & Mover unidades & Funcionamiento Correcto\\
+Test3 & (0, 1, 1, [1,1,1], 1, 1, 1)  & Mover unidades & Funcionamiento Correcto\\
+Test4 & (0, 1, 100, [0,0,0], 0, 0, 0)  & soldiers & NotEnoughUnitsException \\
+Test5 & (0, 1, 0, [100,0,0], 0, 0, 0)  & cannons[0] & NotEnoughUnitsException \\
+Test6 & (0, 1, 0, [0,100,0], 0, 0, 0)  & cannons[1] & NotEnoughUnitsException \\
+Test7 & (0, 1, 0, [0,0,100], 0, 0, 0)  & cannons[2] & NotEnoughUnitsException \\
+Test8 & 0, 1, 0, [0,0,0], 110, 0, 0)  & missiles & NotEnoughUnitsException \\
+Test9 & (0, 1, 0, [0,0,0], 0, 110, 0) & icbm & NotEnoughUnitsException \\
+Test10 & (0, 1, 0, [0,0,0], 0, 0, 110) & antimissiles & NotEnoughUnitsException \\
+Test11 & (0, 7, 0, [0,0,0], 0, 0, 0)  & Mover a territorios no adyacentes & InvalidTerritoryException \\
+Test12 & (-1, 0, 0, [0,0,0], 0, 0, 0)& src & ArrayIndexOutOfBoundsException \\
+Test13 & (0, -1, 0, [0,0,0], 0, 0, 0)& dst & ArrayIndexOutOfBoundsException \\
+Test14 & (0, 2, 0, [0,0,0], 0, 0, 0)& dst & InvalidTerritoryException \\
+Test15 & (0, 1, -1, [0,0,0], 0, 0, 0)& soldiers & NegativeValueException \\
+Test16 & (0, 1, 0, [-1,0,0], 0, 0, 0)& cannons [0] & NegativeValueException \\
+Test17 & (0, 1, 0, [0,-1,0], 0, 0, 0)& cannons [1] & NegativeValueException \\
+Test18 & (0, 1, 0, [0, 0,-1], 0, 0, 0)& cannons [2] & NegativeValueException \\
+Test19 & (0, 1, 0, [0,0,0], -1, 0, 0) & missiles & NegativeValueException \\
+Test20 & (0, 1, 0, [0,0,0], 0, -1, 0) & icbm & NegativeValueException \\
+Test21 & (0, 1, 0, [0,0,0], 0, 0, -1)  & antimissiles & NegativeValueException \\
+Test22 & (42, 1, 0, [0,0,0], 0, 0, 0)& src & IndexOutOfBoundsException \\
+Test23 & (0, 42, 0, [0,0,0], 0, 0, 0)& dst & IndexOutOfBoundsException \\
+Test24 & (0, 42, 0, [0,0,0], 0, 0, 0)& Mover con un ataque en curso & PendingAttackException \\
+Test25 & (12, 2, 0, [0,0,0], 0, 0, 0)& src & UnocupiedTerritoryException \\
+Test26 & (0, 12, 0, [0,0,0], 0, 0, 0)& dst & UnocupiedTerritoryException \\
+Test27 & (2, 0, 0, [0,0,0], 0, 0, 0)& src & InvalidTerritoryException \\
+\hline
+\end{longtable}
+\subsubsection{Observaciones}
+
+\begin{itemize}
+ \item  Los territorios pertenecientes al jugador son el 0, 1, y 7.
+\item  El territorio 12 no está asignado a ningún jugador.
+\item  Los territorios 0, 1 y 2 son adyacentes.
+\item  El territorio 7 no es adyacente al 0.
+\item \textbf{Test 24} Antes de ejecutar moveUnits, lanzamos un ataque.
+
+\end{itemize}
+
+}
+\subsection{GameEngine::deploySpy}
+
+El método \textbf{deploySpy(int index)} tiene solamente un parámetro de entrada, y para comprobar su funcionamiento nos hemos inclinado por un enfoque de caja blanca. Hemos optado por un criterio de 
+cobertura \textit{modificada de condición decisión } usando valores interesantes.
+Las excepciones que este método lanza son las siguientes:
+\begin{itemize}
+\item \textbf{PendingAttackException} Cuando se intenta enviar un espía y hay un ataque en curso.
+\item \textbf{NotEnoughMoneyException} Cuando el jugador no tiene dinero para comprar el espía.
+\item \textbf{InvalidTerritoryException} Cuando el territorio pertenece al propio jugador.
+\item \textbf{ArrayIndexOutOfBoundsException} Si el índice del país es negativo.
+\item \textbf{IndexOutOfBoundsException} Si el índice del país es mayor de 41.
+\end{itemize}
+
+A continuación se muestra una tabla que muestra los diferentes valores para los casos de prueba y el resultado esperado para cada uno de ellos.
+
+{\footnotesize
+\begin{longtable}[c]{lccc}
+ & \textbf{Valores de Prueba} & \textbf{Objetivo del test} & \textbf{Resultado esperado}  \\
+\hline \hline
+\endhead
+
+Test1 & (0)& index & InvalidTerritoryException \\
+Test2 & (2) & index & Funcionamiento Correcto \\
+Test3 & (-1)  & index & ArrayIndexOutOfBoundsException \\
+Test4 & (42)  & index & IndexOutOfBoundsException\\
+Test5 & (2) & index & NotEnoughMoneyException \\
+Test6 & (2)  & Enviar espia con ataque en curso  & PendingAttackException\\
+
+
+\hline
+\end{longtable}
+\subsubsection{Observaciones}
+\begin{itemize}
+ \item \textbf{Test 2} Antes de ejecutar deploySpy, nos aseguramos de que el jugador tenga dinero suficiente.
+\item \textbf{Test 5} Antes de ejecutar deploySpy, establecemos la cantidad de dinero del jugador a 0.
+\item \textbf{Test 6} Antes de ejecutar deploySpy, lanzamos un ataque.
+\end{itemize}
+
+}
+\subsection{GameEngine::buyTerritory}
+
+El método \textbf{buyTerritory(int index)} tiene solamente un parámetro de entrada, y para comprobar su funcionamiento nos hemos inclinado por un enfoque de caja blanca. Hemos optado por un criterio de 
+cobertura \textit{modificada de condición decisión } usando valores interesantes.
+Las excepciones que este método lanza son las siguientes:
+\begin{itemize}
+\item \textbf{PendingAttackException} Cuando se intenta comprar un territorio y hay un ataque en curso.
+\item \textbf{NotEnoughMoneyException} Cuando el jugador no tiene dinero para comprar el territorio.
+\item \textbf{InvalidTerritoryException} Cuando el territorio pertenece a algún jugador o no es adyacente a ninguno de los pertenecientes al jugador que solicita la compra.
+\item \textbf{ArrayIndexOutOfBoundsException} Si el índice del país es negativo.
+\item \textbf{IndexOutOfBoundsException} Si el índice del país es mayor de 41.
+\end{itemize}
+
+A continuación se muestra una tabla que muestra los diferentes valores para los casos de prueba y el resultado esperado para cada uno de ellos.
+
+{\footnotesize
+\begin{longtable}[c]{lccc}
+ & \textbf{Valores de Prueba} & \textbf{Objetivo del test} & \textbf{Resultado esperado}  \\
+\hline \hline
+\endhead
+
+Test1 & (6)& Comprar territorio & Funcionamiento correcto \\
+Test2 & (22) & index & InvalidTerritoryException \\
+Test3 & (2)  & index & OcupiedTerritoryException \\
+Test4 & (6)  & Comprar sin el dinero suficiente & NotEnoughMoneyException \\
+Test5 & (6) & Comprar con ataque en curso  & PendingAttackException \\
+Test6 & (-1)  & index & ArrayIndexOutOfBoundsException \\
+Test7 & (42)  & index & IndexOutOfBoundsException \\
+
+\hline
+\end{longtable}
+\subsubsection{Observaciones}
+\begin{itemize}
+ \item El jugador es propietario de los territorios 0,1 y 7. El territorio 2 también tiene propietario.
+\item El territorio 22 no es adyacente a ninguno perteneciente al jugador.
+\item \textbf{Test 4} Antes de ejecutar buyTerritory, establecemos el dinero del jugador a 0.
+\item \textbf{Test 5} Antes de ejecutar buyTerritory, lanzamos un ataque.
+\end{itemize}
+
+}

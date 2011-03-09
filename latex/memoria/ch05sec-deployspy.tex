@@ -1,0 +1,22 @@
+\section{Enviar espía}
+
+Guión de pruebas exploratorias para el método deploySpy. Entre paréntesis se muestran los valores de ciertos parámetros utilizados con el servidor de prueba (en partidas
+reales estos parámetros son variables):
+
+\begin{enumerate}
+\item Pulsamos el botón ''Enviar espía'', habiendo seleccionado un país que no nos pertenece y teniendo dinero suficiente para comprar un espía.
+	\begin{itemize}
+	\item Acciones previas: El servidor debe estar funcionando, habernos logeado con éxito (como usuario JorgeCA) y conectado a una partida (game01).
+	\item Acciones de prueba: Una vez en la  partida, seleccionamos un país que no nos pertenece (España) y pulsamos el botón ``Enviar espía''.     
+	\item Resultados esperados: El espía es enviado y se mostrará la pantalla de juego con los gallifantes actualizados
+	\end{itemize}
+\item Pulsamos el botón ''Enviar espía'', habiendo seleccionado un país que no nos pertenece sin tener dinero suficiente.
+	\begin{itemize}
+	\item Acciones previas: El servidor debe estar funcionando, habernos logeado con éxito (como usuario JorgeCA) y haber una partida disponible.
+	\item Acciones de prueba: Una vez en la  partida, seleccionamos un país que no nos pertenece (España) y pulsamos el botón ``Enviar espía''.     
+	\item Resultados esperados: Aparecerá un diálogo informándonos de que no tenemos dinero suficiente para llevar a cabo la acción.
+	\end{itemize}
+\item No es posible pulsar el botón ``Enviar espía'' en ninguna otra situación, puesto que la interfaz no lo permite.
+
+\end{enumerate}
+
