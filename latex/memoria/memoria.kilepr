@@ -4,7 +4,7 @@ img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
 kileversion=2.0.86
-lastDocument=ch04-management.tex
+lastDocument=ch05-docs.tex
 masterDocument=memoria.tex
 name=memoria
 pkg_extIsRegExp=false
@@ -129,6 +129,14 @@ Mode=LaTeX
 ReadWrite=true
 
 [document-settings,item:ch04-management.tex]
+Bookmarks=
+Encoding=UTF-8
+Highlighting=LaTeX
+Indentation Mode=none
+Mode=LaTeX
+ReadWrite=true
+
+[document-settings,item:ch05-docs.tex]
 Bookmarks=
 Encoding=UTF-8
 Highlighting=LaTeX
@@ -286,10 +294,20 @@ order=-1
 
 [item:ch04-management.tex]
 archive=true
-column=31
+column=0
 encoding=UTF-8
 highlight=LaTeX
-line=201
+line=0
+mode=LaTeX
+open=false
+order=1
+
+[item:ch05-docs.tex]
+archive=true
+column=0
+encoding=UTF-8
+highlight=LaTeX
+line=20
 mode=LaTeX
 open=true
 order=1
@@ -306,7 +324,7 @@ order=-1
 
 [item:memoria.tex]
 archive=true
-column=0
+column=20
 encoding=UTF-8
 highlight=LaTeX
 line=129
@@ -374,6 +392,10 @@ CursorLine=0
 CursorColumn=31
 CursorLine=201
 
-[view-settings,view=0,item:memoria.tex]
+[view-settings,view=0,item:ch05-docs.tex]
 CursorColumn=0
+CursorLine=20
+
+[view-settings,view=0,item:memoria.tex]
+CursorColumn=20
 CursorLine=129
